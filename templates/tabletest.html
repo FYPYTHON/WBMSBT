@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!--STATUS OK-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="找回密码">
+    <title>找回密码-确认帐号</title>
+    <!--<link rel="shortcut icon" href="https://www.baidu.com/favicon.ico" type="image/x-icon" />-->
+    <!--<link rel="icon" sizes="any" href="https://www.baidu.com/img/baidu.svg">-->
+    <script type="text/javascript" src="{{static_url('libs/js/jquery.min.js')}}"></script>
+    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+    <style type="text/css">
+        .borderview{
+            border:solid 1px;
+            heigth:10px;
+        }
+        .lifloatleft{
+            float:left;
+            margin-left:5px;
+        }
+    </style>
+    <script type="text/javascript">
+        function searchTable(){
+            $.ajax({
+                type:"Post",
+                url:"/tableTest",
+                dataType:"json",
+                data:"",
+                success: function(data){
+                    alert(data.data.length);
+                    for(var i=0;i<data.data.length;i++){
+                        var data_tr = '<tr>';
+                        data_tr += '<td>' +data.data[i][0]+ '</td>'
+                        data_tr += '<td>' +data.data[i][1]+ '</td>'
+                        data_tr += '<td>' +data.data[i][2]+ '</td>'
+                        data_tr += '</tr>';
+                        $("#adminTable").append(data_tr)
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper" class="">
+<div id="head" class="borderview col-sm-2 col-sm-offset-10" >
+    <ul class="mod-userbar" >
+        <li class="lifloatleft">
+            <a id="mod-userbar-login" href="/signin">登录</a>
+        </li>
+        <li class="lifloatleft">|</li>
+        <li class="lifloatleft">
+            <a href="https://passport.baidu.com/v2/?reg&tpl=&u=">注册</a>
+        </li>
+    </ul>
+</div>
+<div class="col-sm-6 col-sm-offset-3" style="border:solid 1px;">
+    <table class="table" id="adminTable">
+        <tr>
+            <th>name</th>
+            <th>value</th>
+            <th>type</th>
+        </tr>
+        {% for _data in data %}
+        <tr>
+            <td>{{_data["name"]}}</td>
+            <td>{{_data["value"]}}</td>
+            <td>{{_data["type"]}}</td>
+        </tr>
+        {% end %}
+    </table>
+    <button onclick="searchTable()">查询</button>
+</div>
+
+</div>
+       
+</body>
+</html>

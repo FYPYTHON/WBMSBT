@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--set webpage width and height user can not change-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+	<script type="text/javascript" src="{{static_url('libs/js/jquery.min.js')}}"></script>
+	<!--<script type="text/javascript" src="{{static_url('libs/js/emailcode.js')}}"></script>-->
+	<!--<script type="text/javascript" src="static/libs/js/formverify.js"></script>-->
+	<!--<script type="text/javascript" src="static/libs/js/jquery.cookie.js"></script>-->
+    <style type="text/css">
+      html{
+          min-width: 500px;
+      }
+      .box{
+          width:100%;
+          height:100%;
+          min-width:1000px;
+          <!--background: url("{{static_url('img/background.jpg')}}");-->
+          background-size:cover;
+
+       }
+	  .logo{
+    </style>
+    <script type="text/javascript">
+         function sendCode(){
+         		var email = $("#email").val();
+         		var code = $("#inputRandom").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/sendEmail/stmp",
+                    dataType : "json",
+                    async: true,
+                    data: {"email": email,"type":1,"code":code},
+                    success: function (data){
+                        alert(data.msg);
+                        $("#email").val("");
+                        $("#inputRandom").val("");
+                        <!--window.location.href = "/download"-->
+                        }
+                })
+         };
+         function getCode(){
+            <!--alert("this is test code");-->
+            sendCode();
+         };
+    </script>
+</head>
+
+
+<body class="box">
+	<div class="row clearfix"  >
+			<div  class="tirs"></div>
+    <form class="form-horizontal" role="form" id="myform" action="/sendEmail/stmp" method="post">
+					<div class="form-group" style="margin-top:50px">
+                        <label class="col-sm-5 control-label">邮箱:</label>
+                        <div class="col-sm-7" >
+                            <input class="form-control inputcss" style="width:200px;float:left;" id="email" type="email" name="email" value="1823218990@qq.com"/>
+                            <div class="" style=" margin-left:0px;padding-top:6.5px;" id="emailcheck"></div>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label  class="col-sm-5 control-label" >验证码:</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="inputRandom" type="text" name="inputRandom" placeholder="邮箱获取"  style="width:90px;float:left;"/>
+                            <button id="getcode" type="button" style="margin-top:3px;margin-left:10px;" onclick="getCode()">点击获取验证码</button>
+                            <input type="hidden" id="codes">
+                        </div>
+                    </div>
+
+					<div class="form-group" style="margin-left: 10px;">
+						<div class="col-sm-offset-5">
+							<button onclick="getCode()" type="button" id="confirm" class="btnConfirm" style="width:100px;">确定</button>
+						</div>
+                    </div>
+
+            </form>
+		</div>
+	<!--</div>-->
+
+</body>
+</html>
