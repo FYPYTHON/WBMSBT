@@ -1,4 +1,19 @@
 python -m pip install pymysqldb
-
+# 项目相关库
+    参考requirements.txt
 # python 连接SQLalchemy
-参考database/db_config.py
+1）连接参考database/db_config.py.
+   需要安装pymysql.
+   下载mysql-5.7 ,下载地址：https://dev.mysql.com/downloads/mysql/
+   将mysql bin目录加入系统path
+   初始化mysql
+   .\mysqld --initialize-insecure --user=mysql
+   .\mysqld -install
+   net start mysql
+   修改mysql密码
+   alter user 'root'@'localhost' identified by 'Faye0808';
+   flush privileges;
+
+2) 忽略警告
+    import warnings
+    warnings.filterwarnings("ignore")
