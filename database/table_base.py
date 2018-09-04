@@ -8,7 +8,6 @@ from database.db_config import db_session
 class TableBase:
 
     def save(self):
-        # TODO，需要修改掉
         db_session.add(self)
         db_session.commit()
         db_session.close()

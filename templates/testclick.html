@@ -12,18 +12,19 @@
 			<!--login();-->
 		 });
 	 function getIn1(){
-	    alert("this is test code")
+	    alert("this is test code");
 	    to();
 	 }
 	 function to(){
 			$.ajax({
 				type: "Post",
-				url: "/download",
+				url: "/main",
 				dataType : "json",
 				data:{"code":"1234"},
 				success: function (data){
 					alert("成功！");
 					console.log(data);
+					window.location.href = "/tableTest"
 				}
 			})
 		}
@@ -32,10 +33,12 @@
 <body>
 
 This text contains<br />a line break.
-<a href="/login"> dianji</a>
+<a href="/tableTest"> 点击</a>
 
 <button onclick="getIn1()" type="button" id="confirm" class="btnConfirm" >确定</button>
-
+<form method="get" action="/tableTest">
+    <button  type="submit" id="submit" class="btnConfirm" >提交</button>
+</form>
 
 </body>
 </html>

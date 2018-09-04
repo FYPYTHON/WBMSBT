@@ -1,7 +1,7 @@
 #coding=utf-8
 import hashlib
 
-from database.t_admin import TAdmin
+from database.tbl_admin import TblAdmin
 from handlers.base_handler import BaseHandler
 import tornado.web
 from json import dumps as json_dumps
@@ -10,7 +10,7 @@ import weblog
 class TableTestHandler(BaseHandler):
 
     def get(self):
-        weblog.info("%s , download handler.",self._request_summary())
+        weblog.info("%s , TableTestHandler.",self._request_summary())
         data = {"name":"GET","value":"v12","type":1}
         datas = []
         datas.append(data)
@@ -18,8 +18,8 @@ class TableTestHandler(BaseHandler):
         self.render('tabletest.html',data=datas)
 
     def post(self):
-
-        result = self.mysqldb().query(TAdmin).all()
+        print(self.request.uri)
+        result = self.mysqldb().query(TblAdmin).all()
         datas = []
         for res in result:
             data = []

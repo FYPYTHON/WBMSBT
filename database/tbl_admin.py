@@ -5,11 +5,11 @@ from database import table_base
 from database.db_config import ModelBase
 
 
-class TAdmin(ModelBase, table_base.TableBase):
+class TblAdmin(ModelBase, table_base.TableBase):
     __tablename__ = 'tbl_admin'
     
     id = Column(Integer, unique = True, primary_key = True)
-    name = Column(String(60),unique = True)
+    name = Column(String(60),unique = True, comment=u"变量名")
     value = Column(String(60))
     type =  Column(Integer)
 
