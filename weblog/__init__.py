@@ -10,7 +10,7 @@ from weblog import date_rotatingfilehandler
 # window and linux set different path
 import platform
 if platform.system() == "Windows":
-    log_path = u'./static/files/weblog'
+    log_path = u'./static/log/weblog'
 else:
     log_path = u"/home/Faye/log/weblog"
 
@@ -25,13 +25,12 @@ class ctrace_logger(logging.Logger):
     def __init__(self, name):
         logging.Logger.__init__(self, name)
         
-        self.setLevel(logging.DEBUG)
+        # self.setLevel(logging.INFO)
+        self.setLevel(logging.ERROR)  # 打开的同时，SQL alchemy也会打印
         self.handler = None
         #self.console_handler = None
         self.file_path = ''
-        #self.name = ''
 
-    # def _log(self, level, msg, args, exc_info=None, extra=None):
     def _log(self, level, msg, args, exc_info=None, extra=None, stack_info=False):
         """
         Method:    _log

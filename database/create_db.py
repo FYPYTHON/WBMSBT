@@ -23,13 +23,14 @@ def create_table():
     for root, dirs, files in os.walk("."):
         root = root.strip(".%s" % os.path.sep)
         for f in files:
-            if f.startswith("t_") and f.endswith(".py"):
+            if f.startswith("tbl_") and f.endswith(".py"):
                 py_module = os.path.join(root, f[:-3]).replace(os.path.sep, ".")
                 cmd =  "import %s" % py_module
-                print (cmd)
+                print (cmd,py_module,f[:-3])
                 exec(cmd)
 
     from database import db_config
+
     print ("drop table....")
     db_config.ModelBase.metadata.drop_all(db_config.engine)
 
@@ -43,8 +44,8 @@ def create_table():
 def init_data():
     print ('init_data...')
     from database.db_config import db_session
-    from database.t_admin import TAdmin
-    user = TAdmin()
+    from database.tbl_admin import TblAdmin
+    user = TblAdmin()
     user.name = "__MAILPASSWORD__"
     user.value = "XXXX@qq.com"
     user.type = 1
@@ -57,6 +58,6 @@ def init_data():
 
 if __name__ == '__main__':
     # clear_db()
-    # create_table()
-    init_data()
+    create_table()
+    # init_data()
 

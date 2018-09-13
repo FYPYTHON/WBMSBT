@@ -1,4 +1,4 @@
-python -m pip install pymysqldb
+﻿python -m pip install pymysqldb
 # 项目相关库
     参考requirements.txt
 # python 连接SQLalchemy
@@ -17,3 +17,17 @@ python -m pip install pymysqldb
 2) 忽略警告
     import warnings
     warnings.filterwarnings("ignore")
+
+3) 使用wtform 
+   (https://wtforms.readthedocs.io/en/stable/fields.html)
+   a.wtform正则表达式：validators.regexp(u'^[^/\\]\.jpg$')
+     validators.Regexp(regex, flags=0, message=None)
+     flags:eg,re.IGNORECASE
+   b.与其他比较，EqualTo
+     class ChangePassword(Form):
+    	password = PasswordField('New Password', [InputRequired(), EqualTo('confirm', message='Passwords must match')])
+    	confirm  = PasswordField('Repeat Password')
+   c.长度
+     Length(min=-1, max=-1, message=None)
+     NumberRange(min=None, max=None, message=None)
+
