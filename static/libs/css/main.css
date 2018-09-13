@@ -5418,11 +5418,11 @@ header {
   border-top: 5px solid #3693cf;
   background-color: #aebeff;
 
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), color-stop(85%, #aebeff), to(#0d0d0d));
-  background-image: -webkit-linear-gradient(#333333, #aebeff 85%, #0d0d0d);
-  background-image: -moz-linear-gradient(top, #333333, #aebeff 85%, #0d0d0d);
-  background-image: -o-linear-gradient(#333333, #aebeff 85%, #0d0d0d);
-  background-image: linear-gradient(#333333, #aebeff 85%, #0d0d0d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), color-stop(85%, #aebeff), to(#0d0d0d)); /*适合 Chrome,Safari4+*/
+  background-image: -webkit-linear-gradient(#333333, #aebeff 85%, #0d0d0d);    /* 适合Chrome10+,Safari5.1+ */
+  background-image: -moz-linear-gradient(top, #333333, #aebeff 85%, #0d0d0d);  /*适合 FF3.6+*/
+  background-image: -o-linear-gradient(#333333, #aebeff 85%, #0d0d0d);  /*适合Opera 11.10+*/
+  background-image: linear-gradient(#333333, #aebeff 85%, #0d0d0d); /*适合W3C*/
 
   background-repeat: no-repeat;
   height: 70px;
@@ -7448,3 +7448,19 @@ footer {
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important; } }
+
+.menu-style{
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+.main-menu .menu-style{
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+.main-menu li{
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}

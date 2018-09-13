@@ -5474,6 +5474,7 @@ header {
       -webkit-border-radius: 4px 4px 0 0;
       -moz-border-radius: 4px 4px 0 0;
       border-radius: 4px 4px 0 0;
+      /*
       background-color: #e4e4e4;
       background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), color-stop(85%, #ebebeb), to(#cccccc));
       background-image: -webkit-linear-gradient(#f2f2f2, #ebebeb 85%, #cccccc);
@@ -5481,6 +5482,7 @@ header {
       background-image: -o-linear-gradient(#f2f2f2, #ebebeb 85%, #cccccc);
       background-image: linear-gradient(#f2f2f2, #ebebeb 85%, #cccccc);
       background-repeat: no-repeat;
+      */
       text-align: center;
       -webkit-transition: All 0.2s ease;
       -moz-transition: All 0.2s ease;
