@@ -32,7 +32,10 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         # self.set_secure_cookie("user_account","TestAccount")
         # return self.get_secure_cookie("user_account")
-        return "TestAccount"
+        if self.get_secure_cookie("user_account") is not None:
+            return self.get_secure_cookie("user_account")
+        else:
+            return "TestAccount"
 
     def initLocalVariable(self):
         variables = self.mysqldb().query(TblAdmin).all()

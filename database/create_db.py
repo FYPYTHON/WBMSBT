@@ -46,18 +46,46 @@ def init_data():
     from database.db_config import db_session
     from database.tbl_admin import TblAdmin
     user = TblAdmin()
-    user.name = "__MAILPASSWORD__"
-    user.value = "XXXX@qq.com"
+    user.name = "__MAIL__"
+    user.value = "1823218990@qq.com"
     user.type = 1
-    db_session.add(user)
+    email = TblAdmin()
+    email.name = "__MAILPASSWORD__"
+    email.value = "xxxxxxxxxx"
+    email.type = 1
+    user_exist = db_session.query(TblAdmin.name).filter(TblAdmin.name == user.name).first()
+    if user_exist is None:
+        db_session.add(user)
+
+    mail_exist = db_session.query(TblAdmin.name).filter(TblAdmin.name == email.name).first()
+    if mail_exist is None:
+        db_session.add(email)
     db_session.commit()
+    db_session.close()
 
 
     print ("done!")
 
+def init_account():
+    print ('init one account...')
+    from database.db_config import db_session
+    from database.tbl_account import TblAccount
+    from method.data_encode import MD5
+    account = TblAccount()
+    account.username = "a123456"
+    account.password = MD5("123456")
+    account.userrole = 0
+    account.email = "1823218990@qq.com"
+    db_session.add(account)
+    db_session.commit()
+    db_session.close()
+    print("add ok")
 
 if __name__ == '__main__':
     # clear_db()
-    create_table()
-    # init_data()
+    # create_table()
+    # init_account()
+    init_data()
+
+
 

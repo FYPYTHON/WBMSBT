@@ -21,3 +21,4 @@ if __name__ == "__main__":
     print(hashlib.md5(bytes("111111",encoding='utf-8')).hexdigest())
     print(MD5("111111"))
     print(SHA256("111111"))
+    print(MD5("123456"))

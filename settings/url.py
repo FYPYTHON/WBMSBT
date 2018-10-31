@@ -1,5 +1,5 @@
 # coding=utf-8
-from handlers import admin_handler, home_handler
+from handlers import admin_handler, home_handler, user_setting_handler
 from handlers import main_handler,table_test_handler
 from handlers.signin_handler import SigninHandler
 from handlers.Email import email_smtp_handler,email_exchange_handler
@@ -12,4 +12,5 @@ url  =  [                            #
         (r'/sendEmail/stmp',email_smtp_handler.SendEmailHandler),
         (r'/sendEmail/exchange',email_exchange_handler.SendEmailHandler),
         (r'/home',home_handler.HomeHandler),
+        (r'/usersetting',user_setting_handler.UserSettingHandler),
         ]

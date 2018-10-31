@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Base</title>
+    <!--<link id="bs-css" href="/static/libs/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--bootstrap link-->
+    <script src="{{static_url('libs/js/bootstrap.min.js')}}">
+    <script type="text/javascript" src="{{static_url('libs/js/jquery.min.js')}}"></script>
+    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+
     <link href="static/libs/css/icomoon/style.css" rel="stylesheet">
     <!--<script src="static/libs/css/icomoon-font/lte-ie7.js"></script>-->
     <!--<link href="static/libs/css/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet">-->
     <!--<link href="static/libs/css/wysiwyg/wysiwyg-color.css" rel="stylesheet">-->
-    <link href="static/libs/css/main.css" rel="stylesheet">
+    <link href="{{static_url('libs/css/main.css')}}" rel="stylesheet">
+    <link href="{{static_url('libs/css/mycss.css')}}" rel="stylesheet">
      <!--Important. For Theming change primary-color variable in main.css  -->
     <!--<link href="css/charts-graphs.css" rel="stylesheet">-->
 </head>
 <body>
 <header>
     <a href="#" class="logo">
-        <img src="{{static_url('img/logo1.png')}}" alt="logo" />
+        <img src="{{static_url('img/logo.png')}}" alt="logo" />
     </a>
     <div class="btn-group">
         <button class="btn btn-primary">
@@ -65,8 +72,8 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <!-- left menu starts -->
-        <div class="span2 main-menu-span" >
-            <div class="well nav-collapse sidebar-nav" style="border:solid 1px red;">
+        <div class="span2 main-menu-span" style="border:solid 1px black">
+            <div class="well nav-collapse sidebar-nav" style="border:solid 1px red;margin-top: 100px">
                 <ul class="nav nav-tabs nav-stacked main-menu menu-style">
                     <li class="nav-header hidden-tablet">Main</li>
                     <li><a class="ajax-link" href="#"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
@@ -76,13 +83,53 @@
                     <li><a class="ajax-link" href="#"><i class="icon-th-list"></i><span class="hidden-tablet"> Page</span></a></li>
                     <li class="nav-header hidden-tablet">Setting</li>
                     <li><a class="ajax-link" href="#"><i class="icon-user"></i><span class="hidden-tablet"> Profile</span></a></li>
-                    <li><a class="ajax-link" href="#"><i class="icon-wrench"></i><span class="hidden-tablet"> Setting</span></a></li>
+                    <li><a class="ajax-link" href="/usersetting"><i class="icon-wrench"></i><span class="hidden-tablet"> Setting</span></a></li>
                 </ul>
             </div><!--/.well -->
         </div><!--/span-->
         <!-- left menu ends -->
-    </div>
+        <div  class="span9" style="height:50px;border:solid 1px blue;margin-top: 80px;">
+            导航说明
+            <!-- content starts -->
+            <div>
+                {% block content-nav %}
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/home">Home</a> <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="#">Blank</a>
+                    </li>
+                </ul>
+                {% end %}
+            </div>
+            
+        </div>
+        <div class="span9" style="border:solid 1px blue;margin-top: 20px;">
+             主体
+            {% block content %}
+            <div class="row-fluid sortable">
+                <div class="box span12">
+                    {% block content-header %}
+                    <div class="box-header " data-original-title>
+                    </div>
+                    {% end %}
+                    
+                    {% block content-body %}
+                    <div class="box-content">
+                    </div>
+                    {% end %}
+                </div><!--/span-->
+            </div><!--/row-->
+            {% end %}
+            <!-- content ends -->
+        </div>     
+    </div> 
 </div>
 
+
+
+{% block other-javascript %}
+{% end %}
 </body>
 </html>

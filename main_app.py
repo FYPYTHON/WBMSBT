@@ -16,7 +16,7 @@ class Application(tornado.web.Application):
             cookie_secret="bZJc2sWMakYos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
             upload_path=os.path.join(os.path.dirname(__file__), "files"),
             login_url="/signin",
-            debug=False
+            # debug=False
             # autoescape=None,
         )
 
