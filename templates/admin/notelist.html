@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+{% extends "../base.html" %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/note/list">Note List</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/home">Return to Home</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+		
+	</div>
+{% end %}
+
+{% block content-body %}
+<div class="box-content">
+    <a href="/note/add"><i class="icon-pencil"></i>Write an note</a>
+    <hr>
+    <table class="table">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Arthor</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+      </thead>   
+      <tbody>
+      {% for note in notes %}
+        <tr>
+        <td>{{ note.id }}</td>
+        <td><a href="/note/id/{{ note.id }}" target="_blank">{{ note.title }}</a></td>
+        <td>{{ note.authorname }}</td>
+        <td>{{ note.comment_count }}</td>
+        <td class="center">{{ note.date }}</td>
+        <td class="center">
+          <a class="btn btn-info" href="/note/edit/{{ note.id }}">
+            <i class="icon-edit icon-white"></i>
+            Edit                                            
+          </a>
+          <a class="btn btn-danger" href="/note/delete/{{ note.id }}">
+            <i class="icon-trash icon-white"></i>
+            Delete
+          </a>
+        </td>
+        </tr>
+      {% end %}
+      </tbody>
+      </table>
+  </div>
+{% end %}
+

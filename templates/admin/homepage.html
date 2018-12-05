@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+{% extends "../base.html" %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/homepage">Home Page</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/home">Return to Home</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+		
+	</div>
+{% end %}
+
+{% block content-body %}
+	<div class="span5">
+        <div class="widget">
+          <div class="widget-header">
+            <div class="nav">
+              Note List
+            </div>
+          </div>
+          <div class="widget-body testonly">
+            <ol class="no-margin" >
+              <li>
+                Lorem ipsum dolor sit amet sdfdd ddddd ddddddd dddddd ddddd dddd
+              </li>
+              <li>
+                Consectetur adipiscing elit
+              </li>
+              <li>
+                Integer molestie lorem at massa
+              </li>
+              <li>
+                Facilisis in pretium nisl aliquet
+              </li>
+              <li>
+                Nulla volutpat aliquam velit
+              </li>
+              <li>
+                Faucibus porta lacus fringilla vel
+              </li>
+              <li>
+                Aenean sit amet erat nunc
+              </li>
+              <li>
+                Eget porttitor lorem
+              </li>
+              <li>
+                Facilisis in pretium nisl aliquet
+              </li>
+            </ol>
+          </div>
+        </div>
+    </div>
+    <div class="span5">
+    	<div class="widget">
+            <div class="widget-header">
+	            <div class="nav">
+	              Other List
+	            </div>
+          	</div>
+      	<div class="widget-body testonly">
+            <div class="widget-body testonly">
+          	    测试右边
+            </div>
+        </div>
+    	</div>
+    </div>
+{% end %}
+

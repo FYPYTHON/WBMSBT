@@ -5,7 +5,8 @@ from json import dumps as json_dumps
 class MainHandler(BaseHandler):
 
     def get(self):
-        self.render("testclick.html")
+        # self.render("testclick.html")
+        self.render("admin/homepage.html")
 
 
     def post(self):

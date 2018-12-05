@@ -20,7 +20,7 @@ class TblAccount(ModelBase, table_base.TableBase):
 
 
     def __repr__(self):
-        return "%s<id=%s, name=%s,value=%s>" % (self.__class__.__name__, self.id, self.name, self.value)
+        return "%s<id=%s, username=%s,email=%s>" % (self.__class__.__name__, self.id, self.username, self.email)
 
 #
 # 因为如果用varchar 来存储年月日，那么需要10个字节，而date类型只需4个字节，

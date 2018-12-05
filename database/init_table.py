@@ -25,6 +25,28 @@ def init_user():
     db_session.commit()
     db_session.close()
 
+def init_setting():
+    from database.tbl_admin import TblAdmin
+    db_session.add_all([
+    TblAdmin(name="currentname",value="feiying",type=0),
+    TblAdmin(name="description",value="test only",type=0),
+    TblAdmin(name="admin_email", value="1490726887@qq.com", type=0),
+    TblAdmin(name="can_register", value="1", type=1),
+    TblAdmin(name="can_comment", value="1", type=1),
+    TblAdmin(name="comments_notify", value="1", type=1),
+    TblAdmin(name="default_category", value="default_category", type=0),
+    TblAdmin(name="page_size", value="10", type=1),
+    TblAdmin(name="rss_size", value="10", type=1),
+    TblAdmin(name="rss_excerpt", value="1", type=1),
+    TblAdmin(name="new_rss_size", value="5", type=1),
+    TblAdmin(name="new_page_size", value="5", type=1),
+    ])
+
+    db_session.commit()
+
+
+
 if __name__ == "__main__":
-    init_admin()
-    init_user()
+    # init_admin()
+    # init_user()
+    init_setting()

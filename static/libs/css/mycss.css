@@ -1,3 +1,55 @@
+.testonly{
+	border: solid 1px red;
+	color:red;
+}
 label{
 	color: black;
+	font-size: 18px;
+}
+a {
+	color: blue;
+	font-size: 16px;
+}
+li {
+	color: blue;
+	font-size: 20px;
+}
+.nav {
+	color: black;
+	font-size: 25px;
+}
+.nav a{
+	color: black;
+	font-size: 18px;
+}
+.nav-header {
+	font-size: 20px;
+}
+table{
+	color: black;
+	font-size: 18px;
+}
+.main-menu-span{
+	font-size: 20px;
+}
+form div input{
+	height: 30px;
+	font-size: 18px;
+}
+form span{
+    font-size:18px;
+    margin-left: 30px;
+}
+#edit-setting{
+	margin-left: 20px;
+}
+#edit-setting .control-label{
+	border: solid 1px red;
+	min-width: 220px;
+	max-width: 400px;
+}
+#adduser input{
+	min-width: 120px;
+	max-width: 400px;
+	height:30px;
 }

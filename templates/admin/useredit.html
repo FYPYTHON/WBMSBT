@@ -1,10 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "../base.html" %}
+
+{% block other-css %}
+<link href="/static/ckeditor/contents.css" rel="stylesheet">
+{% end %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/user/edit">Page Edit</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/user/list">Return to user list</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+
+	</div>
+{% end %}
+
+{% block content-body %}
+	<div class="box-content">
+	<form action="/user/edit/{{user.id}}" class="form-horizontal" method="post" id="adduser">
+	{% module xsrf_form_html() %}
+	{% autoescape None %}
+	  <fieldset>
+		<legend>修改新用户信息</legend>
+        <div class="control-group">
+            <label for="username" class="control-label" style="color: black;">用户账户：</label>
+            <div class="controls">
+                <input type="text" value="{{user.username}}" id="username" name="username" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="passowrd" class="control-label" style="color: black;">用户密码：</label>
+            <div class="controls">
+                <input type="password" value="{{user.password}}" id="passowrd" name="passowrd" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="useremail" class="control-label" style="color: black;">用户邮箱：</label>
+            <div class="controls">
+                <input type="text" value="{{user.email}}" id="useremail" name="useremail" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+			<label for="userrole" class="control-label">用户角色：</label>
+			<div class="controls">
+				<select name="userrole" id="userrole">
+					<option value="0" {% if user.userrole=='0' %}selected{% end %}>管理员</option>
+					<option value="1" {% if user.userrole=='1' %}selected{% end %}>普通用户</option>
+				</select>
+			</div> <!-- /controls -->
+		</div> <!-- /control-group -->
+		{% for msg in message %}
+            <span style="color: red;">{{msg}}</span>
+            <br>
+        {% end %}
+
+		<div class="form-actions control-group">
+			<div >
+              <button type="reset" class="btn">重置</button>
+              <button type="submit" class="btn btn-primary">修改</button>
+		    </div>
+		</div>
+	  </fieldset>
+	</form>
+	</div>
+{% end %}
+
+{% block other-javascript %}
+<script src="/static/ckeditor/ckeditor.js"></script>
+{% end %}
