@@ -1,12 +1,13 @@
+#coding=utf-8
 import json
 from handlers.base_handler import BaseHandler
 from exchangelib import DELEGATE, Account, Credentials, Message, Mailbox, HTMLBody, Configuration, FileAttachment
 import re
 from handlers.Email.email_smtp_handler import generate_code
 
-mail_subject = '注册'
-mail_msg_verf = '<p>注册码: {0} </p>'
-mail_msg_ca = '<p>文件已发送邮箱. </p>'
+mail_subject = u'注册'
+mail_msg_verf = u'<p>注册码: {0} </p>'
+mail_msg_ca = u'<p>文件已发送邮箱. </p>'
 
 def check_email(email):
     pattern = "^[\.a-zA-Z0-9_-]+@[\.a-zA-Z0-9_-]+"

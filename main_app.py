@@ -24,7 +24,7 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, **settings)
 
 # python -m pip freeze > pip_list.txt
-
+# python -m pip install -r requirements.txt
 
 if __name__ == "__main__":
     app = Application()
