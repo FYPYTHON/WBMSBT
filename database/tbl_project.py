@@ -11,9 +11,9 @@ class TblProject(ModelBase, table_base.TableBase):
     project_id = Column(Integer, primary_key=True, autoincrement=True)
     project_name = Column(String(256), nullable=False, unique=True)
     describe = Column(Text, default='')
-    sub_project_id = Column(Integer)
+    top_project_id = Column(Integer)   # belong to other project
     created_by = Column(Integer)      # use id
-    created_time = Column(DateTime, default=datetime.now())
+    created_time = Column(DateTime, default=datetime.now(),onupdate=datetime.now())
     progress = Column(Integer, )        # progress of the project
     status = Column(Integer,comment='0=enable,1=disable')          # 0=enable,1=disable
 

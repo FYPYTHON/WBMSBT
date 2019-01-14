@@ -7,11 +7,13 @@ import tornado.options
 import weblog
 from database.db_config import db_session
 from database.tbl_admin import TblAdmin
+
+
 class BaseHandler(tornado.web.RequestHandler):
     localStore = {}
 
     def __init__(self, *argc, **argkw):
-        # super(BaseHandler, self).__init__(*argc, **argkw)
+        super(BaseHandler, self).__init__(*argc, **argkw)
         pass
 
     def initialize(self):
@@ -23,8 +25,8 @@ class BaseHandler(tornado.web.RequestHandler):
         每次访问都会初始化一个 Session 实例哦，这对于你后面的理解很重要
         """
         self.localVariable = {}
-        # self.initLocalVariable()
-        # self.browsing_history()
+        self.initLocalVariable()
+        self.browsing_history()
         # super(BaseHandler, self).__init__(*argc, **argkw)
 
     def mysqldb(self):

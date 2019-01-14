@@ -32,6 +32,7 @@
           <tr class="center">
             <th>ID</th>
             <th>Project Name</th>
+            <th>Describe</th>
             <th>project State</th>
             <th>Create Time</th>
           </tr>
@@ -39,16 +40,17 @@
       <tbody>
       {% for project in projects %}
         <tr class="center">
-        <td>{{ project.id }}</td>
-        <td>{{ project.projectname }}</td>
-        <td >{% if project.projectstate == 0 %}normal{% else %}disable{% end %}</td>
+        <td>{{ project.project_id }}</td>
+        <td>{{ project.describe }}</td>
+        <td>{{ project.project_name }}</td>
+        <td >{% if project.status == 0 %}normal{% else %}disable{% end %}</td>
         <td >{{ project.created_time }}</td>
         <td >
-          <a class="btn btn-info" href="/project/edit/{{ project.id }}">
+          <a class="btn btn-info" href="/project/edit/{{ project.project_id }}">
             <i class="icon-edit icon-white"></i>
             Edit                                            
           </a>
-          <a class="btn btn-danger" href="/project/delete/{{ project.id }}">
+          <a class="btn btn-danger" href="/project/delete/{{ project.project_id }}">
             <i class="icon-trash icon-white"></i>
             Delete
           </a>

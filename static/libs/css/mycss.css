@@ -14,6 +14,14 @@ li {
 	color: blue;
 	font-size: 20px;
 }
+button {
+	margin-right: 40px;
+	height: 40px;
+	font-size: 20px;
+}
+textarea {
+    width:500px;
+}
 .nav {
 	color: black;
 	font-size: 25px;
@@ -40,6 +48,26 @@ form span{
     font-size:18px;
     margin-left: 30px;
 }
+.myform-actions {
+  padding: 19px 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 180px;
+  background-color: darken($white, 4.5%);
+  border-top: 1px solid #e5e5e5;
+  *zoom: 1;
+  &:before {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+    clear: both;
+  }
+}
 #edit-setting{
 	margin-left: 20px;
 }
@@ -48,8 +76,14 @@ form span{
 	min-width: 220px;
 	max-width: 400px;
 }
-#adduser input{
+/* 编辑输入统一样式*/
+#additem input{
 	min-width: 120px;
+	max-width: 400px;
+	height:30px;
+}
+#addproject input{
+	min-width: 200px;
 	max-width: 400px;
 	height:30px;
 }

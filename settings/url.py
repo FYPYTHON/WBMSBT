@@ -3,6 +3,8 @@ from handlers import admin_handler, home_handler, user_setting_handler, user_man
 from handlers import main_handler,table_test_handler
 from handlers.signin_handler import SigninHandler
 from handlers.Email import email_smtp_handler,email_exchange_handler
+from handlers.Project import project_manage_handler
+
 url  =  [                            #
         (r'/', SigninHandler),
         (r'/signin',SigninHandler),
@@ -19,4 +21,6 @@ url  =  [                            #
         (r'/user/edit/([0-9]+)',user_manage_handler.UserEditHandler),
         (r'/user/delete/([0-9]+)',user_manage_handler.UserDeleteHandler),
         (r'/note/list',note_manage_handler.NoteListHandler),
+        (r'/project/list',project_manage_handler.ProjectListHandler),
+        (r'/project/add',project_manage_handler.ProjectAddHandler),
         ]

@@ -10,11 +10,11 @@
 			<a href="/home">Home</a> <span class="divider">/</span>
 		</li>
 		<li>
-			<a href="/user/add">Page Add</a>
+			<a href="/project/add">Project Add</a>
 		</li>
 		<li class="pull-right">
 			<i class="icon-arrow-left"></i>
-			<a href="/user/list">Return to user list</a>
+			<a href="/project/list">Return to project list</a>
 		</li>
 	</ul>
 {% end %}
@@ -27,45 +27,49 @@
 
 {% block content-body %}
 	<div class="box-content">
-	<form action="/user/add" class="form-horizontal" method="post" id="additem">
+	<form action="/project/add" class="form-horizontal" method="post" id="addproject">
 	{% module xsrf_form_html() %}
 	{% autoescape None %}
 	  <fieldset>
-		<legend>添加新用户</legend>
+		<legend>添加新项目</legend>
         <div class="control-group">
-            <label for="username" class="control-label" style="color: black;">用户账户：</label>
+            <label for="project_name" class="control-label" style="color: black;">项目名称：</label>
             <div class="controls">
-                <input type="text" value="" id="username" name="username" class="input-large">
+                <input type="text" value="" id="project_name" name="project_name" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+          <div class="control-group">
+            <label for="top_project_id" class="control-label" style="color: black;">所属项目：</label>
+            <div class="controls">
+                <input type="text" value="" id="top_project_id" name="top_project_id" class="input-large">
             </div> <!-- /controls -->
         </div> <!-- /control-group -->
         <div class="control-group">
-            <label for="passowrd" class="control-label" style="color: black;">用户密码：</label>
+            <label for="describe" class="control-label" style="color: black;">项目描述：</label>
             <div class="controls">
-                <input type="password" value="" id="passowrd" name="passowrd" class="input-large">
+                    <textarea rows="10" cols="400" id="describe">
+                        我是一个文本框。
+                    </textarea>
             </div> <!-- /controls -->
         </div> <!-- /control-group -->
         <div class="control-group">
-            <label for="useremail" class="control-label" style="color: black;">用户邮箱：</label>
+            <label for="peer" class="control-label" style="color: black;">参与人员：</label>
             <div class="controls">
-                <input type="text" value="" id="useremail" name="useremail" class="input-large">
-            </div> <!-- /controls -->
-        </div> <!-- /control-group -->
-        <div class="control-group">
-			<label for="userrole" class="control-label">用户角色：</label>
-			<div class="controls">
-				<select name="userrole" id="userrole">
+                <!--<input type="text" value="" id="peer" name="peer" class="input-large">-->
+                <select name="userrole" id="peer">
 					<option value="0" >管理员</option>
 					<option value="1" >普通用户</option>
 				</select>
-			</div> <!-- /controls -->
-		</div> <!-- /control-group -->
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+
 		{% for msg in message %}
             <span style="color: red;">{{msg}}</span>
             <br>
         {% end %}
 
-		<div class="form-actions control-group">
-			<div >
+		<div class="myform-actions control-group ">
+			<div class="col-sm-4 testonly">
               <button type="reset" class="btn">重置</button>
               <button type="submit" class="btn btn-primary">添加</button>
 		    </div>
