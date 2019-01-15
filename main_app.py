@@ -6,6 +6,8 @@ import tornado.web
 import tornado.escape
 from settings import url
 import tornado.options
+import warnings
+warnings.filterwarnings("ignore")
 from handlers.Timeout.timeout_handler import UserOnlineHandler
 class Application(tornado.web.Application):
     def __init__(self):

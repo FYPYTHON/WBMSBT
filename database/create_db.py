@@ -90,9 +90,9 @@ def init_account():
 if __name__ == '__main__':
     # clear_db()
     # create_table()
-    # init_account()
-    # init_data()
-    create_single_table()
+    init_account()
+    init_data()
+    # create_single_table()
 
 
 

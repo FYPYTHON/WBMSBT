@@ -1,5 +1,6 @@
 ﻿python -m pip install pymysqldb
 # 项目相关库
+    环境：python3.5
     参考requirements.txt
 # python 连接SQLalchemy
 1）连接参考database/db_config.py.
@@ -11,12 +12,15 @@
    .\mysqld -install
    net start mysql
    修改mysql密码
-   alter user 'root'@'localhost' identified by 'Faye0808';
+   alter user 'root'@'localhost' identified by 'xxxxxxxx';
    flush privileges;
 
 2) 忽略警告
     import warnings
     warnings.filterwarnings("ignore")
+    a、Warning: (1287, "'@@tx_isolation' is deprecated and will be removed in a future release. Please use '@@transaction_isolation' instead")
+        result = self._query(query)
+       将site-packages\sqlalchemy\dialects\mysql\base.py中@@tx_isolation替换为@@transaction_isolation
 
 3) 使用wtform 
    (https://wtforms.readthedocs.io/en/stable/fields.html)
