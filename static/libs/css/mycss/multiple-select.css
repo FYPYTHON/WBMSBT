@@ -10,7 +10,8 @@
 
 .ms-choice {
     display: block;
-    width: 100%;
+   /*width: 100%;*/
+    width: 500px;
     height: 26px;
     padding: 0;
     overflow: hidden;
@@ -64,7 +65,8 @@
 }
 
 .ms-drop {
-    width: 100%;
+    /*width: 100%;*/
+    width: 500px;
     overflow: hidden;
     display: none;
     margin-top: -1px;
@@ -100,12 +102,14 @@
     padding: 4px;
     position: relative;
     white-space: nowrap;
-    width: 100%;
+    w/*width: 100%;*/
+    width: 500px;
     z-index: 10000;
 }
 
 .ms-search input {
-    width: 100%;
+    /*width: 100%;*/
+    width: 500px;
     height: auto !important;
     min-height: 24px;
     padding: 0 20px 0 5px;
@@ -165,7 +169,8 @@
 }
 
 .ms-drop ul > li.multiple label {
-    width: 100%;
+    /*width: 100%;*/
+    width: 500px;
     display: block;
     white-space: nowrap;
     overflow: hidden;

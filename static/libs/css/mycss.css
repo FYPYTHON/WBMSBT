@@ -22,6 +22,10 @@ button {
 textarea {
     width:500px;
 }
+/*multiple-select*/
+select button ms-choice {
+    width:500px;
+}
 .nav {
 	color: black;
 	font-size: 25px;

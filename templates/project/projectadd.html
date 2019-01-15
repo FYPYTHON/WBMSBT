@@ -55,31 +55,14 @@
         <div class="control-group">
             <label for="peer" class="control-label" style="color: black;">参与人员：</label>
             <div class="controls">
-                <!--<input type="text" value="" id="peer" name="peer" class="input-large">-->
-                <select name="userrole" id="peer">
-					<option value="0" >管理员</option>
-					<option value="1" >普通用户</option>
+                <label class="control-label">参与人员</label>
+                <select name="peer" id="ms" multiple="multiple">
+                    {% for user in users %}
+                    <option value="{{user.id}}">{{user.username}}</option>
+                    {% end %}
 				</select>
             </div> <!-- /controls -->
         </div> <!-- /control-group -->
-        <!--test-->
-        <div class="control-group myform-actions">
-            <label class="control-label">Month</label>
-            <select id="ms" multiple="multiple">
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-        </div>
 
 		{% for msg in message %}
             <span style="color: red;">{{msg}}</span>

@@ -6,7 +6,7 @@ from tornado.web import authenticated
 import weblog
 from message import msg_define
 from handlers.Email.email_smtp_handler import check_email, check_passord
-
+from handlers.user_manage_handler import get_user_list
 
 def get_project_list(self):
     projects = self.mysqldb().query(TblProject).filter_by(status=0).order_by(TblProject.created_time).all()
@@ -32,7 +32,7 @@ class ProjectAddHandler(BaseHandler):
     # @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
-        return self.render('project/projectadd.html',message="")
+        return self.render('project/projectadd.html',message="", users=get_user_list(self))
 
     # @authenticated
     def post(self):
