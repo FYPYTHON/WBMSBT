@@ -11,7 +11,7 @@ url  =  [                            #
         (r'/homepage', main_handler.MainHandler),
         (r'/home', main_handler.MainHandler),
         (r'/admin/verifyCode',admin_handler.verifyCode),
-        (r'/tableTest', table_test_handler.TableTestHandler),
+        (r'/test', table_test_handler.TableTestHandler),
         (r'/sendEmail/stmp',email_smtp_handler.SendEmailHandler),
         (r'/sendEmail/exchange',email_exchange_handler.SendEmailHandler),
         (r'/home',home_handler.HomeHandler),

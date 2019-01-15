@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
+    <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>
+
+    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+
+    <link href="static/libs/css/icomoon/style.css" rel="stylesheet">
+    <link href="{{static_url('libs/css/main.css')}}" rel="stylesheet">
+    <link href="{{static_url('libs/css/mycss.css')}}" rel="stylesheet">
+    <style>
+        li {
+            width:60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-header">Multi Select</h1>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">Test Items</div>
+                <!--保存多选框的id-->
+                <input type="hidden" id="ids" />
+                <input class="form-control" type="text" id="txt" onclick="show(this)" placeholder="Select you chooose" readonly style="width:350px;height:50px;">
+                <div class="popover fade bottom in" id="panel" style="display:block;opacity:0">
+                    <div class="arrow"></div>
+                    <div class="popover-title" style="height:35px;">
+                        <div class="checkbox" style="margin-top:0;margin-bottom:0px;"></div><label><input type="checkbox" onchange="CheckAll(this)" />全选</label>
+                        <button type="button" class="close" onclick="hide()">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="popover-content">
+                        <ul class="list-inline" id="ul" >
+                            <!--<li><div class="checkbox"></div><label><input type="checkbox" value="0" onclick="Choose(this)"/>5M</label></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+        <select class="multiselect" multiple="multiple">
+          <option value="中国">中国</option>
+          <option value="美国">美国</option>
+          <option value="大胖">大胖</option>
+          <option value="中胖">中胖</option>
+          <option value="小胖">小胖</option>
+          <option value="微胖">微胖</option>
+</select>
+
+    </div>
+    </div>
+</body>
+</html>
+<!--<script src="js/jquery-3.1.1.js"></script>-->
+<!--<script src="js/bootstrap.js"></script>-->
+<script>
+    var data = ["5M", "10M", "20M", "30M", "50M", "70M", "100M", "150M", "200M", "500M", "1024M"];
+    var objArr = [];
+    for (var i = 0; i < data.length; i++) {
+        var obj = new Object();
+        obj.id = i;
+        obj.value=data[i];
+        objArr.push(obj);
+    }
+    $(function () {
+        //加载多选框的数据
+        var ul = $("#ul");
+        for (var i = 0; i < objArr.length; i++) {
+            ul.append("<li><div class='checkbox'></div><label><input type='checkbox' value=" + objArr[i].id + " onclick='Choose(this)'/>" + objArr[i].value + "</label></li>");
+        }
+    });
+    //显示多选框
+    function show(t) {
+        //设置多选框显示的位置，在选择框的中间
+        var left = t.offsetLeft + t.clientWidth / 2 - $("#panel")[0].clientWidth / 2
+        var top = t.offsetTop + t.clientHeight + document.body.scrollTop;
+        $("#panel").css("opacity", "1");
+        $("#panel").css("margin-left", left);
+        $("#panel").css("margin-top", top + 5);
+    }
+    //隐藏多选框
+    function hide() {
+        $("#panel").css("opacity", "0");
+    }
+    //全选操作
+    function CheckAll(t) {
+        var name = "";
+        var ids = "";
+        var popoverContent = $($(t).parent().parent().parent().children()[2]);
+        popoverContent.find("input[type=checkbox]").each(function(i,th) {
+            th.checked = t.checked;
+            if (t.checked) {
+                name += $(th).parent().text() + ",";
+                ids += $(th).val() + ",";
+            }
+        });
+        name = name.substr(0, name.length - 1);
+        ids = ids.substr(0, ids.length - 1);
+        $("#txt").val(name);
+        $("#ids").val(ids);
+    }
+
+    //勾选某一个操作
+    function Choose(t) {
+        var oldName = $("#txt").val();
+        var name = oldName == "" ? "," + $("#txt").val() : "," + $("#txt").val() + ",";
+        var ids = oldName == "" ? "," + $("#ids").val() : "," + $("#ids").val() + ",";
+        var newName = $(t).parent().text();
+        var newid = $(t).val();
+
+        if (t.checked) {//选中的操作
+            $("#txt").val(name += newName + ",");
+            $("#ids").val(ids += newid + ",");
+        } else {//去掉选中的操作
+            var index = name.indexOf(","+newName+",");
+            var len = newName.length;
+            name = name.substring(0, index) + name.substring(index + len + 1, name.length);
+
+            var index = ids.indexOf("," + newid + ",");
+            var len = newid.length;
+            ids = ids.substring(0, index) + ids.substring(index + len + 1, ids.length);
+        }
+        name = name.substr(1, name.length - 2);
+        ids = ids.substr(1, ids.length - 2);
+        $("#txt").val(name);
+        $("#ids").val(ids);
+    }
+</script>

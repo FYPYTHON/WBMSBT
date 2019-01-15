@@ -15,7 +15,8 @@ class TableTestHandler(BaseHandler):
         datas = []
         datas.append(data)
         datas.append(data)
-        self.render('tabletest.html',data=datas)
+        # self.render('tabletest.html',data=datas)
+        self.render('project/multiselect.html')
 
     def post(self):
         print(self.request.uri)

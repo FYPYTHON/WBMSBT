@@ -62,6 +62,24 @@
 				</select>
             </div> <!-- /controls -->
         </div> <!-- /control-group -->
+        <!--test-->
+        <div class="control-group myform-actions">
+            <label class="control-label">Month</label>
+            <select id="ms" multiple="multiple">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
 
 		{% for msg in message %}
             <span style="color: red;">{{msg}}</span>
@@ -81,4 +99,16 @@
 
 {% block other-javascript %}
 <script src="/static/ckeditor/ckeditor.js"></script>
+<script src="/libs/js/myjs/multiple-select.js"></script>
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<!--<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">-->
+<script>
+    $(function() {
+        $('#ms').change(function() {
+            <!--console.log($(this).val());-->
+        }).multipleSelect({
+            width: '100%'
+        });
+    });
+</script>
 {% end %}
