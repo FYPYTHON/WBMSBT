@@ -43,6 +43,7 @@ def create_table():
 def create_single_table():
     # from database import tbl_project
     # from database import tbl_project_progress
+    from database import tbl_project_user
     from database import db_config
     print("create table....")
     db_config.ModelBase.metadata.create_all(db_config.engine)
@@ -90,9 +91,9 @@ def init_account():
 if __name__ == '__main__':
     # clear_db()
     # create_table()
-    init_account()
-    init_data()
-    # create_single_table()
+    # init_account()
+    # init_data()
+    create_single_table()
 
 
 

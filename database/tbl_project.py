@@ -8,7 +8,7 @@ from database.db_config import ModelBase
 
 class TblProject(ModelBase, table_base.TableBase):
     __tablename__ = 'tbl_project'
-    project_id = Column(Integer, primary_key=True, autoincrement=True)
+    project_id = Column(Integer, primary_key=True, autoincrement=True,unique=True)
     project_name = Column(String(256), nullable=False, unique=True)
     describe = Column(Text, default='')
     top_project_id = Column(Integer)   # belong to other project

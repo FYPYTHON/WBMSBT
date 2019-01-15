@@ -9,7 +9,7 @@ from database.db_config import ModelBase
 class TblAccount(ModelBase, table_base.TableBase):
     __tablename__ = 'tbl_account'
 
-    id = Column(Integer, unique=True, primary_key=True)
+    id = Column(Integer, unique=True, primary_key=True, autoincrement=True)
     username = Column(String(100),unique=True, nullable=False)
     password = Column(String(100), nullable=False)
     email = Column(String(100),nullable=False)
