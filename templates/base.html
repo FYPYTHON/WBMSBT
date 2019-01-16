@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Base</title>
-    <!--<link id="bs-css" href="/static/libs/css/bootstrap.min.css" rel="stylesheet">-->
-    <!--bootstrap link-->
+
     <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
     <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>
     
@@ -14,9 +13,10 @@
     <link href="{{static_url('libs/css/main.css')}}" rel="stylesheet">
     <link href="{{static_url('libs/css/mycss.css')}}" rel="stylesheet">
 
-    <script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
-    <link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
-
+    <!--<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>-->
+    <!--<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">-->
+    {% block other-css %}
+    {% end %}
 </head>
 <body>
 <header>
@@ -77,11 +77,11 @@
                 <ul class="nav nav-tabs nav-stacked main-menu menu-style">
                     <li class="nav-header hidden-tablet">Main</li>
                     <li><a class="ajax-link" href="/homepage"><i class="icon-home"></i><span class="hidden-tablet"> Home Page</span></a></li>
-                    <li><a class="ajax-link" href="#"><i class="icon-edit"></i><span class="hidden-tablet"> Publish</span></a></li>
+                    <li><a class="ajax-link" href="/chart"><i class="icon-edit"></i><span class="hidden-tablet"> Preview</span></a></li>
                     <!-- 注意 /note/list 与 note/list的区别 -->
                     <li><a class="ajax-link" href="/note/list"><i class="icon-list-alt"></i><span class="hidden-tablet"> Note List</span></a></li>
                     <li><a class="ajax-link" href="/project/list"><i class="icon-list"></i><span class="hidden-tablet"> Project List</span></a></li>
-                    <li><a class="ajax-link" href="#"><i class="icon-th-list"></i><span class="hidden-tablet"> Page</span></a></li>
+                    <li><a class="ajax-link" href="/task"><i class="icon-th-list"></i><span class="hidden-tablet"> Task List</span></a></li>
                     <li class="nav-header hidden-tablet">User Manage</li>
                     <li><a class="ajax-link" href="/user/list"><i class="icon-user"></i><span class="hidden-tablet"> User List</span></a></li>
                     <li><a class="ajax-link" href="/usersetting"><i class="icon-wrench"></i><span class="hidden-tablet"> Setting</span></a></li>

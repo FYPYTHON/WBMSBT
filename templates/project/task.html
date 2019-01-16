@@ -12,30 +12,29 @@
 			<a href="/home">Home</a> <span class="divider">/</span>
 		</li>
 		<li>
-			<a href="/project/add">Project Add</a>
+			<a href="/task">Task</a>
 		</li>
 		<li class="pull-right">
 			<i class="icon-arrow-left"></i>
-			<a href="/project/list">Return to project list</a>
+			<a href="/task">Return to Task Page</a>
 		</li>
 	</ul>
 {% end %}
 
 {% block content-header %}
 	<div class="box-header " data-original-title>
-
 	</div>
 {% end %}
 
 {% block content-body %}
 	<div class="box-content">
-	<form action="/project/add" class="form-horizontal" method="post" id="addproject">
+	<form action="/task" class="form-horizontal" method="post" id="additem">
 	{% module xsrf_form_html() %}
 	{% autoescape None %}
 	  <fieldset>
-		<legend>添加新项目</legend>
+		<legend>任务管理</legend>
         <div class="control-group">
-            <label for="project_name" class="control-label" style="color: black;">项目名称：</label>
+            <label for="project_name" class="control-label" style="color: black;">任务名称：</label>
             <div class="controls">
                 <input type="text" value="" id="project_name" name="project_name" class="input-large">
             </div> <!-- /controls -->
@@ -52,7 +51,7 @@
 			</div> <!-- /controls -->
         </div> <!-- /control-group -->
         <div class="control-group">
-            <label for="describe" class="control-label" style="color: black;">项目描述：</label>
+            <label for="describe" class="control-label" style="color: black;">任务描述：</label>
             <div class="controls">
                     <textarea rows="10" cols="400" id="describe" name="project_describe">
 
@@ -89,9 +88,6 @@
 
 {% block other-javascript %}
 <script src="/static/ckeditor/ckeditor.js"></script>
-<!--<script src="/libs/js/myjs/multiple-select.js"></script>-->
-<!--<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>-->
-<!--<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">-->
 <script>
     $(function() {
         $('#ms').change(function() {

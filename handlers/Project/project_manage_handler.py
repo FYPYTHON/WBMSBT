@@ -1,6 +1,7 @@
 # coding=utf-8
 from database.tbl_project import TblProject
 from database.tbl_account import TblAccount
+from database.tbl_project_user import TblPorjectUser
 from handlers.base_handler import BaseHandler
 from tornado.web import authenticated
 import weblog
@@ -10,8 +11,8 @@ from handlers.user_manage_handler import get_user_list
 
 def get_project_list(self):
     projects = self.mysqldb().query(TblProject).filter_by(status=0).order_by(TblProject.created_time).all()
-    for project in projects:
-        print(project.describe,type(project.describe))
+    # for project in projects:
+    #     print(project.describe,type(project.describe))
     return projects
 
 
@@ -34,19 +35,20 @@ class ProjectAddHandler(BaseHandler):
     # @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
-        return self.render('project/projectadd.html',message="", users=get_user_list(self))
+        return self.render('project/projectadd.html',message="", users=get_user_list(self)
+                           ,projects=get_project_list(self))
 
     # @authenticated
     def post(self):
         weblog.info("%s.", self._request_summary())
         cur_login_name = self.get_secure_cookie('user_account')
-        cur_user_id = self.mysqldb().query(TblAccount.id,TblAccount.userstate).filter(TblAccount.username == cur_login_name).first()
-
+        # 用户是否存在
+        cur_user_id = self.mysqldb().query(TblAccount.id, TblAccount.userstate).filter(
+                                            TblAccount.username == cur_login_name).first()
         project_name = self.get_argument("project_name",None)
         top_project_id = self.get_argument("top_project_id",0)
         project_describe = self.get_argument("project_describe",None)
         peers = self.get_arguments("peer")
-
         msg = ''
         try:
             new_project = TblProject()
@@ -55,18 +57,35 @@ class ProjectAddHandler(BaseHandler):
             new_project.describe = project_describe
             new_project.status = msg_define.USER_NORMAL
             new_project.top_project_id = top_project_id
-            new_project.created_by = cur_user_id
+            new_project.created_by = cur_user_id.id
             self.mysqldb().add(new_project)
             self.mysqldb().commit()
+            # 添加项目关联人员
+            self.relation_project_user(project_name, peers)
             return self.render('project/projectlist.html', projects=get_project_list(self))
         except:
             weblog.exception("Add new Project error!")
             self.mysqldb().rollback()
             return self.render('project/projectlist.html', message=msg, projects=get_project_list(self))
 
-    def relation_project_user(self,peers):
+    def relation_project_user(self, project_name, peers):
+        project_id = self.mysqldb().query(TblProject.project_id,TblProject.top_project_id).filter(
+                                            TblProject.project_name==project_name).first()
+        if project_id is None:
+            return msg_define.FAIL
         for peer in peers:
-            pass
+            # print("peer:",peer)
+            relation = TblPorjectUser()
+            relation.project_id = project_id.project_id
+            relation.account_id = int(peer)
+            relation_is_exist = self.mysqldb().query(TblPorjectUser).filter(
+                                                                TblPorjectUser.project_id == project_id.project_id
+                                                                 , TblPorjectUser.account_id == int(peer)).first()
+            if relation_is_exist is None:
+                self.mysqldb().add(relation)
+            self.mysqldb().commit()
+        return msg_define.SUCCESS
+
 
 class ProjectEditHandler(BaseHandler):
     # @authenticated

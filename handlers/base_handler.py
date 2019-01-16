@@ -51,9 +51,10 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def browsing_history(self):
         login_name = self.get_current_user()
-
         if login_name is None:
             return
+        if type(login_name) == bytes:
+            login_name = bytes.decode(login_name)
         try:
             self.mysqldb().execute(
                 "INSERT INTO tbl_browsing_history (user_ip,user_account,request_method,"

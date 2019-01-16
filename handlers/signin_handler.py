@@ -12,8 +12,6 @@ from method.data_encode import MD5
 class SigninHandler(BaseHandler):
 
     def get(self):
-
-
         weblog.info("%s ,sign in.",self._request_summary())
         self.render("admin/signin.html")
 
@@ -30,8 +28,8 @@ class SigninHandler(BaseHandler):
             return self.write(json_dumps({"msg":msg_define.USER_IS_NONE,"error_code":1}))
         if user.username != userAccount or user.password != MD5(password):
             return self.write(json_dumps({"msg":msg_define.USER_OR_PASSWORD_ERROR,"error_code":1}))
-
         # return self.redirect("/download")
+        self.set_secure_cookie("user_account",userAccount)
         return self.write(json_dumps({"msg":"","error_code":0}))
 
 

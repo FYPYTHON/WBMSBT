@@ -10,5 +10,9 @@ USERNAME_INVALID = u"用户名格式错误！"
 USEREMAIL_INVALID = u"用户邮箱格式错误，格式为XXX@XXX.com！"
 USER_ADD_ERROR = u"用户添加失败！"
 
+PROJECT_NOT_EXIT = u"项目不存在!"
 USER_NORMAL = 0
 USER_DISABLE = 1
+
+SUCCESS = 0
+FAIL = 1

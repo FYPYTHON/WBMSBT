@@ -9,7 +9,7 @@ from handlers.Email.email_smtp_handler import check_email, check_passord
 
 
 def get_user_list(self):
-    users = self.mysqldb().query(TblAccount).filter_by(userstate=0).order_by(TblAccount.id).all()
+    users = self.mysqldb().query(TblAccount).filter_by(userstate=0).order_by(TblAccount.register_time.desc()).all()
     return users
 
 
