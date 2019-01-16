@@ -10,6 +10,8 @@ from handlers.user_manage_handler import get_user_list
 
 def get_project_list(self):
     projects = self.mysqldb().query(TblProject).filter_by(status=0).order_by(TblProject.created_time).all()
+    for project in projects:
+        print(project.describe,type(project.describe))
     return projects
 
 
@@ -43,6 +45,8 @@ class ProjectAddHandler(BaseHandler):
         project_name = self.get_argument("project_name",None)
         top_project_id = self.get_argument("top_project_id",0)
         project_describe = self.get_argument("project_describe",None)
+        peers = self.get_arguments("peer")
+
         msg = ''
         try:
             new_project = TblProject()
@@ -60,6 +64,9 @@ class ProjectAddHandler(BaseHandler):
             self.mysqldb().rollback()
             return self.render('project/projectlist.html', message=msg, projects=get_project_list(self))
 
+    def relation_project_user(self,peers):
+        for peer in peers:
+            pass
 
 class ProjectEditHandler(BaseHandler):
     # @authenticated

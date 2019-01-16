@@ -4,6 +4,7 @@ from handlers.base_handler import BaseHandler
 from tornado.web import authenticated
 import weblog
 from message import msg_define
+from method.data_encode import MD5
 from handlers.Email.email_smtp_handler import check_email, check_passord
 
 
@@ -14,6 +15,11 @@ def get_user_list(self):
 
 def get_user_by_id(self, uid):
     user = self.mysqldb().query(TblAccount).filter_by(id=uid).first()
+    return user
+
+
+def get_user_by_name(self,name):
+    user = self.mysqldb().query(TblAccount).filter_by(username=name).first()
     return user
 
 class UserListHandler(BaseHandler):
@@ -42,6 +48,8 @@ class UserAddHandler(BaseHandler):
         useremail = self.get_argument("useremail",None)
         userrole = self.get_argument("userrole")
         msg = []
+        if get_user_by_name(self,username) is not None:
+            msg.append(msg_define.USER_IS_EXIST)
         if username is None or username=="":
             msg.append(msg_define.USERNAME_IS_EMPTY)
         if passowrd is None or check_passord(passowrd) is None:
@@ -56,7 +64,7 @@ class UserAddHandler(BaseHandler):
             try:
                 new_user = TblAccount()
                 new_user.username = username
-                new_user.password = passowrd
+                new_user.password = MD5(passowrd)
                 new_user.email = useremail
                 new_user.userrole = userrole
                 new_user.userstate = msg_define.USER_NORMAL

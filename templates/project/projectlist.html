@@ -41,8 +41,8 @@
       {% for project in projects %}
         <tr class="center">
         <td>{{ project.project_id }}</td>
-        <td>{{ project.describe }}</td>
         <td>{{ project.project_name }}</td>
+        <td>{{ project.describe }}</td>
         <td >{% if project.status == 0 %}normal{% else %}disable{% end %}</td>
         <td >{{ project.created_time }}</td>
         <td >

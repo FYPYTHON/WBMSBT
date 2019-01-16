@@ -1,5 +1,6 @@
 # coding=utf-8
 USER_IS_NONE = u"用户不存在！"
+USER_IS_EXIST = u"用户已注册!"
 USER_OR_PASSWORD_ERROR = u"用户名或密码错误！"
 
 USERNAME_IS_EMPTY = u"用户名不能为空!"
