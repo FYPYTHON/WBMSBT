@@ -34,9 +34,9 @@
 	  <fieldset>
 		<legend>任务管理</legend>
         <div class="control-group">
-            <label for="project_name" class="control-label" style="color: black;">任务名称：</label>
+            <label for="task_name" class="control-label" style="color: black;">任务名称：</label>
             <div class="controls">
-                <input type="text" value="" id="project_name" name="project_name" class="input-large">
+                <input type="text" value="" id="task_name" name="task_name" class="input-large">
             </div> <!-- /controls -->
         </div> <!-- /control-group -->
           <div class="control-group">
@@ -57,6 +57,30 @@
 
                     </textarea>
             </div> <!-- /controls -->
+        </div> <!-- /control-group progress -->
+        <div class="control-group">
+            <label for="progress" class="control-label" style="color: black;">任务进度：</label>
+            <div class="controls testonly" >
+                <div class="progress testonly" style="float:left;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" id="progress"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                         <span class="sr-only">40% 完成</span>
+                    </div>
+                </div>
+                <select name="curprocess" id="curprocess">
+                    {% for i in range(11) %}
+                    <option value="{{i}}">{{i*10}}%</option>
+                    {% end %}
+				</select>
+            </div> <!-- /controls -->
+            <!--<div class="controls" style="float:left;">-->
+                <!--&lt;!&ndash;<label class="control-label">参与人员</label>&ndash;&gt;-->
+                <!--<select name="curprocess" id="curprocess">-->
+                    <!--{% for i in range(11) %}-->
+                    <!--<option value="{{i}}">{{i*10}}%</option>-->
+                    <!--{% end %}-->
+				<!--</select>-->
+            <!--</div> &lt;!&ndash; /controls &ndash;&gt;-->
         </div> <!-- /control-group -->
         <div class="control-group">
             <label for="ms" class="control-label" style="color: black;">参与人员：</label>

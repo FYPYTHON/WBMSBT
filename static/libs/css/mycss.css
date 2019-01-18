@@ -22,9 +22,18 @@ button {
 textarea {
     width:500px;
 }
+/* single select */
+select {
+    width:150px;
+}
 /*multiple-select*/
 select button ms-choice {
     width:500px;
+}
+/* progress */
+.progress {
+    height:30px;
+    width:350px;
 }
 .nav {
 	color: black;

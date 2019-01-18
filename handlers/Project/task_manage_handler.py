@@ -1,10 +1,15 @@
 # coding=utf-8
 from handlers.base_handler import BaseHandler
+import weblog
 from handlers.Project.project_manage_handler import get_project_list, get_user_list
 
 class TaskManageHandler(BaseHandler):
     def get(self):
-        self.render("project/task.html", message="", projects=get_project_list(self), users=get_user_list(self))
+        weblog.info("%s.", self._request_summary())
+        task = dict()
+        task['progress'] = 45
+        self.render("project/task.html", message="", projects=get_project_list(self),
+                    users=get_user_list(self), task=task)
         pass
 
     def post(self):
