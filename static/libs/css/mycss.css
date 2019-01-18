@@ -25,6 +25,16 @@ textarea {
 /* single select */
 select {
     width:150px;
+    height:30px;
+    padding: 0 3%; /*上下变，左右变*/
+    margin: 0;
+    font-size: 20px;  /*字体设置和option中一致*/
+    vertical-align: middle;
+}
+option {
+	text-align: center;
+	font-size: 20px;
+
 }
 /*multiple-select*/
 select button ms-choice {
@@ -32,9 +42,14 @@ select button ms-choice {
 }
 /* progress */
 .progress {
+	border:solid 1px #337ab7;
     height:30px;
     width:350px;
 }
+/*.progress span {
+    height:30px;
+    width:350px;
+}*/
 .nav {
 	color: black;
 	font-size: 25px;

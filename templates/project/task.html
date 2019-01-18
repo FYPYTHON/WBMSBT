@@ -42,7 +42,7 @@
           <div class="control-group">
             <label for="top_project_id" class="control-label" style="color: black;">所属项目：</label>
             <div class="controls">
-				<select name="top_project_id" id="top_project_id">
+				<select name="top_project_id" id="top_project_id" style="width: auto;">
                     <option value="0">无</option>
 					{% for project in projects %}
                     <option value={{project.project_id}} >{{project.project_name}}</option>
@@ -59,28 +59,20 @@
             </div> <!-- /controls -->
         </div> <!-- /control-group progress -->
         <div class="control-group">
-            <label for="progress" class="control-label" style="color: black;">任务进度：</label>
-            <div class="controls testonly" >
-                <div class="progress testonly" style="float:left;">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="20" id="progress"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <label for="iprobar" class="control-label" style="color: black;">任务进度：</label>
+            <div class="controls" >
+                <div class="progress" style="float: left;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" id="iprobar"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 10%;"> <!-- width调整进度 -->
                          <span class="sr-only">40% 完成</span>
                     </div>
                 </div>
                 <select name="curprocess" id="curprocess">
                     {% for i in range(11) %}
-                    <option value="{{i}}">{{i*10}}%</option>
+                    <option value="{{i}}">{{i*10}} %</option>
                     {% end %}
 				</select>
             </div> <!-- /controls -->
-            <!--<div class="controls" style="float:left;">-->
-                <!--&lt;!&ndash;<label class="control-label">参与人员</label>&ndash;&gt;-->
-                <!--<select name="curprocess" id="curprocess">-->
-                    <!--{% for i in range(11) %}-->
-                    <!--<option value="{{i}}">{{i*10}}%</option>-->
-                    <!--{% end %}-->
-				<!--</select>-->
-            <!--</div> &lt;!&ndash; /controls &ndash;&gt;-->
         </div> <!-- /control-group -->
         <div class="control-group">
             <label for="ms" class="control-label" style="color: black;">参与人员：</label>
@@ -120,5 +112,18 @@
             width: '100%'
         });
     });
+    // $('#curprocess').onchange = function(){
+    //     var index = $('#curprocess').selectedIndex;
+    //     $("#iprobar").style.width = index * 10;
+
+    // }
+    $("#curprocess").change(function(){  
+    //添加所需要执行的操作代码  
+        console.log("print some thing");
+        var curIndex = $("#curprocess").val()
+        alert($("#curprocess").val());
+        document.getElementById("iprobar").style.width = curIndex*10 + "%";
+
+    })
 </script>
 {% end %}
