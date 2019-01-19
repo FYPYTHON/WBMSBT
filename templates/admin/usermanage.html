@@ -67,9 +67,25 @@
       {% end %}
       </tbody>
     </table>
+
+    <div class="controls-row testonly">
+      <div class="span3">
+        <div class="page_select">
+            <label class="span3" style="margin-top: 5px;">选择跳转</label>
+            <input class="span3" type="text" name="to_page" id="to_page">
+            <button class="span3 btn btn-primary" style="height: 30px;">确定</button>
+        </div>
+      </div>
+      <div class="span3">
+        <label class="page_select">共 {{total_page}} 页</label>
+      </div>
+      <div class="span6">
     <div id="mypaginationdiv" class="testonly">
         <ul id="mypagination"></ul>
     </div>
+      </div>
+    </div>
+
   </div>
 {% end %}
 {% block other-javascript %}
@@ -79,23 +95,22 @@
 <!--<script src="/static/js/bootstrap.min.js"></script>-->
 <script>
     $('#mypagination').bootstrapPaginator({
-    currentPage: {{current_page}},//当前的请求页面。
-    totalPages: {{total_page}},//一共多少页。
-    size:"normal",//应该是页眉的大小。
-    bootstrapMajorVersion: 3,//bootstrap的版本要求。
-    alignment:"right",
-    numberOfPages:5,//一页列出多少数据。
-    itemTexts: function (type, page, current) {//如下的代码是将页眉显示的中文显示我们自定义的中文。
-        switch (type) {
-        case "first": return "首页";
-        case "prev": return "上一页";
-        case "next": return "下一页";
-        case "last": return "末页";
-        case "page": return page;
-        }
+        currentPage: {{current_page}},//当前的请求页面。
+        totalPages: {{total_page}},//一共多少页。
+        size:"normal",//应该是页眉的大小。
+        bootstrapMajorVersion: 3,//bootstrap的版本要求。
+        alignment:"right",
+        numberOfPages:5,//一页列出多少数据。
+        itemTexts: function (type, page, current) {//如下的代码是将页眉显示的中文显示我们自定义的中文。
+            switch (type) {
+            case "first": return "首页";
+            case "prev": return "上一页";
+            case "next": return "下一页";
+            case "last": return "末页";
+            case "page": return page;
+            }
     },
-    onPageClicked: function (event, originalEvent, type, page)
-    {
+    onPageClicked: function (event, originalEvent, type, page){
         $.ajax({
             url:'/user/list',
             type:'Post',
@@ -125,18 +140,17 @@
                             page+='<td>consumer</td>';
                          }
                          page+='<td>' + item[i].register_time + '</td>'
-                         page+='<td><a class="btn btn-info" href="/user/edit/'+item[i].id+'><i class="icon-edit icon-white"></i>Edit</a></td>'
-                         page+='<td><a class="btn btn-danger" href="/user/delete/'+item[i].id+'><i class="icon-trash icon-white"></i>Delete</a></td>'
-                         <!--page+='<td >-->
-                                <!--<a class="btn btn-info" href="/user/edit/'+item[i].id+'">-->
-                                <!--<i class="icon-edit icon-white"></i>-->
-                                <!--Edit-->
-                              <!--</a>-->
-                              <!--<a class="btn btn-danger" href="/user/delete/'+item[i].id+'">-->
-                                <!--<i class="icon-trash icon-white"></i>-->
-                                <!--Delete-->
-                              <!--</a>-->
-                            <!--</td>'-->
+                         page+='<td>' + 
+                          '<a class="btn btn-info" href="/user/edit/1">' +
+                              '<i class="icon-edit icon-white"></i>' +
+                                'Edit   ' +                                           
+                          '</a>'+'  '+ 
+                          '<a class="btn btn-danger" href="/user/delete/1">'+
+                              '<i class="icon-trash icon-white"></i>'+
+                                  'Delete' +
+                          '</a>' + '</td>'
+
+
                          page+='</tr>';
                          $("#mytable tbody").append(page);
                     }
@@ -146,8 +160,23 @@
             },
         })
     }
-});
+  });
 </script>
 {% end %}
 
 
+<!-- <div class="span6" style="width:25%;;margin-right: 10px;">
+    <div class="dataTables_length" id="DataTables_Table_0_length">
+        <label>
+            每页
+            <select id="pageSize" onchange="research()"
+            aria-controls="DataTables_Table_0" size="1" name="DataTables_Table_0_length">
+                <option selected="selected" value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+             条记录
+        </label>
+    </div>
+</div> -->

@@ -5,6 +5,8 @@
 label{
 	color: black;
 	font-size: 18px;
+	height: 40px;
+	vertical-align:middle; /*垂直居中*/
 }
 a {
 	color: blue;
@@ -96,6 +98,11 @@ form span{
     clear: both;
   }
 }
+/*分页里的label*/
+.page_select{
+	height: 50px;
+	margin-top: 20px;
+}
 #edit-setting{
 	margin-left: 20px;
 }
@@ -114,4 +121,9 @@ form span{
 	min-width: 200px;
 	max-width: 400px;
 	height:30px;
+}
+#mypagination{
+	float:right;
+	margin-right: 2%;
+	font-size: 20px;
 }
