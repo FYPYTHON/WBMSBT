@@ -1,6 +1,12 @@
 
 {% extends "../base.html" %}
 
+{% block other-css %}
+<script src="{{static_url('libs/js/myjs/bootstrap-paginator.js')}}"></script>
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+{% end %}
+
 {% block content-nav %}
 	<ul class="breadcrumb">
 		<li>
@@ -27,7 +33,7 @@
 <div class="box-content">
     <a href="/user/add"><i class="icon-pencil"></i>Add an user</a>
     <hr>
-    <table class="table">
+    <table class="table" id="mytable">
       <thead>
           <tr class="center">
             <th>ID</th>
@@ -60,12 +66,88 @@
         </tr>
       {% end %}
       </tbody>
-      </table>
+    </table>
+    <div id="mypaginationdiv" class="testonly">
+        <ul id="mypagination"></ul>
+    </div>
   </div>
 {% end %}
 {% block other-javascript %}
 <!-- <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
 <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script> -->
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
+<!--<script src="/static/js/jquery.min.js"></script>-->
+<!--<script src="/static/js/bootstrap.min.js"></script>-->
+<script>
+    $('#mypagination').bootstrapPaginator({
+    currentPage: {{current_page}},//当前的请求页面。
+    totalPages: {{total_page}},//一共多少页。
+    size:"normal",//应该是页眉的大小。
+    bootstrapMajorVersion: 3,//bootstrap的版本要求。
+    alignment:"right",
+    numberOfPages:5,//一页列出多少数据。
+    itemTexts: function (type, page, current) {//如下的代码是将页眉显示的中文显示我们自定义的中文。
+        switch (type) {
+        case "first": return "首页";
+        case "prev": return "上一页";
+        case "next": return "下一页";
+        case "last": return "末页";
+        case "page": return page;
+        }
+    },
+    onPageClicked: function (event, originalEvent, type, page)
+    {
+        $.ajax({
+            url:'/user/list',
+            type:'Post',
+            dataType :"json",
+            data:{'current_page':page},
+            success:function(data)
+            {
+                <!--clear table tbody data-->
+                $("#mytable tbody").html("");
+                var item = data.datalist;
+                if(data !=null)
+                {
+                    for(var i=0;i<item.length;i++)
+                    {
+                        var page='<tr>'
+                         page+='<td>' + item[i].id + '</td>';
+                         page+='<td>' + item[i].username + '</td>';
+                         page+='<td>' + item[i].email + '</td>';
+                         if(item[i].userstate == 0){
+                            page+='<td>normal</td>';
+                         }else{
+                            page+='<td>disable</td>';
+                         }
+                         if(item[i].userrole == 0){
+                            page+='<td>administrator</td>';
+                         }else{
+                            page+='<td>consumer</td>';
+                         }
+                         page+='<td>' + item[i].register_time + '</td>'
+                         page+='<td><a class="btn btn-info" href="/user/edit/'+item[i].id+'><i class="icon-edit icon-white"></i>Edit</a></td>'
+                         page+='<td><a class="btn btn-danger" href="/user/delete/'+item[i].id+'><i class="icon-trash icon-white"></i>Delete</a></td>'
+                         <!--page+='<td >-->
+                                <!--<a class="btn btn-info" href="/user/edit/'+item[i].id+'">-->
+                                <!--<i class="icon-edit icon-white"></i>-->
+                                <!--Edit-->
+                              <!--</a>-->
+                              <!--<a class="btn btn-danger" href="/user/delete/'+item[i].id+'">-->
+                                <!--<i class="icon-trash icon-white"></i>-->
+                                <!--Delete-->
+                              <!--</a>-->
+                            <!--</td>'-->
+                         page+='</tr>';
+                         $("#mytable tbody").append(page);
+                    }
+                }
+
+
+            },
+        })
+    }
+});
+</script>
 {% end %}
+
+

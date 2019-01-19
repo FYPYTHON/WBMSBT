@@ -1,3 +1,4 @@
+bson==0.5.7
 asn1crypto==0.24.0
 cached-property==1.4.3
 certifi==2018.8.24
