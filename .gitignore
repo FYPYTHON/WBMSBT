@@ -2,4 +2,4 @@
 .idea
 __pycache__
 create_db.py
-message
+message/class_serializable.py
