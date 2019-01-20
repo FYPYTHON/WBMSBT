@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 MY_STRING = 1 
 MY_STRIP_STRING = 2

@@ -34,8 +34,14 @@
    c.长度
      Length(min=-1, max=-1, message=None)
      NumberRange(min=None, max=None, message=None)
+4）常用网站
+   图标：bootstrap , 用法：user  --> icon-user
+   a、http://glyph.smarticons.co/#usage
+   b、http://www.bootstrapicons.com/index.htm?version=3.0.2
+   bootstrap:https://v3.bootcss.com/components/#btn-groups
 #测试更新
 1、 添加multiple-select.js/css。
 2、 增加message序列化和反序列。
+
 
 
