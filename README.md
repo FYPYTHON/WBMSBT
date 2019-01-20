@@ -35,6 +35,7 @@
      Length(min=-1, max=-1, message=None)
      NumberRange(min=None, max=None, message=None)
 #测试更新
-1、添加multiple-select.js/css
+1、 添加multiple-select.js/css。
+2、 增加message序列化和反序列。
 
 
