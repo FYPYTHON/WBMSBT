@@ -30,7 +30,10 @@ class SigninHandler(BaseHandler):
             return self.write(json_dumps({"msg":msg_define.USER_OR_PASSWORD_ERROR,"error_code":1}))
         # return self.redirect("/download")
         self.set_secure_cookie("user_account",userAccount)
-        return self.write(json_dumps({"msg":"","error_code":0}))
+        # session manager
+        # self.session["user_account"] = userAccount
+        # self.session.save()
+        return self.write(json_dumps({"msg": "", "error_code": 0}))
 
 
 

@@ -1,12 +1,11 @@
-#coding=utf-8
+# coding=utf-8
 import datetime
-
 import tornado.web
 import tornado.options
-
 import weblog
 from database.db_config import db_session
 from database.tbl_admin import TblAdmin
+from method.session import redis_session
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -14,6 +13,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def __init__(self, *argc, **argkw):
         super(BaseHandler, self).__init__(*argc, **argkw)
+        # self.session = redis_session.Session(self.application.session_manager, self)
         pass
 
     def initialize(self):
@@ -36,12 +36,13 @@ class BaseHandler(tornado.web.RequestHandler):
         self.mysqldb().close()
 
     def get_current_user(self):
+        # return self.session.get("user_account")  # redis session
         # self.set_secure_cookie("user_account","TestAccount")
         # return self.get_secure_cookie("user_account")
         if self.get_secure_cookie("user_account") is not None:
             return self.get_secure_cookie("user_account")
         else:
-            return "TestAccount"
+            return None
 
     def initLocalVariable(self):
         variables = self.mysqldb().query(TblAdmin).all()

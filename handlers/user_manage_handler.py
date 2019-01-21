@@ -35,7 +35,7 @@ def get_user_by_name(self,name):
 
 
 class UserListHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self):
         current_page = int(self.get_argument("current_page", FIRST_PAGE))
         # users = get_user_list(self)
