@@ -39,9 +39,14 @@
    a、http://glyph.smarticons.co/#usage
    b、http://www.bootstrapicons.com/index.htm?version=3.0.2
    bootstrap:https://v3.bootcss.com/components/#btn-groups
+# 添加redis服务
+   将redis加到Windows服务中。首先还是要启动redis服务器端，然后在运行redis客户端，
+   然后通过Windows的service-install命令，输入：
+    redis-server --service-install redis.windows.conf --loglevel verbose  
 #测试更新
 1、 添加multiple-select.js/css。
 2、 增加message序列化和反序列。
+
 
 
 

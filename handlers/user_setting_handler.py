@@ -1,6 +1,6 @@
 #coding=utf-8
 import hashlib
-
+from tornado.web import authenticated
 from database.tbl_admin import TblAdmin
 from handlers.base_handler import BaseHandler
 from json import dumps as json_dumps
@@ -8,7 +8,7 @@ import weblog
 
 
 class UserSettingHandler(BaseHandler):
-
+    @authenticated
     def get(self):
         weblog.info("%s , get usersetting html.", self._request_summary())
         self.render("admin/usersetting.html",setting = self.get_setting(),success=False)

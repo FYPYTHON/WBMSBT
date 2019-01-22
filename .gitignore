@@ -1,5 +1,5 @@
 *.pyc
 .idea
 __pycache__
-create_db.py
+database/create_db.py
 message/class_serializable.py

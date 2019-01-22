@@ -2,6 +2,7 @@
 import datetime
 import tornado.web
 import tornado.options
+from tornado.web import authenticated
 import weblog
 from database.db_config import db_session
 from database.tbl_admin import TblAdmin
@@ -28,6 +29,14 @@ class BaseHandler(tornado.web.RequestHandler):
         self.initLocalVariable()
         self.browsing_history()
         # super(BaseHandler, self).__init__(*argc, **argkw)
+
+    @authenticated
+    def get(self, *args, **kwargs):
+        pass
+
+    @authenticated
+    def post(self, *args, **kwargs):
+        pass
 
     def mysqldb(self):
         return db_session
