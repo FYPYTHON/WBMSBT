@@ -39,9 +39,11 @@
    a、http://glyph.smarticons.co/#usage
    b、http://www.bootstrapicons.com/index.htm?version=3.0.2
    bootstrap:https://v3.bootcss.com/components/#btn-groups
+   
 #测试更新
 1、 添加multiple-select.js/css。
 2、 增加message序列化和反序列。
+3、 增加session，登录验证。
 
 
 
