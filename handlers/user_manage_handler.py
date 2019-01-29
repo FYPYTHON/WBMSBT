@@ -45,7 +45,7 @@ class UserListHandler(BaseHandler):
         return self.render('admin/usermanage.html', users=users,
                            current_page=current_page, total_page=total_page)
 
-    # @authenticated
+    @authenticated
     def post(self):
         current_page = int(self.get_argument("current_page", FIRST_PAGE))
         # users = get_user_list(self)
@@ -73,12 +73,12 @@ class UserListHandler(BaseHandler):
 
 
 class UserAddHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
         return self.render('admin/useradd.html',message="")
 
-    # @authenticated
+    @authenticated
     def post(self):
         weblog.info("%s.", self._request_summary())
         username = self.get_argument("username",None)
@@ -118,12 +118,12 @@ class UserAddHandler(BaseHandler):
 
 
 class UserEditHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self,id):
         weblog.info("%s.", self._request_summary())
         return self.render('admin/useredit.html',message="" ,user = get_user_by_id(self,id))
 
-    # @authenticated
+    @authenticated
     def post(self,id):
         weblog.info("%s.", self._request_summary())
         username = self.get_argument("username", None)
@@ -155,10 +155,9 @@ class UserEditHandler(BaseHandler):
                 self.mysqldb().rollback()
                 return self.render('admin/useredit.html', message=msg)
 
+
 class UserDeleteHandler(BaseHandler):
-
-
-    # @authenticated
+    @authenticated
     def get(self,id):
         weblog.info("%s.", self._request_summary())
         user = self.mysqldb().query(TblAccount).filter_by(id=id).first()

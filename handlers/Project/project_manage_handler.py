@@ -21,24 +21,25 @@ def get_project_by_id(self, uid):
     return project
 
 class ProjectListHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
         projects = get_project_list(self)
         return self.render('project/projectlist.html', projects=projects)
-    # @authenticated
+
+    @authenticated
     def post(self):
         pass
 
 
 class ProjectAddHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
         return self.render('project/projectadd.html',message="", users=get_user_list(self)
                            ,projects=get_project_list(self))
 
-    # @authenticated
+    @authenticated
     def post(self):
         weblog.info("%s.", self._request_summary())
         cur_login_name = self.get_secure_cookie('user_account')
@@ -88,12 +89,12 @@ class ProjectAddHandler(BaseHandler):
 
 
 class ProjectEditHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self,id):
         weblog.info("%s.", self._request_summary())
         return self.render('admin/Projectedit.html',message="" ,project = get_project_by_id(self,id))
 
-    # @authenticated
+    @authenticated
     def post(self,id):
         weblog.info("%s.", self._request_summary())
         Projectname = self.get_argument("Projectname", None)
@@ -127,8 +128,7 @@ class ProjectEditHandler(BaseHandler):
 
 
 class ProjectDeleteHandler(BaseHandler):
-
-    # @authenticated
+    @authenticated
     def get(self,id):
         weblog.info("%s.", self._request_summary())
         project = self.mysqldb().query(TblProject).filter_by(id=id).first()

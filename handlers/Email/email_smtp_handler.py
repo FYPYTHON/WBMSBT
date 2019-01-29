@@ -1,6 +1,7 @@
 # coding=utf-8
 import json
 import random
+from tornado.web import authenticated
 from handlers.base_handler import BaseHandler
 import smtplib
 from email.mime.text import MIMEText
@@ -10,17 +11,20 @@ import re
 import os
 import weblog
 
+
 def check_email(email):
     pattern = "^[\.a-zA-Z0-9_-]+@[\.a-zA-Z0-9_-]+"
     issue = re.compile(pattern)
     result = issue.match(email)
     return result
 
+
 def check_passord(pwd):
     pattern = "^(\w){6,20}$"
     issue = re.compile(pattern)
     result = issue.match(pwd)
     return result
+
 
 def generate_code(self):
     try:
@@ -34,6 +38,7 @@ def generate_code(self):
     except:
         print("verifyCode is error")
         return None
+
 
 def sendEmail(self,emailAdd,content,content_type = 0):
 
@@ -64,11 +69,13 @@ def sendEmail(self,emailAdd,content,content_type = 0):
     except smtplib.SMTPException as e:
         weblog.info("Error: 无法发送邮件", self._request_summary(), e)
 
-class SendEmailHandler(BaseHandler):
 
+class SendEmailHandler(BaseHandler):
+    @authenticated
     def get(self):
        self.render("admin/sendemail.html")
 
+    @authenticated
     def post(self):
         codeEmailPwd = generate_code(self)
         email_addresss = self.get_argument("email")

@@ -1,5 +1,6 @@
 #coding=utf-8
 import json
+from tornado.web import authenticated
 from handlers.base_handler import BaseHandler
 from exchangelib import DELEGATE, Account, Credentials, Message, Mailbox, HTMLBody, Configuration, FileAttachment
 import re
@@ -9,16 +10,20 @@ mail_subject = u'注册'
 mail_msg_verf = u'<p>注册码: {0} </p>'
 mail_msg_ca = u'<p>文件已发送邮箱. </p>'
 
+
 def check_email(email):
     pattern = "^[\.a-zA-Z0-9_-]+@[\.a-zA-Z0-9_-]+"
     issue = re.compile(pattern)
     result = issue.match(email)
     return result
+
+
 def check_passord(pwd):
     pattern = "^(\w){6,20}$"
     issue = re.compile(pattern)
     result = issue.match(pwd)
     return result
+
 
 def Email(self,to, subject, body,email_type, attachments=None):
     creds = Credentials(username=self.localVariable["__EMAILEX__"],
@@ -53,11 +58,13 @@ def Email(self,to, subject, body,email_type, attachments=None):
         message = u"发送失败!"
         return message
 
-class SendEmailHandler(BaseHandler):
 
+class SendEmailHandler(BaseHandler):
+    @authenticated
     def get(self):
        self.render("admin/sendemail.html")
 
+    @authenticated
     def post(self):
         codeEmailPwd = generate_code(self)
         email_addresss = self.get_argument("email")
@@ -70,11 +77,13 @@ class SendEmailHandler(BaseHandler):
         print(message)
         return self.write(json.dumps({"msg": message}))
 
-class SendEmailAddressHandler(BaseHandler):
 
+class SendEmailAddressHandler(BaseHandler):
+    @authenticated
     def get(self):
        self.render("admin/sendemail.html")
 
+    @authenticated
     def post(self):
 
         email_addresss = self.get_argument("email")

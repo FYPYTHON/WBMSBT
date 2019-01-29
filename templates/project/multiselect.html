@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+          maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title></title>
     <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
     <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>
@@ -14,6 +16,9 @@
     <style>
         li {
             width:60px;
+        }
+        body{
+            min-width:80%;
         }
     </style>
 </head>
@@ -43,7 +48,7 @@
                 </div>
             </div>
         </div>
-    <div>
+        <div>
         <select class="multiselect" multiple="multiple">
           <option value="中国">中国</option>
           <option value="美国">美国</option>
@@ -51,9 +56,23 @@
           <option value="中胖">中胖</option>
           <option value="小胖">小胖</option>
           <option value="微胖">微胖</option>
-</select>
-
+        </select>
+        </div>
     </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-sm-3 testonly" style="height:100px;min-width:200px;">
+
+            </div>
+            <div class="col-sm-6 testonly" style="height:100px;min-width:200px;">
+
+            </div>
+            <div class="col-sm-3 testonly" style="height:100px;min-width:200px;">
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>

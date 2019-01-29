@@ -4,8 +4,12 @@ import weblog
 from handlers.base_handler import BaseHandler
 
 
-class HomeHandler(BaseHandler):
+class WeekPostHandler(BaseHandler):
     @authenticated
     def get(self):
-        weblog.info("%s , get home(base) html.",self._request_summary())
-        self.render("base.html")
+        weblog.info("%s.", self._request_summary())
+        pass
+
+    @authenticated
+    def post(self):
+        pass
