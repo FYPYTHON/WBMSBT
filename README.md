@@ -1,51 +1,52 @@
-ï»¿python -m pip install pymysqldb
-# é¡¹ç›®ç›¸å…³åº“
-    ç¯å¢ƒï¼špython3.5
-    å‚è€ƒrequirements.txt
-# python è¿æ¥SQLalchemy
-1ï¼‰è¿æ¥å‚è€ƒdatabase/db_config.py.
-   éœ€è¦å®‰è£…pymysql.
-   ä¸‹è½½mysql-5.7 ,ä¸‹è½½åœ°å€ï¼šhttps://dev.mysql.com/downloads/mysql/
-   å°†mysql binç›®å½•åŠ å…¥ç³»ç»Ÿpath
-   åˆå§‹åŒ–mysql
+python -m pip install pymysqldb
+# ÏîÄ¿Ïà¹Ø¿â
+    »·¾³£ºpython3.5
+    ²Î¿¼requirements.txt
+# python Á¬½ÓSQLalchemy
+1£©Á¬½Ó²Î¿¼database/db_config.py.
+   ĞèÒª°²×°pymysql.
+   ÏÂÔØmysql-5.7 ,ÏÂÔØµØÖ·£ºhttps://dev.mysql.com/downloads/mysql/
+   ½«mysql binÄ¿Â¼¼ÓÈëÏµÍ³path
+   ³õÊ¼»¯mysql
    .\mysqld --initialize-insecure --user=mysql
    .\mysqld -install
    net start mysql
-   ä¿®æ”¹mysqlå¯†ç 
+   ĞŞ¸ÄmysqlÃÜÂë
    alter user 'root'@'localhost' identified by 'xxxxxxxx';
    flush privileges;
 
-2) å¿½ç•¥è­¦å‘Š
+2) ºöÂÔ¾¯¸æ
     import warnings
     warnings.filterwarnings("ignore")
-    aã€Warning: (1287, "'@@tx_isolation' is deprecated and will be removed in a future release. Please use '@@transaction_isolation' instead")
+    a¡¢Warning: (1287, "'@@tx_isolation' is deprecated and will be removed in a future release. Please use '@@transaction_isolation' instead")
         result = self._query(query)
-       å°†site-packages\sqlalchemy\dialects\mysql\base.pyä¸­@@tx_isolationæ›¿æ¢ä¸º@@transaction_isolation
+       ½«site-packages\sqlalchemy\dialects\mysql\base.pyÖĞ@@tx_isolationÌæ»»Îª@@transaction_isolation
 
-3) ä½¿ç”¨wtform 
+3) Ê¹ÓÃwtform 
    (https://wtforms.readthedocs.io/en/stable/fields.html)
-   a.wtformæ­£åˆ™è¡¨è¾¾å¼ï¼švalidators.regexp(u'^[^/\\]\.jpg$')
+   a.wtformÕıÔò±í´ïÊ½£ºvalidators.regexp(u'^[^/\\]\.jpg$')
      validators.Regexp(regex, flags=0, message=None)
      flags:eg,re.IGNORECASE
-   b.ä¸å…¶ä»–æ¯”è¾ƒï¼ŒEqualTo
+   b.ÓëÆäËû±È½Ï£¬EqualTo
      class ChangePassword(Form):
     	password = PasswordField('New Password', [InputRequired(), EqualTo('confirm', message='Passwords must match')])
     	confirm  = PasswordField('Repeat Password')
-   c.é•¿åº¦
+   c.³¤¶È
      Length(min=-1, max=-1, message=None)
      NumberRange(min=None, max=None, message=None)
-4ï¼‰å¸¸ç”¨ç½‘ç«™
-   å›¾æ ‡ï¼šbootstrap , ç”¨æ³•ï¼šuser  --> icon-user
-   aã€http://glyph.smarticons.co/#usage
-   bã€http://www.bootstrapicons.com/index.htm?version=3.0.2
+4£©³£ÓÃÍøÕ¾
+   Í¼±ê£ºbootstrap , ÓÃ·¨£ºuser  --> icon-user
+   a¡¢http://glyph.smarticons.co/#usage
+   b¡¢http://www.bootstrapicons.com/index.htm?version=3.0.2
    bootstrap:https://v3.bootcss.com/components/#btn-groups
-# æ·»åŠ redisæœåŠ¡
-   å°†redisåŠ åˆ°WindowsæœåŠ¡ä¸­ã€‚é¦–å…ˆè¿˜æ˜¯è¦å¯åŠ¨redisæœåŠ¡å™¨ç«¯ï¼Œç„¶ååœ¨è¿è¡Œrediså®¢æˆ·ç«¯ï¼Œ
-   ç„¶åé€šè¿‡Windowsçš„service-installå‘½ä»¤ï¼Œè¾“å…¥ï¼š
+# Ìí¼Óredis·şÎñ
+   ½«redis¼Óµ½Windows·şÎñÖĞ¡£Ê×ÏÈ»¹ÊÇÒªÆô¶¯redis·şÎñÆ÷¶Ë£¬È»ºóÔÚÔËĞĞredis¿Í»§¶Ë£¬
+   È»ºóÍ¨¹ıWindowsµÄservice-installÃüÁî£¬ÊäÈë£º
     redis-server --service-install redis.windows.conf --loglevel verbose  
-#æµ‹è¯•æ›´æ–°
-1ã€ æ·»åŠ multiple-select.js/cssã€‚
-2ã€ å¢åŠ messageåºåˆ—åŒ–å’Œååºåˆ—ã€‚
+#²âÊÔ¸üĞÂ
+1¡¢ Ìí¼Ómultiple-select.js/css¡£
+2¡¢ Ôö¼ÓmessageĞòÁĞ»¯ºÍ·´ĞòÁĞ¡£
+3¡¢ Ôö¼Ósession£¬µÇÂ¼ÑéÖ¤¡£
 
 
 
