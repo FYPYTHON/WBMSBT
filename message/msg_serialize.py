@@ -32,3 +32,10 @@ class PageInfoList(class_serializable.JsonSerializableObj):
         self.datalist = []
 
 
+class RespMessage(class_serializable.JsonSerializableObj):
+    __ATTR_DEF__ = {
+          "rep_msg": data_type.MY_STRING
+        , "err_code": data_type.MY_STRING
+    }
+
+
