@@ -12,7 +12,7 @@ from message.msg_serialize import PageInfoList, UserInfo
 
 
 def get_user_list(self):
-    users = self.mysqldb().query(TblAccount).filter_by(userstate=0).order_by(TblAccount.register_time.desc()).all()
+    users = self.mysqldb().query(TblAccount).filter_by(userstate=0, userrole=0).order_by(TblAccount.register_time.desc()).all()
     return users
 
 
@@ -29,7 +29,7 @@ def get_user_by_id(self, uid):
     return user
 
 
-def get_user_by_name(self,name):
+def get_user_by_name(self, name):
     user = self.mysqldb().query(TblAccount).filter_by(username=name).first()
     return user
 

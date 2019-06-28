@@ -9,6 +9,7 @@ from message import msg_define
 from handlers.Email.email_smtp_handler import check_email, check_passord
 from handlers.user_manage_handler import get_user_list
 
+
 def get_project_list(self):
     projects = self.mysqldb().query(TblProject).filter_by(status=0).order_by(TblProject.created_time).all()
     # for project in projects:
@@ -19,6 +20,7 @@ def get_project_list(self):
 def get_project_by_id(self, uid):
     project = self.mysqldb().query(TblProject).filter_by(id=uid).first()
     return project
+
 
 class ProjectListHandler(BaseHandler):
     @authenticated
@@ -47,8 +49,8 @@ class ProjectAddHandler(BaseHandler):
         cur_user_id = self.mysqldb().query(TblAccount.id, TblAccount.userstate).filter(
                                             TblAccount.username == cur_login_name).first()
         project_name = self.get_argument("project_name",None)
-        top_project_id = self.get_argument("top_project_id",0)
-        project_describe = self.get_argument("project_describe",None)
+        top_project_id = self.get_argument("top_project_id", 0)
+        project_describe = self.get_argument("project_describe", None)
         peers = self.get_arguments("peer")
         msg = ''
         try:
@@ -80,22 +82,22 @@ class ProjectAddHandler(BaseHandler):
             relation.project_id = project_id.project_id
             relation.account_id = int(peer)
             relation_is_exist = self.mysqldb().query(TblPorjectUser).filter(
-                                                                TblPorjectUser.project_id == project_id.project_id
-                                                                 , TblPorjectUser.account_id == int(peer)).first()
+                                            TblPorjectUser.project_id == project_id.project_id
+                                            , TblPorjectUser.account_id == int(peer)).first()
             if relation_is_exist is None:
                 self.mysqldb().add(relation)
-            self.mysqldb().commit()
+        self.mysqldb().commit()
         return msg_define.SUCCESS
 
 
 class ProjectEditHandler(BaseHandler):
     @authenticated
-    def get(self,id):
+    def get(self, id):
         weblog.info("%s.", self._request_summary())
-        return self.render('admin/Projectedit.html',message="" ,project = get_project_by_id(self,id))
+        return self.render('admin/Projectedit.html', message="", project=get_project_by_id(self, id))
 
     @authenticated
-    def post(self,id):
+    def post(self, id):
         weblog.info("%s.", self._request_summary())
         Projectname = self.get_argument("Projectname", None)
         passowrd = self.get_argument("passowrd", None)

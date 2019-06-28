@@ -16,7 +16,8 @@ class verifyCode(BaseHandler):
         try:
             mstream, strs = generate_verify_image(save_img=False,fg_color=fg_color, font_type="method/Arial.ttf")
             # self.write(simplejson.dumps({'code': 0, 'img': stream.getvalue().encode('base64')}))
-            self.set_cookie("code", strs)
+            # self.set_cookie("code", strs)
+            self.set_secure_cookie("code", strs)
             weblog.info("%s , imgage code:%s",self._request_summary(),strs)
             # img = mstream.getvalue().encode('base64')
             img = base64.b64encode(mstream.getvalue()).decode()
