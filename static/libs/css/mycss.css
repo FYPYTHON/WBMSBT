@@ -143,3 +143,22 @@ form span{
 	margin-right: 2%;
 	font-size: 20px;
 }
+/*bug 样式*/
+#addbug input{
+	min-width: 400px;
+	max-width: 400px;
+	height:30px;
+	font-size: 18px;
+}
+#addbug2 input, select{
+	min-width: 200px;
+	max-width: 400px;
+	height:30px;
+}
+/* 日期样式 */
+.dropdown-menu{
+	background-color: white;
+}
+.input-append .add-on{
+	height: 30px;
+}
