@@ -44,6 +44,7 @@
             <th>Describe</th>
             <th>project State</th>
             <th>Create Time</th>
+            <th>Project Belong</th>
           </tr>
       </thead>   
       <tbody>
@@ -52,8 +53,9 @@
         <td>{{ project.project_id }}</td>
         <td>{{ project.project_name }}</td>
         <td>{{ project.describe }}</td>
-        <td >{% if project.status == 0 %}normal{% else %}disable{% end %}</td>
-        <td >{{ project.created_time }}</td>
+        <td>{% if project.status == 0 %}normal{% else %}disable{% end %}</td>
+        <td>{{ project.created_time }}</td>
+        <td>{{project_map[project.top_project_id]}}</td>
         <td >
           <a class="btn btn-info" href="/project/edit/{{ project.project_id }}">
             <i class="icon-edit icon-white"></i>

@@ -21,3 +21,5 @@ USER_DISABLE = 1
 
 SUCCESS = 0
 FAIL = 1
+
+BUG_LEVEL = [u'低', u'中', u'高', u'急']

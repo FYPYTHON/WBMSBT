@@ -11,9 +11,9 @@ session_factory = sessionmaker(bind = engine)
 db_session = scoped_session(session_factory)
 
 def ini_tbladmin():
-    from database.tbl_admin import TAdmin
-    result = db_session.query(TAdmin).all()
-    passsword = TAdmin()
+    from database.tbl_admin import TblAdmin
+    result = db_session.query(TblAdmin).all()
+    passsword = TblAdmin()
     passsword.name = "__TEXT__"
     passsword.value = "text"
     passsword.type = 1

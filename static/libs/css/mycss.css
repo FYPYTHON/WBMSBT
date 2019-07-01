@@ -22,7 +22,9 @@ button {
 	font-size: 20px;
 }
 textarea {
-    width:500px;
+    width: 500px;
+    height: 100px;
+    margin-left: -20px;
 }
 /* single select */
 select {
@@ -32,6 +34,7 @@ select {
     margin: 0;
     font-size: 20px;  /*字体设置和option中一致*/
     vertical-align: middle;
+    margin-left: -20px;
 }
 option {
 	text-align: center;

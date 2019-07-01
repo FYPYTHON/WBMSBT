@@ -1,0 +1,101 @@
+{% extends "../base.html" %}
+
+<!--/project/list 二级目录有问题-->
+{% block head%}
+<title>Bug Manage </title>
+{% end %}
+
+{% block other-css %}
+<!-- <link href="/static/ckeditor/contents.css" rel="stylesheet"> -->
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+<link rel="stylesheet" href="{{static_url('libs/css/mycss.css')}}">
+{% end %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/bugtrack/list">Bug Track List</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/home">Return to Home</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+	</div>
+{% end %}
+
+{% block content-body %}
+<div class="box-content">
+    <a href="/bugtrack/add"><i class="icon-pencil"></i>Add an bug track</a>
+    <hr>
+    <table class="table">
+      <thead>
+          <tr class="center">
+            <!-- <th>Bug ID</th> -->
+            <th>接收时间</th>
+            <th>接口人</th>
+            <th>问题所属模块</th>
+            <th>模块维护人</th>
+            <th>模块社区讨论</th>
+            <th>项目名称</th>
+            <th>所属版本</th>
+            <th>问题描述</th>
+            <th>优先级</th>
+            <th>问题原因</th>
+            <th>解决措施</th>
+            <th>进展</th>
+            <th>承诺解决日期</th>
+            <th>实际解决日期</th>
+            <th>负责人</th>
+            <th>所属版本</th>
+            <th>操作</th>
+          </tr>
+      </thead>   
+      <tbody>
+      {% for bug in bugtracks %}
+        <tr class="center">
+        <!-- <td>{{ bug['bug_id'] }}</td> -->
+        <td>{{ bug['bug_date_receive'] }}</td>
+        <td>{{ bug['bug_find_by'] }}</td>
+        <td>{{ bug['bug_component'] }}</td>
+        <td>{{ bug['component_belong'] }}</td>
+        <td>{{ bug['component_community'] }}</td>
+        <td>{{ bug['bug_project_id'] }}</td>
+        <td>{{ bug['project_version'] }}</td>
+        <td>{{ bug['bug_describe'] }}</td>
+        <td>{{ bug['bug_level'] }}</td>
+        <td>{{ bug['bug_reason'] }}</td>
+        <td>{{ bug['bug_solution'] }}</td>
+        <td>{{ bug['bug_progress'] }}</td>
+        <td>{{ bug['bug_date_plan'] }}</td>
+        <td>{{ bug['bug_date_done'] }}</td>
+        <td>{{ bug['bug_user_done'] }}</td>
+        <td>{{ bug['bug_version'] }}</td>
+        <td >
+          <a class="btn btn-info" href="/bug/edit/{{ bug['bug_id'] }}">
+            <i class="icon-edit icon-white"></i>
+            Edit                                            
+          </a>
+          <a class="btn btn-danger" href="/bug/delete/{{ bug['bug_id'] }}">
+            <i class="icon-trash icon-white"></i>
+            Delete
+          </a>
+        </td>
+        </tr>
+      {% end %}
+      </tbody>
+      </table>
+  </div>
+{% end %}
+{% block other-javascript %}
+<!-- <script src="/static/ckeditor/ckeditor.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script> -->
+{% end %}
