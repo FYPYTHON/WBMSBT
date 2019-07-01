@@ -1,0 +1,112 @@
+{% extends "../base.html" %}
+
+{% block head%}
+<title>Bug Edit</title>
+{% end %}
+
+{% block other-css %}
+<link href="/static/ckeditor/contents.css" rel="stylesheet">
+{% end %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/bug/edit">Bug Edit</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/bug/list">Return to bug list</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+
+	</div>
+{% end %}
+
+{% block content-body %}
+	<div class="box-content">
+	<form action="/bug/edit/{{bug['bug_id']}}" class="form-horizontal" method="post" id="addbug">
+	{% module xsrf_form_html() %}
+	{% autoescape None %}
+	  <fieldset>
+		<legend>修改缺陷信息</legend>
+        <div class="control-group">
+            <label for="bug_name" class="control-label" style="color: black;">缺陷名称：</label>
+            <div class="controls">
+                <input type="text" value="{{bug['bug_name']}}" id="bug_name" name="bug_name" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_find_by" class="control-label" style="color: black;">缺陷提出：</label>
+            <div class="controls">
+                <input type="text" value="{{bug['bug_find_by']}}" id="bug_find_by" name="bug_find_by" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_user_done" class="control-label" style="color: black;">缺陷解决：</label>
+            <div class="controls">
+                <input type="text" value="{{bug['bug_user_done']}}" id="bug_user_done" name="bug_user_done" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_describe" class="control-label" style="color: black;">缺陷描述：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="describe" name="bug_describe">
+                {{bug['bug_describe']}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+			<label for="bug_solution" class="control-label">解决方案：</label>
+			<div class="controls">
+				<textarea rows="10" cols="400" id="describe" name="bug_solution">
+                {{bug['bug_solution']}}
+                </textarea>
+			</div> <!-- /controls -->
+		</div> <!-- /control-group -->
+		<div class="control-group">
+            <label for="bug_date_plan" class="control-label" style="color: black;">计划日期：</label>
+            <div class="controls">
+                <input type="text" value="{{bug['bug_date_plan']}}" id="bug_date_plan" name="bug_date_plan" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_date_done" class="control-label" style="color: black;">解决日期：</label>
+            <div class="controls">
+                <input type="text" value="{{bug['bug_date_done']}}" id="bug_date_done" name="bug_date_done" class="input-large">
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_date_done" class="control-label" style="color: black;">缺陷状态：</label>
+            <div class="controls">
+                <select name="bug_status" id="bug_status">
+					<option value="0" {% if bug['bug_status']==0 %}selected{% end %}>未解决</option>
+					<option value="1" {% if bug['bug_status']==1 %}selected{% end %}>已解决</option>
+				</select>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+		{% for msg in message %}
+            <span style="color: red;">{{msg}}</span>
+            <br>
+        {% end %}
+
+		<div class="form-actions control-group">
+			<div >
+              <button type="reset" class="btn">重置</button>
+              <button type="submit" class="btn btn-primary">保存</button>
+		    </div>
+		</div>
+	  </fieldset>
+	</form>
+	</div>
+{% end %}
+
+{% block other-javascript %}
+<script src="/static/ckeditor/ckeditor.js"></script>
+{% end %}
