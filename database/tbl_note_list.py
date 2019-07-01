@@ -22,7 +22,7 @@ class TblPostList(ModelBase, table_base.TableBase):
     authorname = Column(String(32), default='')
     # password = Column(String(32), default='')
     guid = Column(String(255), default='')
-    # type: page post
+    # type: page, post
     type = Column(String(20), default='post')
     # when it's a page, it will be ordered by 'order'
     order = Column(Integer, default=0)

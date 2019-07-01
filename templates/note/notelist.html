@@ -37,6 +37,7 @@
             <th>Title</th>
             <th>Arthor</th>
             <th>Comment</th>
+            <th>Modify</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
@@ -48,6 +49,7 @@
         <td><a href="/note/id/{{ note.id }}" target="_blank">{{ note.title }}</a></td>
         <td>{{ note.authorname }}</td>
         <td>{{ note.comment_count }}</td>
+        <td class="center">{{ note.modified }}</td>
         <td class="center">{{ note.date }}</td>
         <td class="center">
           <a class="btn btn-info" href="/note/edit/{{ note.id }}">

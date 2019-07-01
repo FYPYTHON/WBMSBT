@@ -1,0 +1,236 @@
+{% extends "../base.html" %}
+
+{% block head%}
+<title>Project Add</title>
+{% end %}
+
+{% block other-css %}
+<!-- <link href="/static/ckeditor/contents.css" rel="stylesheet"> -->
+<!-- <script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script> -->
+<!-- <link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">  -->
+
+<script src="{{static_url('libs/js/date/moment-with-locales.min.js')}}"></script>
+<script src="{{static_url('libs/js/date/bootstrap-datetimepicker.min.js')}}"></script>
+<!-- <script src="{{static_url('libs/js/date/moment.js')}}"></script> -->
+<link rel="stylesheet" href="{{static_url('libs/js/date/bootstrap-datetimepicker.min.css')}}">
+<!-- <link rel="stylesheet" href="{{static_url('libs/js/date/bootstrap-datetimepicker.css')}}"> -->
+{% end %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/bugtrack/edit">Edit Bug Track</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/bugtrack/list">Return to bug track list</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+
+	</div>
+{% end %}
+
+{% block content-body %}
+	<div class="box-content">
+    <form action="/bugtrack/add" class="form-horizontal" method="post" id="addbug2">
+    {% module xsrf_form_html() %}
+    {% autoescape None %}
+      <fieldset>
+        <legend>添加缺陷信息</legend>
+        <div class="control-group">
+            <label for="bug_project_id" class="control-label" style="color: black;">项目名称：</label>
+            <div class="controls">
+                <select name="bug_project_id" id="ms_project_name" class="selectpicker">
+                    {% for project in projects %}
+                    <option value="{{project.project_id}}">{{project.project_name}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="project_version" class="control-label" style="color: black;">所属版本：</label>
+            <div class="input-append date" id="project_version">
+                <input class="span2" class="input-medium" name="project_version" type="text">
+            </div> 
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_component" class="control-label" style="color: black;">所属模块：</label>
+            <div class="controls">
+                <select name="bug_component" id="ms_project_name" class="selectpicker">
+                    {% for project in projects %}
+                    <option value="{{project.project_id}}">{{project.project_name}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div>
+        <div class="control-group">
+            <label for="component_community" class="control-label" style="color: black;">社区讨论：</label>
+            <div class="input-append date" id="component_community">
+                <input class="span2" class="input-medium" name="component_community" type="text">
+            </div> 
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_date_receive" class="control-label" style="color: black;">接收时间：</label>
+            <div class="input-append date" id="datetimepicker_receive">
+                <input class="span2" size="16" name="bug_date_receive" type="text" readonly=""  id="date_receive">
+                <span class="add-on"><i class="icon-remove"></i></span>
+                <span class="add-on"><i class="icon-th"></i></span>
+            </div> 
+        </div> <!-- /control-group --> 
+        <div class="control-group">
+            <label for="bug_find_by" class="control-label" style="color: black;">接口人 ：</label>
+            <div class="controls">
+                <select name="bug_find_by" id="ms_user_find" class="selectpicker">
+                    {% for user in users %}
+                    <option value="{{user.id}}">{{user.username}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="bug_user_done" class="control-label" style="color: black;">负责人 ：</label>
+            <div class="controls">
+                <select name="bug_user_done" id="ms_user_find" class="selectpicker">
+                    {% for user in users %}
+                    <option value="{{user.id}}">{{user.username}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div>
+        <div class="control-group">
+            <label for="bug_level" class="control-label" style="color: black;">优先级 ：</label>
+            <div class="controls">
+                <select name="bug_level" id="ms_user_find" class="selectpicker">
+                    <option value="0">低</option>
+                    <option value="0">中</option>
+                    <option value="0">高</option>
+                    <option value="0">急</option>
+                </select>
+            </div> 
+        </div>
+        <div class="control-group">
+            <label for="bug_describe" class="control-label" style="color: black;">问题描述：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="describe" name="bug_describe">
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_reason" class="control-label" style="color: black;">问题原因：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="describe" name="bug_reason">
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_solution" class="control-label">解决措施：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="describe" name="bug_solution">
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_progress" class="control-label">进   展：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="describe" name="bug_progress">
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_date_plan" class="control-label" style="color: black;">计划日期：</label>
+            <div class="input-append date" id="datetimepicker1">
+                <input class="span2" size="16" name="bug_date_plan" type="text" readonly=""  id="date_plan">
+                <span class="add-on"><i class="icon-remove"></i></span>
+                <span class="add-on"><i class="icon-th"></i></span>
+            </div> 
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_date_done" class="control-label" style="color: black;">解决日期：</label>
+            <div class="input-append date" id="datetimepicker2">
+                <input class="span2" size="16" name="bug_date_done" type="text" readonly=""  id=date_done>
+                <span class="add-on"><i class="icon-remove"></i></span>
+                <span class="add-on"><i class="icon-th"></i></span>
+            </div> 
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="bug_version" class="control-label" style="color: black;">合入版本：</label>
+            <div class="input-append date" id="bug_version">
+                <input class="span2" class="input-medium" name="bug_version" type="text">
+            </div> 
+        </div> <!-- /control-group -->
+        {% for msg in message %}
+            <span style="color: red;">{{msg}}</span>
+            <br>
+        {% end %}
+
+        <div class="form-actions control-group">
+            <div >
+              <button type="reset" class="btn">重置</button>
+              <button type="submit" class="btn btn-primary">创建</button>
+            </div>
+        </div>
+      </fieldset>
+    </form>
+    </div>
+{% end %}
+
+{% block other-javascript %}
+<!-- <script src="/static/ckeditor/ckeditor.js"></script> -->
+<!--<script src="/libs/js/myjs/multiple-select.js"></script>-->
+<!--<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>-->
+<!--<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">-->
+<script>
+    // console.log(new Date());
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth() + 1;
+    var date = myDate.getDate();
+    var now_date = year + '-' + conver(month) + "-" + conver(date);
+    console.log(now_date);
+    $('#datetimepicker1').datetimepicker({
+        format: 'yyyy-mm-dd'
+        ,locale: moment.locale('zh-cn')
+        ,minView: 2       // 只显示日期，不显示具体时间
+        ,language: 'zh-cn'
+        ,defaultDate: now_date
+    });
+    $('#datetimepicker2').datetimepicker({
+        format: 'yyyy-mm-dd'
+        ,locale: moment.locale('zh-cn')
+        ,minView: 2       // 只显示日期，不显示具体时间
+        ,language: 'zh-cn'
+        ,defaultDate: now_date
+    });
+    // datetimepicker_receive
+    $('#datetimepicker_receive').datetimepicker({
+        format: 'yyyy-mm-dd'
+        ,locale: moment.locale('zh-cn')
+        ,minView: 2       // 只显示日期，不显示具体时间
+        ,language: 'zh-cn'
+        ,defaultDate: now_date
+    });
+    // startView: 2, maxViewMode: 1,minViewMode:1,这三个参数，第一个表示起始选择范围，0为日，1为月，2为年，第二个参数表示最大选择范围，第三个表示最小选择范围。数字意义同第一个参数。
+    // $('#datetimepicker2').datetimepicker('setDaysOfWeekDisabled');
+    document.getElementById('date_plan').value=my_date();
+    document.getElementById('date_done').value=my_date();
+    document.getElementById('date_receive').value=my_date();
+    function my_date(){
+        var myDate = new Date();
+        var year = myDate.getFullYear();
+        var month = myDate.getMonth() + 1;
+        var date = myDate.getDate();
+        var now_date = year + '-' + conver(month) + "-" + conver(date);
+        return now_date
+    }
+    function conver(s) {
+        return s < 10 ? '0' + s : s;
+    }
+</script>
+{% end %}

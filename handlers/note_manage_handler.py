@@ -11,8 +11,9 @@ class NoteListHandler(BaseHandler):
     @authenticated
     def get(self):
         weblog.info("%s.", self._request_summary())
-        notes = self.mysqldb().query(TblPostList).filter_by(status='enabled', type='post').order_by(TblPostList.date.desc()).all()
-        return self.render('admin/notelist.html', notes=notes)
+        notes = self.mysqldb().query(TblPostList).filter_by(status='enabled', type='post').order_by(
+            TblPostList.date.desc()).all()
+        return self.render('note/notelist.html', notes=notes)
 
     @authenticated
     def post(self):

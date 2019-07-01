@@ -23,10 +23,11 @@ class SigninHandler(BaseHandler):
         password = self.get_argument("password")
         inputCode = self.get_argument("inputCode")
 
-        user = self.mysqldb().query(TblAccount.username,TblAccount.password).first()
+        user = self.mysqldb().query(TblAccount.username, TblAccount.password).filter_by(username=userAccount).first()
         if user is None:
             return self.write(json_dumps({"msg": msg_define.USER_IS_NONE, "error_code": 1}))
         if user.username != userAccount or user.password != MD5(password):
+            weblog.error("user password input:{}, ori:{}".format(user.password, MD5(password)))
             return self.write(json_dumps({"msg": msg_define.USER_OR_PASSWORD_ERROR, "error_code": 1}))
         if inputCode.upper() != self.get_secure_cookie("code").decode('utf-8').upper():
             weblog.error("code you inut:{}, ori code:{}".format(inputCode.upper(),
