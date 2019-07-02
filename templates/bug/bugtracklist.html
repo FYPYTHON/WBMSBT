@@ -36,6 +36,41 @@
 <div class="box-content">
     <a href="/bugtrack/add"><i class="icon-pencil"></i>Add an bug track</a>
     <hr>
+    <div class="control-group col-sm-8" id="searchlist">
+      <label for="bug_component" class="control-label col-sm-2" style="color: black;">模块：</label>
+      <div class="controls col-sm-2">
+          <select name="bug_component" id="bug_component" class="selectpicker">
+              <option value="-1">ALL</option>
+              {% for project in projects %}
+              <option value="{{project.project_id}}">{{project.project_name}}</option>
+              {% end %}
+          </select>
+      </div>
+      <label for="component_belong" class="control-label col-sm-2" style="color: black;">负责人：</label>
+      <div class="controls col-sm-2">
+          <select name="component_belong" id="component_belong" class="selectpicker">
+              <option value="-1">ALL</option>
+              {% for user in users %}
+              <option value="{{user.id}}">{{project.project_name}}</option>
+              {% end %}
+          </select>
+      </div>
+      <label for="bug_level" class="control-label col-sm-2" style="color: black;">优先级：</label>
+      <div class="controls col-sm-2">
+          <select name="bug_level" id="bug_level" class="selectpicker">
+              <option value="-1">ALL</option>
+              <option value="0">低</option>
+              <option value="1">中</option>
+              <option value="2">高</option>
+              <option value="3">急</option>
+          </select>
+      </div>
+    </div>
+    <div class="controls col-sm-2">
+          <button onclick="getBugList()" type="button" id="searchBugList" class="btnConfirm" style="width:100px;color:blue;">查询
+          </button>    
+    </div> 
+    <!-- table item -->
     <table class="table">
       <thead>
           <tr class="center">
@@ -59,7 +94,7 @@
             <th>操作</th>
           </tr>
       </thead>   
-      <tbody>
+      <tbody id="buglist">
       {% for bug in bugtracks %}
         <tr class="center">
         <!-- <td>{{ bug['bug_id'] }}</td> -->
@@ -80,11 +115,11 @@
         <td>{{ bug['bug_user_done'] }}</td>
         <td>{{ bug['bug_version'] }}</td>
         <td >
-          <a class="btn btn-info" href="/bug/edit/{{ bug['bug_id'] }}">
+          <a class="btn btn-info" href="/bugtrack/edit/{{ bug['bug_id'] }}">
             <i class="icon-edit icon-white"></i>
             Edit                                            
           </a>
-          <a class="btn btn-danger" href="/bug/delete/{{ bug['bug_id'] }}">
+          <a class="btn btn-danger" href="/bugtrack/delete/{{ bug['bug_id'] }}">
             <i class="icon-trash icon-white"></i>
             Delete
           </a>
@@ -98,4 +133,62 @@
 {% block other-javascript %}
 <!-- <script src="/static/ckeditor/ckeditor.js"></script>
 <script src="/static/js/jquery.validate.min.js"></script> -->
+<script type="text/javascript">
+  function getBugList(){
+      var bug_component = $("#bug_component").val();
+      var component_belong = $("#component_belong").val();
+      var bug_level = $("#bug_level").val();
+      // console.log(bug_component, component_belong, bug_level);
+      $.ajax({
+          type: "POST",
+          url: "/bugtrack/list",
+          dataType : "json",
+          async: true,
+          data: {"bug_component": bug_component,"component_belong":component_belong,"bug_level":bug_level},
+          success: function (data){
+              
+              // console.log(data.length)
+              // console.log(data[0]);
+              $("#buglist").html("");
+              for(var i=0;i<data.length;i++){
+                var bug = data[i];
+                var page='<tr>';
+                var bug_id = bug['bug_id']
+                // console.log(comp_id);
+                // var url = '"/compt/edit'+comp_id+'/test"';
+                // console.log(url);
+                page+='<td>' + bug['bug_date_receive'] + '</td>';
+                page+='<td>' + bug['bug_find_by'] + '</td>';
+                page+='<td>' + bug['bug_component'] + '</td>';
+                page+='<td>' + bug['component_belong'] + '</td>';
+                page+='<td>' + bug['component_community'] + '</td>';
+                page+='<td>' + bug['bug_project_id'] + '</td>';
+                page+='<td>' + bug['project_version'] + '</td>';
+                page+='<td>' + bug['bug_describe'] + '</td>';
+                page+='<td>' + bug['bug_level'] + '</td>';
+                page+='<td>' + bug['bug_reason'] + '</td>';
+                page+='<td>' + bug['bug_solution'] + '</td>';
+                page+='<td>' + bug['bug_progress'] + '</td>';
+                page+='<td>' + bug['bug_date_plan'] + '</td>';
+                page+='<td>' + bug['bug_date_done'] + '</td>';
+                page+='<td>' + bug['bug_user_done'] + '</td>';
+                page+='<td>' + bug['bug_version'] + '</td>';
+                page+='<td>' + 
+                  '<a class="btn btn-info" href="/bugtrack/edit/'+bug_id+'">' +
+                    '<i class="icon-edit icon-white"></i>' +
+                     'Edit' +                                         
+                  '</a>'+
+                  '<a class="btn btn-danger" href="/bugtrack/delete/'+bug_id+'">' +
+                    '<i class="icon-trash icon-white"></i>'+
+                    'Delete'+
+                  '</a>'+
+                 + '</td>';
+                page+='</tr>';
+                $("#buglist").append(page);
+              }
+              // $("#compmtlist").html(data.msg).css("color","red");
+          }
+      })
+  };
+</script>
 {% end %}

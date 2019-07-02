@@ -6,7 +6,7 @@ from handlers.Email import email_smtp_handler,email_exchange_handler
 from handlers.Chart import chart_manage_handler
 from handlers.Project import project_manage_handler
 from handlers.Project import task_manage_handler
-from handlers.Bug import bug_manage_handler, bug_track_handler
+from handlers.Bug import bug_manage_handler, bug_track_handler, bug_maintenance_handler
 
 url = [                            #
         (r'/', SigninHandler),
@@ -39,4 +39,9 @@ url = [                            #
         (r'/bugtrack/add', bug_track_handler.BugTrackAddHandler),
         (r'/bugtrack/edit/([0-9]+)', bug_track_handler.BugTrackEditHandler),
         (r'/bugtrack/delete/([0-9]+)', bug_track_handler.BugTrackDeleteHandler),
+        # component maintenance
+        (r'/compmt/list', bug_maintenance_handler.BugCompmtListHandler),
+        (r'/compmt/add', bug_maintenance_handler.BugCompmtAddHandler),
+        (r'/compmt/edit/([0-9]+)', bug_maintenance_handler.BugCompmtEditHandler),
+        (r'/compmt/delete/([0-9]+)', bug_maintenance_handler.BugCompmtDeleteHandler),
 ]

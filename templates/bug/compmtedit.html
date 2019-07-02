@@ -1,0 +1,151 @@
+{% extends "../base.html" %}
+
+{% block head%}
+<title>Maintenance Record Add</title>
+{% end %}
+
+{% block other-css %}
+<!-- <link href="/static/ckeditor/contents.css" rel="stylesheet"> -->
+<!-- <script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script> -->
+<!-- <link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">  -->
+
+<script src="{{static_url('libs/js/date/moment-with-locales.min.js')}}"></script>
+<script src="{{static_url('libs/js/date/bootstrap-datetimepicker.min.js')}}"></script>
+<!-- <script src="{{static_url('libs/js/date/moment.js')}}"></script> -->
+<link rel="stylesheet" href="{{static_url('libs/js/date/bootstrap-datetimepicker.min.css')}}">
+<!-- <link rel="stylesheet" href="{{static_url('libs/js/date/bootstrap-datetimepicker.css')}}"> -->
+{% end %}
+
+{% block content-nav %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="/home">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/compmt/edit/{{bug.comp_id}}">Maintenance Record Edit</a>
+        </li>
+        <li class="pull-right">
+            <i class="icon-arrow-left"></i>
+            <a href="/compmt/list">Return to Maintenance Record List</a>
+        </li>
+    </ul>
+{% end %}
+
+{% block content-header %}
+    <div class="box-header " data-original-title>
+
+    </div>
+{% end %}
+
+{% block content-body %}
+    <div class="box-content">
+    <form action="/compmt/edit/{{bug.comp_id}}" class="form-horizontal" method="post" id="addbug2">
+    {% module xsrf_form_html() %}
+    {% autoescape None %}
+      <fieldset>
+        <legend>修改模块维护信息</legend>
+        <div class="control-group">
+            <label for="comp_belong_to" class="control-label" style="color: black;">模块名称：</label>
+            <div class="controls">
+                <select name="comp_belong_to" id="ms_project_name" class="selectpicker">
+                    {% for project in projects %}
+                    <option value="{{project.project_id}}" {% if project.project_id == bug.comp_belong_to %}selected{% end %}>{{project.project_name}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="project_name" class="control-label" style="color: black;">维护人 ：</label>
+            <div class="controls">
+                <select name="user_belong_to" id="ms_project_name" class="selectpicker">
+                    {% for user in users %}
+                    <option value="{{user.id}}" {% if user.id == bug.user_belong_to %}selected{% end %}>{{user.username}}</option>
+                    {% end %}
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="comp_type" class="control-label" style="color: black;">维护方式：</label>
+            <div class="controls">
+                <select name="comp_type" id="ms_user_find" class="selectpicker">
+                    <option value="0" {% if 0 == bug.comp_type %}selected{% end %}>增加新功能</option>
+                    <option value="1" {% if 1 == bug.comp_type %}selected{% end %}>问题排查</option>
+                    <option value="2" {% if 2 == bug.comp_type %}selected{% end %}>优化调整</option>
+                    <option value="3" {% if 3 == bug.comp_type %}selected{% end %}>其他</option>
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="comp_new" class="control-label" style="color: black;">新增内容：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="comp_new" name="comp_new">
+                {{bug.comp_new}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="comp_status" class="control-label" style="color: black;">是否解决：</label>
+            <div class="controls">
+                <select name="comp_status" id="comp_status" class="selectpicker">
+                    <option value="0" {% if 0 == bug.comp_status %}selected{% end %}>未解决</option>
+                    <option value="1" {% if 1 == bug.comp_status %}selected{% end %}>已解决</option>
+                </select>
+            </div> 
+        </div> 
+        <div class="control-group">
+            <label for="comp_describe" class="control-label" style="color: black;">问题描述：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="comp_describe" name="comp_describe">
+                {{bug.comp_describe}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="comp_reason" class="control-label" style="color: black;">问题原因：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="comp_reason" name="comp_reason">
+                {{bug.comp_reason}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="comp_solution" class="control-label">解决方式：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="comp_solution" name="comp_solution">
+                {{bug.comp_solution}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        <div class="control-group">
+            <label for="comment" class="control-label">备    注：</label>
+            <div class="controls">
+                <textarea rows="10" cols="400" id="comment" name="comment">
+                    {{bug.comment}}
+                </textarea>
+            </div> <!-- /controls -->
+        </div> <!-- /control-group -->
+        {% for msg in message %}
+            <span style="color: red;">{{msg}}</span>
+            <br>
+        {% end %}
+
+        <div class="form-actions control-group">
+            <div>
+              <button type="reset" class="btn">重置</button>
+              <button type="submit" class="btn btn-primary">修改</button>
+            </div>
+        </div>
+      </fieldset>
+    </form>
+    </div>
+{% end %}
+
+{% block other-javascript %}
+<!-- <script src="/static/ckeditor/ckeditor.js"></script> -->
+<!--<script src="/libs/js/myjs/multiple-select.js"></script>-->
+<!--<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>-->
+<!--<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">-->
+<script>
+    
+</script>
+{% end %}

@@ -16,7 +16,7 @@ def get_user_list(self):
     return users
 
 
-def get_user_pagination(self,current_page):
+def get_user_pagination(self, current_page):
     users = self.mysqldb().query(TblAccount).filter_by(userstate=0).order_by(TblAccount.register_time.desc())
     total_count = len(users.all())
     total_page = get_pages(total_count)

@@ -177,3 +177,9 @@ form span{
 .input-append .add-on{
 	height: 30px;
 }
+/* 搜索 */
+#searchlist input, select{
+	min-width: 100px;
+	max-width: 20px;
+	height:30px;
+}

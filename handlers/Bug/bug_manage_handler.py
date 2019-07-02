@@ -51,6 +51,8 @@ def gene_bugs_result(self, bugs):
         bug_dict['bug_find_by'] = bug.bug_find_by
         result.append(bug_dict)
     return result
+
+
 def get_bug_by_id(self, uid):
     bug = self.mysqldb().query(TblBugList.bug_name
                                 , TblBugList.bug_describe
@@ -62,10 +64,12 @@ def get_bug_by_id(self, uid):
                                 , TblBugList.bug_user_done
                                 , TblProject.project_name.label('bug_project_id')
                                 , TblAccount.username.label('bug_find_by')
-                               ).filter(TblBugList.bug_id==uid,
+                               ).filter(TblBugList.bug_id == uid,
                                         TblBugList.bug_find_by == TblAccount.id).first()
+
     result = gene_bug_result(self, bug)
     return result
+
 
 def gene_bug_result(self, bug):
     bug_dict = dict()

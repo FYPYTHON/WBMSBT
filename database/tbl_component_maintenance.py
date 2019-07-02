@@ -9,7 +9,8 @@ from sqlalchemy import Column, Integer, String, TEXT, DATETIME
 class TblComponentMaintenance(ModelBase, TableBase):
     __tablename__ = "tbl_component_maintenance"
     comp_id = Column(Integer, unique=True, primary_key=True, autoincrement=True)
-    comp_belong_to = Column(Integer, default=0, comment="user belong to this component")  # 任务
+    user_belong_to = Column(Integer, default=0, comment="user belong to this component")  # 维护人
+    comp_belong_to = Column(Integer, default=0, comment="module belong to this component")  # 名称
     comp_type = Column(Integer, nullable=False, comment=u"0=增加新功能,1=问题排查,2=优化调整,3=其他")  # 用户
     comp_new = Column(TEXT, comment=u"新功能内容")        # 计划安排描述
     comp_status = Column(Integer, nullable=False, default=0, comment=u"0=未解决,1=已解决")

@@ -8,5 +8,5 @@ class NonDBObject:
         attrs = db_obj.__class__.__dict__
 
         for attr_name, attr in attrs.iteritems():
-            if "InstrumentedAttribute"  in str(type(attr)):
+            if "InstrumentedAttribute" in str(type(attr)):
                 setattr(self, attr_name, getattr(db_obj, attr_name))

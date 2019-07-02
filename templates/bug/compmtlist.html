@@ -1,0 +1,182 @@
+{% extends "../base.html" %}
+
+<!--/project/list 二级目录有问题-->
+{% block head%}
+<title>Bug Manage </title>
+{% end %}
+
+{% block other-css %}
+<!-- <link href="/static/ckeditor/contents.css" rel="stylesheet"> -->
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+<link rel="stylesheet" href="{{static_url('libs/css/mycss.css')}}">
+{% end %}
+
+{% block content-nav %}
+	<ul class="breadcrumb">
+		<li>
+			<a href="/home">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/compmt/list">Component Maintenance List</a>
+		</li>
+		<li class="pull-right">
+			<i class="icon-arrow-left"></i>
+			<a href="/home">Return to Home</a>
+		</li>
+	</ul>
+{% end %}
+
+{% block content-header %}
+	<div class="box-header " data-original-title>
+	</div>
+{% end %}
+
+{% block content-body %}
+<div class="box-content">
+    <a href="/compmt/add"><i class="icon-pencil"></i>Add New Maintenance Record</a>
+    <hr>
+    <div class="control-group col-sm-8" id="searchlist">
+      <label for="comp_belong_to" class="control-label col-sm-2" style="color: black;">模块：</label>
+      <div class="controls col-sm-2">
+          <select name="comp_belong_to" id="comp_belong_to" class="selectpicker">
+              <option value="-1">ALL</option>
+              {% for project in projects %}
+              <option value="{{project.project_id}}">{{project.project_name}}</option>
+              {% end %}
+          </select>
+      </div>
+      <label for="user_belong_to" class="control-label col-sm-2" style="color: black;">负责人：</label>
+      <div class="controls col-sm-2">
+          <select name="user_belong_to" id="user_belong_to" class="selectpicker">
+              <option value="-1">ALL</option>
+              {% for user in users %}
+              <option value="{{user.id}}">{{project.project_name}}</option>
+              {% end %}
+          </select>
+      </div>
+      <label for="comp_status" class="control-label col-sm-2" style="color: black;">状态：</label>
+      <div class="controls col-sm-2">
+          <select name="comp_status" id="comp_status" class="selectpicker">
+              <option value="-1">ALL</option>
+              <option value="0">未解决</option>
+              <option value="1">已解决</option>
+          </select>
+      </div>
+    </div>
+    <div class="controls col-sm-2">
+          <button onclick="getCompmtList()" type="button" id="searchCompmt" class="btnConfirm" style="width:100px;color:blue;">查询
+          </button>    
+    </div> 
+    <!-- table item -->
+    <table class="table">
+      <thead>
+          <tr class="center">
+            <th>Module Name</th>
+            <th>Module User</th>
+            <th>Create Time</th>
+            <th>Maintenace Type</th>
+            <th>New Content</th>
+            <th>Status</th>
+            <th>Describe</th>
+            <th>Reason</th>
+            <th>Solution</th>
+            <th>Comment</th>
+            <th>Operation</th>
+          </tr>
+      </thead>   
+      <tbody id="compmtlist">
+      {% for bug in bugs %}
+        <tr class="center">
+        <td>{{ bug.comp_belong_to }}</td>
+        <td>{{ bug.user_belong_to }}</td>
+        <td>{{ bug.create_time}}</td>
+        <td>
+          {% if bug.comp_type == 0 %}
+            增加新功能
+          {% elif bug.comp_type == 1 %}
+            问题排查
+          {% elif bug.comp_type == 2 %}
+            优化调整
+          {% else %}
+            其他
+          {% end %}
+        </td>
+        <td>{{ bug.comp_new}}</td>
+        <td >{% if bug.comp_status == 0 %}未解决{% else %}已解决{% end %}</td>
+        <td>{{ bug.comp_describe}}</td>
+        <td>{{ bug.comp_reason}}</td>
+        <td>{{ bug.comp_solution}}</td>
+        <td>{{ bug.comment}}</td>
+        <td >
+          <a class="btn btn-info" href="/compmt/edit/{{ bug.comp_id }}">
+            <i class="icon-edit icon-white"></i>
+            Edit                                            
+          </a>
+          <a class="btn btn-danger" href="/compmt/delete/{{ bug.comp_id }}">
+            <i class="icon-trash icon-white"></i>
+            Delete
+          </a>
+        </td>
+        </tr>
+      {% end %}
+      </tbody>
+      </table>
+  </div>
+{% end %}
+{% block other-javascript %}
+<!-- <script src="/static/ckeditor/ckeditor.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script> -->
+<script type="text/javascript">
+  function getCompmtList(){
+      var user_belong_to = $("#user_belong_to").val();
+      var comp_belong_to = $("#comp_belong_to").val();
+      var comp_status = $("#comp_status").val();
+
+      $.ajax({
+          type: "POST",
+          url: "/compmt/list",
+          dataType : "json",
+          async: true,
+          data: {"user_belong_to": user_belong_to,"comp_status":comp_status,"comp_belong_to":comp_belong_to},
+          success: function (data){
+              
+              // console.log(data.length)
+              // console.log(data[0]);
+              $("#compmtlist").html("");
+              for(var i=0;i<data.length;i++){
+                var bug = data[i];
+                var page='<tr>';
+                var comp_id = bug['comp_id']
+                // console.log(comp_id);
+                // var url = '"/compt/edit'+comp_id+'/test"';
+                // console.log(url);
+                page+='<td>' + bug['comp_belong_to'] + '</td>';
+                page+='<td>' + bug['user_belong_to'] + '</td>';
+                page+='<td>' + bug['create_time'] + '</td>';
+                page+='<td>' + bug['comp_type'] + '</td>';
+                page+='<td>' + bug['comp_new'] + '</td>';
+                page+='<td>' + bug['comp_status'] + '</td>';
+                page+='<td>' + bug['comp_describe'] + '</td>';
+                page+='<td>' + bug['comp_reason'] + '</td>';
+                page+='<td>' + bug['comp_solution'] + '</td>';
+                page+='<td>' + bug['comment'] + '</td>';
+                page+='<td>' + 
+                  '<a class="btn btn-info" href="/compmt/edit/'+comp_id+'">' +
+                    '<i class="icon-edit icon-white"></i>' +
+                     'Edit' +                                         
+                  '</a>'+
+                  '<a class="btn btn-danger" href="/compmt/delete/'+comp_id+'">' +
+                    '<i class="icon-trash icon-white"></i>'+
+                    'Delete'+
+                  '</a>'+
+                 + '</td>';
+                page+='</tr>';
+                $("#compmtlist").append(page);
+              }
+              // $("#compmtlist").html(data.msg).css("color","red");
+          }
+      })
+  };
+</script>
+{% end %}
