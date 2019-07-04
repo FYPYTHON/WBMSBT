@@ -2,7 +2,9 @@
 """
 author:zs1621
 source:https://github.com/zs1621/tornado-redis-session
+python3 must chang grammar
 """
+
 import uuid
 import hmac
 import ujson
@@ -35,12 +37,13 @@ class Session(SessionData):
 			current_session = session_manager.get(request_handler)
 		except InvalidSessionException:
 			current_session = session_manager.get()
-		for key, data in current_session.iteritems():
+		for key, data in current_session.items():
 			self[key] = data
 		self.session_id = current_session.session_id
 		self.hmac_key = current_session.hmac_key
 	
 	def save(self):
+		# print(self.request_handler, self)
 		self.session_manager.set(self.request_handler, self)
 
 
@@ -78,6 +81,7 @@ class SessionManager(object):
 		else:
 			session_id = request_handler.get_secure_cookie("session_id")
 			hmac_key = request_handler.get_secure_cookie("verification")
+		# print("session get:", request_handler, session_id, hmac_key)
 
 		if session_id is None:
 			session_exists = False
@@ -93,7 +97,7 @@ class SessionManager(object):
 
 		if session_exists:
 			session_data = self._fetch(session_id)
-			for key, data in session_data.iteritems():
+			for key, data in session_data.items():
 				session[key] = data
 		return session
 	
@@ -106,11 +110,21 @@ class SessionManager(object):
 		self.redis.setex(session.session_id, self.session_timeout, session_data)
 
 	def _generate_id(self):
-		new_id = hashlib.sha256(self.secret + str(uuid.uuid4()))
+		secret = self.secret
+		if isinstance(secret, (bytes, bytearray)):
+			secret = secret.decode('utf-8')
+		new_id = hashlib.sha256(bytes(secret + str(uuid.uuid4()), encoding='utf-8'))
 		return new_id.hexdigest()
 
 	def _generate_hmac(self, session_id):
-		return hmac.new(session_id, self.secret, hashlib.sha256).hexdigest()
+		if isinstance(session_id, str):
+			session_id = bytes(session_id,encoding='utf-8')
+		secret = self.secret
+		if isinstance(secret, str):
+			secret = bytes(secret, encoding='utf-8')
+		# print(session_id, type(session_id))
+		# print(secret, type(secret))
+		return hmac.new(session_id, secret, hashlib.sha256).hexdigest()
 
 
 class InvalidSessionException(Exception):

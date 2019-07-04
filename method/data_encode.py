@@ -1,6 +1,6 @@
 # coding=utf-8
 import hashlib
-
+import uuid
 MY_SECRET = "PyTHoN3)JavaWMakY6C#Hn/VB9oXwQt8C++&Mysql/xJ89E="
 # 定义私钥
 
@@ -20,6 +20,13 @@ def SHA256(data):
     my_sha256.update(bytes(data, encoding='utf-8'))
     return my_sha256.hexdigest()
 
+
+def generate_uuid():
+    secret = MY_SECRET
+    if isinstance(secret, (bytes, bytearray)):
+        secret = secret.decode('utf-8')
+    new_id = hashlib.sha256(bytes(secret + str(uuid.uuid4()), encoding='utf-8'))
+    return new_id.hexdigest()
 
 if __name__ == "__main__":
     print(hashlib.md5(bytes("111111", encoding='utf-8')).hexdigest())

@@ -3,6 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 import pymysql
+import redis
+redis_session = redis.StrictRedis(host='localhost', port=6379, password='feiying')
 pymysql.install_as_MySQLdb()
 ModelBase = declarative_base()
 engine = create_engine('mysql+pymysql://root:Faye0808@localhost:3306/faye_dream?charset=utf8',pool_size=100,echo=False)
@@ -30,11 +32,29 @@ def init_comp_mt():
 
 # test code
 if __name__ == "__main__":
-    from database.tbl_bug_list import TblBugList
-    result = db_session.query(TblBugList).all()
-    print(len(result))
-    for res in result:
-        print(res)
+    # from database.tbl_bug_list import TblBugList
+    # result = db_session.query(TblBugList).all()
+    # print(len(result))
+    # for res in result:
+    #     print(res)
+    # a = redis_session.keys()
+    # print(a)
+    redis_session.set("test", "123", 6)
+    # print(redis_session.get("test"))
+    name = redis_session.keys('*')
+    # print(redis_session.keys('*'))
+    redis_session.delete('test')
+
+    for na in name:
+
+        print(na, redis_session.get(na))
+
+    user = True
+    if not user:
+        print("ok?")
+    else:
+        print("not ok?")
+
 
 
 

@@ -5,7 +5,7 @@
 {% end %}
 
 {% block other-css %}
-<link href="/static/ckeditor/contents.css" rel="stylesheet">
+<!-- <link href="/static/ckeditor/contents.css" rel="stylesheet"> -->
 {% end %}
 
 {% block content-nav %}
@@ -57,7 +57,7 @@
         <div class="control-group">
 			<label for="userrole" class="control-label">用户角色：</label>
 			<div class="controls">
-				<select name="userrole" id="userrole">
+				<select name="userrole" id="userrole" style="width:200px;">
 					<option value="0" {% if user.userrole=='0' %}selected{% end %}>管理员</option>
 					<option value="1" {% if user.userrole=='1' %}selected{% end %}>普通用户</option>
 				</select>
@@ -80,5 +80,5 @@
 {% end %}
 
 {% block other-javascript %}
-<script src="/static/ckeditor/ckeditor.js"></script>
+<!-- <script src="/static/ckeditor/ckeditor.js"></script> -->
 {% end %}

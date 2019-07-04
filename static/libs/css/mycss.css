@@ -28,7 +28,7 @@ textarea {
 }
 /* single select */
 select {
-    width:150px;
+    width:200px;
     height:30px;
     padding: 0 3%; /*上下变，左右变*/
     margin: 0;
@@ -182,4 +182,13 @@ form span{
 	min-width: 100px;
 	max-width: 20px;
 	height:30px;
+}
+#adduser select{
+	width:auto;
+    height:30px;
+    padding: 0 3%; /*上下变，左右变*/
+    margin: 0;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left: 0px;
 }

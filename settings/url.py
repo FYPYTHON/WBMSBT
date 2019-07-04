@@ -11,6 +11,7 @@ from handlers.Bug import bug_manage_handler, bug_track_handler, bug_maintenance_
 url = [                            #
         (r'/', SigninHandler),
         (r'/signin', SigninHandler),
+        (r'/logout', SigninHandler),
         (r'/homepage', main_handler.MainHandler),
         (r'/home', main_handler.MainHandler),
         (r'/admin/verifyCode', admin_handler.verifyCode),
