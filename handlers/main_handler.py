@@ -17,7 +17,7 @@ class MainHandler(BaseHandler):
     @run_on_executor
     def doing(self):
         import time
-        time.sleep(60)
+        time.sleep(10)
         # gen.sleep(30)
         # os.system("ping -c 20 www.baidu.com")
         return str(datetime.now())
@@ -29,9 +29,8 @@ class MainHandler(BaseHandler):
         weblog.info("%s.", self._request_summary())
         result = yield self.doing()
         print(result)
-        # self.render("admin/homepage.html")
-        return self.write("ok," + result)
-
+        self.render("admin/homepage.html")
+        # return self.write("ok," + result)
 
     @authenticated
     def post(self):
@@ -40,7 +39,7 @@ class MainHandler(BaseHandler):
         code = self.get_argument("code")
         print(code)
         # self.redirect('/tableTest')
-        self.write(json_dumps({"msg":"ok"}))
+        self.write(json_dumps({"msg": "ok"}))
         return
 
 
