@@ -1,3 +1,6 @@
 tornado epoll
 https://www.cnblogs.com/jasonwang-2016/p/5950548.html
 https://www.cnblogs.com/becker/p/9335136.html
+
+supervisor
+https://www.cnblogs.com/toutou/p/supervisor.html
