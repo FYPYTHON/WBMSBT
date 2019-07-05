@@ -1,6 +1,8 @@
 #coding=utf-8
-
+import sys
 import os.path
+import tornado.httpserver
+import tornado.wsgi
 import tornado.ioloop
 import tornado.web
 import tornado.escape
@@ -10,6 +12,9 @@ import tornado.options
 import warnings
 warnings.filterwarnings("ignore")
 from handlers.Timeout.timeout_handler import UserOnlineHandler
+from tornado.options import define, options
+
+define("port", default=8000, help="run on the given port", type=int)
 
 
 class Application(tornado.web.Application):
@@ -44,10 +49,16 @@ class Application(tornado.web.Application):
 
 
 if __name__ == "__main__":
-    app = Application()
-    app.listen(8081)
     tornado.options.parse_command_line()
+    print(options.port)
+    print(sys.argv[1])
+    app = Application()
+    http_server = tornado.httpserver.HTTPServer(app)
+    http_server.listen(options.port)
+    # app.listen(options.port)
+
     # tornado.ioloop.PeriodicCallback(UserOnlineHandler.get_online_users,6000).start()
     tornado.ioloop.IOLoop.instance().start()
+
 
 

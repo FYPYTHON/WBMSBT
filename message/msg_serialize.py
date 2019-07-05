@@ -1,5 +1,6 @@
 # coding=utf-8
 import json
+from message import data_type
 from message import data_type, class_serializable
 
 

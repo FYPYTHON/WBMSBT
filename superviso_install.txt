@@ -1,0 +1,65 @@
+wget https://pypi.python.org/packages/source/s/supervisor/supervisor-4.0.3.tar.gz
+tar zxvf supervisor-4.0.3.tar.gz
+cd supervisor-4.0.3
+python setup.py install
+
+python3/bin/echo_supervisord_conf
+
+
+/home/python3/bin/echo_supervisord_conf > /usr/local/supervisor/supervisord.conf
+ln -s /home/python3/bin/supervisord /usr/local/bin/supervisord
+
+mkdir /usr/local/supervisor/supervisord.d  cd
+create tornado.conf
+supervisord -c /usr/local/supervisor/supervisord.conf 
+
+conf:
+
+supervisord.conf:
+[include]
+files = /usr/local/supervisor/supervisord.d/tornado.conf
+[inet_http_server]         
+port=127.0.0.1:9001        
+username=root              
+password=1234               
+
+tornado.conf:
+[group:tornadoes]
+programs=tornado-8000,tornado-8001,tornado-8002,tornado-8003
+
+[program:tornado-8000]
+command=/home/python3/bin/python3 main_app.py --port=8000
+directory=/opt/midware/WBMSBT
+user=root
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/var/log/tornado.log
+loglevel=info
+
+[program:tornado-8001]
+command=/home/python3/bin/python3 main_app.py --port=8001
+directory=/opt/midware/WBMSBT
+user=root
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/var/log/tornado.log
+loglevel=info
+
+[program:tornado-8002]
+command=/home/python3/bin/python3 main_app.py --port=8002
+directory=/opt/midware/WBMSBT
+user=root
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/var/log/tornado.log
+loglevel=info
+
+[program:tornado-8003]
+command=/home/python3/bin/python3 main_app.py --port=8003
+directory=/opt/midware/WBMSBT
+user=root
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/var/log/tornado.log
+loglevel=info
+
