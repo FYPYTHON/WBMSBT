@@ -39,6 +39,8 @@ if __name__ == "__main__":
     #     print(res)
     # a = redis_session.keys()
     # print(a)
+    import time
+    t1 = time.time()
     redis_session.set("test", "123", 6)
     # print(redis_session.get("test"))
     name = redis_session.keys('*')
@@ -54,6 +56,8 @@ if __name__ == "__main__":
         print("ok?")
     else:
         print("not ok?")
+
+    print(time.time() - t1)
 
 
 
