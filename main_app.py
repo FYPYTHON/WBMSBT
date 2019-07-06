@@ -1,8 +1,8 @@
 #coding=utf-8
 import sys
 import os.path
-import tornado.httpserver
-import tornado.wsgi
+# import tornado.httpserver
+# import tornado.wsgi
 import tornado.ioloop
 import tornado.web
 import tornado.escape
@@ -59,9 +59,9 @@ if __name__ == "__main__":
     # print(options.port)
     # print(sys.argv[1])
     app = Application()
-    http_server = tornado.httpserver.HTTPServer(app)
-    http_server.listen(options.port)
-    # app.listen(options.port)
+    # http_server = tornado.httpserver.HTTPServer(app)
+    # http_server.listen(options.port)
+    app.listen(options.port)
 
     # tornado.ioloop.PeriodicCallback(UserOnlineHandler.get_online_users,6000).start()
     tornado.ioloop.IOLoop.instance().start()

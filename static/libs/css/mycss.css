@@ -134,6 +134,7 @@ form span{
 #edit-setting input {
 	height: 30px;
 	font-size: 16px;
+	margin-left: 20px;
 }
 #edit-setting select {
 	height: 30px;
