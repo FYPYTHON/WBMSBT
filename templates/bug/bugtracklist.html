@@ -51,7 +51,7 @@
           <select name="component_belong" id="component_belong" class="selectpicker">
               <option value="-1">ALL</option>
               {% for user in users %}
-              <option value="{{user.id}}">{{project.project_name}}</option>
+              <option value="{{user.id}}">{{user.username}}</option>
               {% end %}
           </select>
       </div>

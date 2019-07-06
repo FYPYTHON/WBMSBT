@@ -26,7 +26,7 @@ class ctrace_logger(logging.Logger):
         logging.Logger.__init__(self, name)
         
         # self.setLevel(logging.INFO)
-        self.setLevel(logging.ERROR)  # 打开的同时，SQL alchemy也会打印
+        self.setLevel(logging.INFO)  # 打开的同时，SQL alchemy也会打印
         self.handler = None
         #self.console_handler = None
         self.file_path = ''

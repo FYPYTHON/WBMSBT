@@ -15,7 +15,12 @@ warnings.filterwarnings("ignore")
 from handlers.Timeout.timeout_handler import UserOnlineHandler
 from tornado.options import define, options
 
-define("port", default=8000, help="run on the given port", type=int)
+define("port", default=8081, help="run on the given port", type=int)
+# define('log_file_prefix', default='/var/log/tornado_web.log')
+# define('log_rotate_mode', default='time')
+# define('log_rotate_when', default='M')
+# define('log_rotate_interval', default=1)
+
 weblog.open("tornado_web")
 
 class Application(tornado.web.Application):
@@ -51,8 +56,8 @@ class Application(tornado.web.Application):
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
-    print(options.port)
-    print(sys.argv[1])
+    # print(options.port)
+    # print(sys.argv[1])
     app = Application()
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
