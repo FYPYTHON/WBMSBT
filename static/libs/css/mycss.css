@@ -24,18 +24,18 @@ button {
 textarea {
     width: 500px;
     height: 100px;
-    margin-left: -20px;
+    
 }
 /* single select */
-select {
+/* select {
     width:200px;
     height:30px;
-    padding: 0 3%; /*上下变，左右变*/
+    padding: 0 3%; 
     margin: 0;
-    font-size: 20px;  /*字体设置和option中一致*/
+    font-size: 20px;  
     vertical-align: middle;
     margin-left: -20px;
-}
+} */
 option {
 	text-align: center;
 	font-size: 20px;
@@ -138,12 +138,15 @@ form span{
 }
 #edit-setting select {
 	height: 30px;
+	width: 100px;
 	font-size: 16px;
+	margin-left: 20px;
 }
-/*#edit-setting textarea {
-	height: 30px;
-	font-size: 16px;
-}*/
+#edit-setting textarea {
+/*	height: 30px;
+	font-size: 16px;*/
+	margin-left: 20px;
+}
 #additem input{
 	min-width: 120px;
 	max-width: 400px;
@@ -166,7 +169,23 @@ form span{
 	height:30px;
 	font-size: 18px;
 }
-#addbug2 input, select{
+#addbugtrack input{
+	min-width: 200px;
+	max-width: 400px;
+	height:30px;
+	margin-left: 20px;
+}
+#addbugtrack select{
+	min-width: 200px;
+	max-width: 400px;
+	height:30px;
+}
+#addbug2 input{
+	min-width: 200px;
+	max-width: 400px;
+	height:30px;
+}
+#addbug2 select{
 	min-width: 200px;
 	max-width: 400px;
 	height:30px;
@@ -179,10 +198,27 @@ form span{
 	height: 30px;
 }
 /* 搜索 */
-#searchlist input, select{
+#searchlist input{
 	min-width: 100px;
-	max-width: 20px;
+	max-width: 200px;
 	height:30px;
+}
+#searchlist select{
+	min-width: 100px;
+	max-width: 200px;
+	width: 100px;
+	height:30px;
+	margin-top: -5px;
+	margin-left: -40px;
+}
+#searchlist_btn button{
+	min-width: 100px;
+	max-width: 200px;
+	width: 100px;
+	height:30px;
+	color: blue;
+	margin-top: -5px;
+	margin-left: -100;
 }
 #adduser select{
 	width:auto;

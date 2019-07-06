@@ -66,8 +66,8 @@
           </select>
       </div>
     </div>
-    <div class="controls col-sm-2">
-          <button onclick="getBugList()" type="button" id="searchBugList" class="btnConfirm" style="width:100px;color:blue;">查询
+    <div class="controls col-sm-2" id="searchlist_btn">
+          <button onclick="getBugList()" type="button" id="searchBugList" class="btnConfirm">查询
           </button>    
     </div> 
     <!-- table item -->
@@ -152,7 +152,7 @@
               $("#buglist").html("");
               for(var i=0;i<data.length;i++){
                 var bug = data[i];
-                var page='<tr>';
+                var page='<tr class="center">';
                 var bug_id = bug['bug_id']
                 // console.log(comp_id);
                 // var url = '"/compt/edit'+comp_id+'/test"';
@@ -182,7 +182,7 @@
                     '<i class="icon-trash icon-white"></i>'+
                     'Delete'+
                   '</a>'+
-                 + '</td>';
+                 '</td>';
                 page+='</tr>';
                 $("#buglist").append(page);
               }

@@ -39,7 +39,7 @@
 
 {% block content-body %}
 	<div class="box-content">
-    <form action="/bugtrack/edit/{{bug['bug_id']}}" class="form-horizontal" method="post" id="addbug2">
+    <form action="/bugtrack/edit/{{bug['bug_id']}}" class="form-horizontal" method="post" id="addbugtrack">
     {% module xsrf_form_html() %}
     {% autoescape None %}
       <fieldset>
@@ -196,8 +196,9 @@
     var year = myDate.getFullYear();
     var month = myDate.getMonth() + 1;
     var date = myDate.getDate();
-    var now_date = year + '-' + conver(month) + "-" + conver(date);
-    console.log(now_date);
+    // console.log(year, month, date);
+    var now_date = year + '-' + month + "-" + date;
+    // console.log(now_date);
     $('#datetimepicker_e1').datetimepicker({
         format: 'yyyy-mm-dd'
         ,locale: moment.locale('zh-cn')
