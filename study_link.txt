@@ -4,3 +4,6 @@ https://www.cnblogs.com/becker/p/9335136.html
 
 supervisor
 https://www.cnblogs.com/toutou/p/supervisor.html
+
+ngnix download
+http://nginx.org/download/

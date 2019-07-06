@@ -9,13 +9,14 @@ import tornado.escape
 from settings import url
 from method.session import redis_session
 import tornado.options
+import weblog
 import warnings
 warnings.filterwarnings("ignore")
 from handlers.Timeout.timeout_handler import UserOnlineHandler
 from tornado.options import define, options
 
 define("port", default=8000, help="run on the given port", type=int)
-
+weblog.open("tornado_web")
 
 class Application(tornado.web.Application):
     def __init__(self):

@@ -10,9 +10,9 @@ from weblog import date_rotatingfilehandler
 # window and linux set different path
 import platform
 if platform.system() == "Windows":
-    log_path = u'./static/log/weblog'
+    log_path = u'/static/log/weblog'
 else:
-    log_path = u"/home/Faye/log/weblog"
+    log_path = u"/var/log/"
 
 class ctrace_logger(logging.Logger):
     """

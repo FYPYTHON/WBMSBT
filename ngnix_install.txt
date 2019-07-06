@@ -1,0 +1,26 @@
+./configure --with-http_v2_module --with-http_ssl_module --with-http_sub_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre
+
+
+tornado.conf
+upstream tornadoes{
+    server 127.0.0.1:8000;
+    server 127.0.0.1:8001;
+    server 127.0.0.1:8002;
+}
+
+proxy_next_upstream error;
+
+server {
+    listen 8888;   # Ò»°ãÊÇ 80
+    server_name 127.0.0.1;
+
+    location /{
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+# 把请求方向代理传给tornado服务器，负载均衡
+        proxy_pass http://tornadoes;
+    }
+}
