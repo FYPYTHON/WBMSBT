@@ -29,7 +29,7 @@ class DataRotatingFileHandler(logging.handlers.RotatingFileHandler):
     Others: 无
     """
 
-    def __init__(self, filename, mode='a', maxBytes=110,encoding=None, delay=0):
+    def __init__(self, filename, mode='a', maxBytes=110, encoding=None, delay=0):
         """
         Method: __init__
         Description: 初始化
@@ -63,7 +63,7 @@ class DataRotatingFileHandler(logging.handlers.RotatingFileHandler):
         # 获取日志的开始时间
         start_time = "2000-01-01_00-00-00"
         try:
-            with file(self.baseFilename) as f:
+            with open(self.baseFilename) as f:
                 line = f.readline()
                 
             p = re.match(r"\[((\d{2,4})([-_]\d{1,2}){5})\]", line)

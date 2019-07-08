@@ -14,6 +14,7 @@ if platform.system() == "Windows":
 else:
     log_path = u"/var/log/"
 
+
 class ctrace_logger(logging.Logger):
     """
     Class: ctrace_logger
@@ -78,8 +79,9 @@ class ctrace_logger(logging.Logger):
         self.file_path = file_path
 
         #self.name = name
+        # name = self.name
         
-        #self.logger = logging.getLogger(name)
+        # self.logger = logging.getLogger(name)
 #        self.handler = logging.handlers.RotatingFileHandler(
 #                 file_path
 #                , maxBytes=1024*1024*2
@@ -90,13 +92,12 @@ class ctrace_logger(logging.Logger):
                 , maxBytes=1024*1024*10)
 
         fmt = '[%(levelname)s] %(asctime)s %(message)s [File:%(filename)s Function:%(funcName)s Line:%(lineno)d]'
-        #fmt = '%(asctime)s  %(levelname)s %(message)s'
         formatter = logging.Formatter(fmt)
         
         self.addHandler(self.handler)
 
         # 在文件头，写入时间，以便切换文件的时候，提取时间
-        current_time = time.strftime("[%Y-%m-%d_%H-%M-%S]" , time.localtime(time.time()))
+        current_time = time.strftime("[%Y-%m-%d_%H-%M-%S]", time.localtime(time.time()))
         self.info(current_time)
         
         self.handler.setFormatter(formatter)
@@ -112,10 +113,12 @@ class ctrace_logger(logging.Logger):
         
         self.handler = None
         #self.logger = None
-        
+
+
 logging.setLoggerClass(ctrace_logger)
 g_logger = None
 g_print_lock = None
+
 
 def _print_log(level, msg, *args, **kwargs):
     global g_print_lock
@@ -130,30 +133,35 @@ def _print_log(level, msg, *args, **kwargs):
             
         try:
             time_info = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-       #     logmsg = level + ' '+ time_info + ' ' + msg + '[File:%s Funtion:%s Line:%s]'
+            # logmsg = level + ' '+ time_info + ' ' + msg + '[File:%s Funtion:%s Line:%s]'
             # %sys._getframe().f_code.co_filename,sys_getframe().f_code.co_name,sys_getframe().f_lineno
             if len(args) > 0:
                 msg = msg % args
             elif len(kwargs) > 0:
                 msg = msg % kwargs
-            print (level, time_info, msg)
+            print(level, time_info, msg)
     
         except:
             pass
-            
+
+
 def _print_debug(msg, *args, **kwargs):
 
     _print_log("[debug]", msg, *args, **kwargs)
 
+
 def _print_info(msg, *args, **kwargs):
     _print_log("[info]", msg, *args, **kwargs)
 
+
 def _print_warning(msg, *args, **kwargs):
     _print_log("[warning]", msg, *args, **kwargs)
-    
+
+
 def _print_error(msg, *args, **kwargs):
     _print_log("[error]",  msg, *args, **kwargs)
-       
+
+
 def _exception(msg, *args, **kwargs):    
     """
     Description: 当发生异常时，通过本函数输出异常日志到stdout
@@ -168,11 +176,12 @@ def _exception(msg, *args, **kwargs):
             pass
         try:
             time_info = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-            print (time_info, 'exception:', msg)
+            print(time_info, 'exception:', msg)
             print(traceback.format_exc())
         except:
             pass
-    
+
+
 debug       = _print_debug
 info        = _print_info
 warning     = _print_warning
@@ -189,25 +198,27 @@ def open(logname):
     global g_logger, debug, info, warning, error, exception
     close()
     g_logger = logging.getLogger(logname)
-    # dir_path = os.path.join(os.environ.get('LOG_PREFIX'), os.environ.get('WORKSPACE'), os.environ.get('LOG_POSTFIX'), 'server_log')
+    # dir_path = os.path.join(os.environ.get('LOG_PREFIX'), os.environ.get('WORKSPACE'),
+    # os.environ.get('LOG_POSTFIX'), 'server_log')
     dir_path = log_path
     ret = os.path.isdir(dir_path)
     
-    if ret != True:
+    if ret:
         try:
             os.makedirs(dir_path)
         except:
             if os.path.isdir(dir_path):
-                info("mkdir %s ok" % dir_path);   
+                info("mkdir %s ok" % dir_path)
             exception("mkdir %s failed." % dir_path)
         
-    g_logger.open(file_path = os.path.join(dir_path, logname + '.log'))
+    g_logger.open(file_path=os.path.join(dir_path, logname + '.log'))
 
-    debug       = g_logger.debug
-    info        = g_logger.info
-    warning     = g_logger.warning
-    error       = g_logger.error
-    exception   = g_logger.exception
+    debug = g_logger.debug
+    info = g_logger.info
+    warning = g_logger.warning
+    error = g_logger.error
+    exception = g_logger.exception
+
 
 def get_logger():
     global g_logger

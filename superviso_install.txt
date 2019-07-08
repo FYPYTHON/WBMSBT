@@ -21,7 +21,9 @@ files = /usr/local/supervisor/supervisord.d/tornado.conf
 [inet_http_server]         
 port=127.0.0.1:9001        
 username=root              
-password=1234               
+password=1234
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 
 tornado.conf:
 [group:tornadoes]

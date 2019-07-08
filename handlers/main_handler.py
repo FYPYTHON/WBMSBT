@@ -17,9 +17,7 @@ class MainHandler(BaseHandler):
     @run_on_executor
     def doing(self):
         import time
-        time.sleep(10)
-        # gen.sleep(30)
-        # os.system("ping -c 20 www.baidu.com")
+        # time.sleep(10)
         return str(datetime.now())
 
     @gen.coroutine
