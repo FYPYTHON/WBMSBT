@@ -4,7 +4,7 @@ from tornado.web import authenticated
 from database.tbl_admin import TblAdmin
 from handlers.base_handler import BaseHandler
 from json import dumps as json_dumps
-import weblog
+from tornado.log import access_log as weblog
 
 
 class UserSettingHandler(BaseHandler):

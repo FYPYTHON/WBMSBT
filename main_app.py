@@ -9,26 +9,24 @@ import tornado.escape
 from settings import url
 from method.session import redis_session
 import tornado.options
-import weblog
+import logging.config
+from settings.logconfig import logconfig
+# from tornado.log import access_log as weblog
 import warnings
 warnings.filterwarnings("ignore")
 from handlers.Timeout.timeout_handler import UserOnlineHandler
 from tornado.options import define, options
 
 define("port", default=8081, help="run on the given port", type=int)
-# define('log_file_prefix', default='/var/log/tornado_web.log')
-# define('log_rotate_mode', default='time')
-# define('log_rotate_when', default='M')
-# define('log_rotate_interval', default=1)
+logging.config.dictConfig(logconfig)
 
-weblog.open("tornado_web")
 
 class Application(tornado.web.Application):
     def __init__(self):
 
         settings = dict(
-            template_path= (os.path.join(os.path.dirname(__file__), "templates")),
-            static_path= (os.path.join(os.path.dirname(__file__), "static")),
+            template_path=(os.path.join(os.path.dirname(__file__), "templates")),
+            static_path=(os.path.join(os.path.dirname(__file__), "static")),
             cookie_secret="bZJc2sWMakYos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
             session_secret="bZJc2sWMakYos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
             session_timeout=300,
@@ -64,6 +62,7 @@ if __name__ == "__main__":
     app.listen(options.port)
 
     # tornado.ioloop.PeriodicCallback(UserOnlineHandler.get_online_users,6000).start()
+
     tornado.ioloop.IOLoop.instance().start()
 
 

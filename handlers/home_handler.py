@@ -1,6 +1,6 @@
 # coding=utf-8
 from tornado.web import authenticated
-import weblog
+from tornado.log import access_log as weblog
 from handlers.base_handler import BaseHandler
 
 

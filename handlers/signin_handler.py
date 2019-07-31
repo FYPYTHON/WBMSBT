@@ -4,7 +4,7 @@ import hashlib
 from database.tbl_account import TblAccount
 from handlers.base_handler import BaseHandler
 from json import dumps as json_dumps
-import weblog
+from tornado.log import access_log as weblog
 from message import msg_define
 from method.data_encode import MD5, generate_uuid
 SESSION_ID = msg_define.SESSION_ID

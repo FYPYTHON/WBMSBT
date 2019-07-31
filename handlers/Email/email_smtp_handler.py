@@ -9,7 +9,7 @@ from email.header import Header
 from email.mime.multipart import MIMEMultipart
 import re
 import os
-import weblog
+from tornado.log import access_log as weblog
 
 
 def check_email(email):

@@ -7,7 +7,7 @@ from database.tbl_account import TblAccount
 from database.tbl_component_maintenance import TblComponentMaintenance
 from handlers.base_handler import BaseHandler
 from tornado.web import authenticated
-import weblog
+from tornado.log import access_log as weblog
 from message import msg_define
 from handlers.user_manage_handler import get_user_list, get_user_by_id
 from handlers.Project.project_manage_handler import get_project_list

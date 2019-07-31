@@ -3,7 +3,7 @@ from json import dumps
 from database.tbl_account import TblAccount
 from handlers.base_handler import BaseHandler
 from tornado.web import authenticated
-import weblog
+from tornado.log import access_log as weblog
 from message import msg_define
 from method.data_encode import MD5
 from handlers.Email.email_smtp_handler import check_email, check_passord

@@ -6,7 +6,7 @@ from method.generate_verify_image import generate_verify_image
 import re
 import base64
 import random
-import weblog
+from tornado.log import access_log as weblog
 class verifyCode(BaseHandler):
     def get(self):
         pass

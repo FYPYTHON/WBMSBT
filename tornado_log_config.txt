@@ -1,0 +1,53 @@
+一个logging.yaml例子，这里只配置了tornado.access，其中的logs文件夹需要手动建立
+
+version: 1
+
+loggers:
+  root:
+    level: DEBUG
+    handlers: [console]
+  tornado:
+    level: DEBUG
+    handlers: [console,log]
+    propagate: no
+  tornado.access:
+    level: DEBUG
+    handlers: [console, access]
+    propagate: no
+  log:
+    level: DEBUG
+    handlers: [console,log]
+    propagate: no
+
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  timedRotating:
+    format: '%(asctime)s %(name)-12s %(levelname)-8s - %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+  access:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: simple
+    filename: 'logs/access.log'
+    when: 'midnight'
+    interval: 1
+    backupCount: 180
+  log:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: timedRotating
+    filename: 'logs/log.log'
+    when: 'midnight'
+    interval: 1
+    backupCount: 180
+    encoding: 'utf8'
+tornado初始化之前记得初始化log配置
+
+log_config = yaml.load(open('logging.yaml', 'r'))
+logging.config.dictConfig(log_config)

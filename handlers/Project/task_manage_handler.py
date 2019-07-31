@@ -1,7 +1,7 @@
 # coding=utf-8
 from tornado.web import authenticated
 from handlers.base_handler import BaseHandler
-import weblog
+from tornado.log import access_log as weblog
 from handlers.Project.project_manage_handler import get_project_list, get_user_list
 
 

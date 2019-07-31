@@ -4,7 +4,7 @@ from tornado.web import authenticated
 from database.tbl_note_list import TblPostList
 from handlers.base_handler import BaseHandler
 from json import dumps as json_dumps
-import weblog
+from tornado.log import access_log as weblog
 
 
 class NoteListHandler(BaseHandler):

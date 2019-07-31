@@ -10,7 +10,7 @@ import hmac
 import ujson
 import hashlib
 import redis
-import weblog
+from tornado.log import access_log as weblog
 
 
 class SessionData(dict):

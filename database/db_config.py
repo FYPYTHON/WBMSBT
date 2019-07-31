@@ -4,10 +4,11 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 import pymysql
 pymysql.install_as_MySQLdb()
+
 ModelBase = declarative_base()
 engine = create_engine('mysql+pymysql://root:Faye0808@localhost:3306/faye_dream?charset=utf8',pool_size=100,echo=False)
 
-session_factory = sessionmaker(bind = engine)
+session_factory = sessionmaker(bind=engine)
 db_session = scoped_session(session_factory)
 
 def ini_tbladmin():

@@ -2,7 +2,8 @@
 from tornado.web import authenticated
 from handlers.base_handler import BaseHandler
 from json import dumps as json_dumps
-import weblog
+# from tornado.log import access_log as weblog
+from tornado.log import access_log as weblog
 from tornado import gen
 from tornado.concurrent import run_on_executor
 from concurrent.futures import ThreadPoolExecutor
@@ -25,6 +26,7 @@ class MainHandler(BaseHandler):
         print(datetime.now(), "start")
         # self.render("testclick.html")
         weblog.info("%s.", self._request_summary())
+        weblog.info("get home")
         result = yield self.doing()
         print(result)
         self.render("admin/homepage.html")

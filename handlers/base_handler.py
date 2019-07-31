@@ -3,7 +3,7 @@ import datetime
 import tornado.web
 import tornado.options
 from tornado.web import authenticated
-import weblog
+from tornado.log import access_log as weblog
 from database.db_config import db_session
 from database.tbl_admin import TblAdmin
 from message.msg_define import SESSION_ID

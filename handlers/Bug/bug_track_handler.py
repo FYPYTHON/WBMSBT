@@ -1,24 +1,4 @@
 # coding=utf-8
-"""
-    bug_id = Column(Integer, primary_key=True, autoincrement=True,unique=True)
-    bug_date_receive = Column(Date, comment=u"接收时间")
-    bug_find_by = Column(Integer, nullable=False, comment=u"接口人")
-    bug_component = Column(Integer, nullable=False, comment=u"问题所属模块")
-    component_belong = Column(Integer, nullable=False, comment=u"模块维护人")
-    component_community = Column(String(256), comment=u"模块社区讨论(新功能开发)")
-    bug_project_id = Column(Integer, nullable=False, comment=u"项目名称")
-    # project_name = Column(String(1024), nullable=False, comment=u"项目名称")
-    project_version = Column(String(16), nullable=False, comment=u"所属版本")
-    bug_describe = Column(Text, default='', comment=u"问题描述")
-    bug_level = Column(Integer, default=0, comment=u"优先级:0=低,1=中,2=高,3=急")
-    bug_reason = Column(Text, default="", comment=u"问题原因")
-    bug_solution = Column(Text, default='', comment=u"解决措施")
-    bug_progress = Column(Text, default="", comment=u"进展（6/10）")
-    bug_date_plan = Column(Date, comment=u"承诺解决日期")
-    bug_date_done = Column(Date, comment=u"实际解决日期")
-    bug_user_done = Column(Integer, nullable=False, comment=u"负责人")
-    bug_version = Column(String(16), nullable=False, comment=u"合入版本")
-"""
 import json
 from database.tbl_project import TblProject
 from database.tbl_bug_list import TblBugList
@@ -27,7 +7,7 @@ from database.tbl_bug_track import TblBugTrack
 from database.tbl_project_user import TblPorjectUser
 from handlers.base_handler import BaseHandler
 from tornado.web import authenticated
-import weblog
+from tornado.log import access_log as weblog
 from message import msg_define
 from handlers.Email.email_smtp_handler import check_email, check_passord
 from handlers.user_manage_handler import get_user_list, get_user_by_id
@@ -101,7 +81,7 @@ def gene_bugtrack_result(self, bugs):
 
 
 class BugTrackHandler(BaseHandler):
-    # @authenticated
+    @authenticated
     def get(self):
         belongid = self.get_argument("belongid", None)
         compid = self.get_argument("compid", None)
@@ -112,12 +92,12 @@ class BugTrackHandler(BaseHandler):
         # return self.render('bug/bugtracklist.html', message="", users=get_user_list(self)
         #                    , projects=get_project_list(self), bugs=get_bugtrack_list(self))
 
-    # @authenticated
+    @authenticated
     def post(self):
         weblog.info("%s.", self._request_summary())
-        bug_component = int(self.get_argument("bug_component", -1))
-        component_belong = int(self.get_argument("component_belong", -1))
-        bug_level = int(self.get_argument("bug_level", -1))
+        bug_component = int(self.get_argument("bug_component", '-1'))
+        component_belong = int(self.get_argument("component_belong", '-1'))
+        bug_level = int(self.get_argument("bug_level", '-1'))
         bug_component = None if bug_component < 0 else bug_component
         component_belong = None if component_belong < 0 else component_belong
         bug_level = None if bug_level < 0 else bug_level
