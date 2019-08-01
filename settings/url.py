@@ -1,4 +1,5 @@
 # coding=utf-8
+from .extra_url import extra_url
 from handlers import admin_handler, home_handler, user_setting_handler, user_manage_handler, note_manage_handler
 from handlers import main_handler,table_test_handler
 from handlers.signin_handler import SigninHandler
@@ -45,4 +46,5 @@ url = [                            #
         (r'/compmt/add', bug_maintenance_handler.BugCompmtAddHandler),
         (r'/compmt/edit/([0-9]+)', bug_maintenance_handler.BugCompmtEditHandler),
         (r'/compmt/delete/([0-9]+)', bug_maintenance_handler.BugCompmtDeleteHandler),
-]
+
+] + extra_url

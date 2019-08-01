@@ -1,0 +1,24 @@
+.debug{
+	border: solid 1px black;
+}
+.divheader{
+	height: 50px;
+	margin-top: -20px;
+}
+.e-nav{
+	height: 50px;
+	background-color: #BBFFFF;
+	margin: 0px -15px 0px -15px;
+}
+.e-nav ul li{
+	float: left;
+}
+.e-nav .isselected a{
+	background-color: red;
+}
+.createtime label{
+	font-size: 8px;
+	color: #8E8E8E; 
+	font-family: Arial;
+	text-align: right;
+}

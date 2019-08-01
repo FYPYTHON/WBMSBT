@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Extra Home</title>
+    {% end %}
+    <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
+    <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>
+    <script src="{{static_url('libs/js/common.js')}}"></script>
+    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{static_url('libs/css/extra.css')}}">
+    {% block js-css %}
+    {% end %}
+
+</head>
+<body>
+<header>
+	<dir class="divheader debug">
+		
+	</dir>
+</header>
+<div class="container-fluid debug" style="height: 200px;">
+	<div class="row-fluid">
+		<!-- nav -->
+		<div class="col-md-12 e-nav">
+			<ul class="nav nav-pills" id="extranav">
+				<li class="active">
+					<a class="ajax-link" href="#">首页</a>
+				</li>
+				<li>
+					<a class="ajax-link" href="#">设置</a>
+				</li>
+			</ul>
+			
+		</div>
+		<!-- left -->
+		<div class="col-md-2"></div>
+		<!-- main -->
+		<div class="col-md-8 debug" style="height: 100px;">
+			<div class="col-md-12">
+				<div class="col-md-8">
+					<a href="#">python 中文解码问题</a>
+				</div>
+				<div class="col-md-4 debug">
+					<a>作者：龙卷风</a>
+				</div>
+			</div>
+			<div class="col-md-12">
+				...
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<a href="#">回复：12</a>
+				</div>
+				<div class="col-md-3">
+					<a href="#">点赞：12</a>
+				</div>
+				<div class="col-md-6 createtime debug">
+					<label>2019-08-01 19:37:12</label>
+				</div>
+			</div>
+		</div>
+		<!-- right -->
+		<div class="col-md-2"></div>
+	</div>
+</div>
+<!-- <script type="text/javascript">		
+	$('#extranav li').click(function() {
+		console.log("clicked...");
+	    $(this).addClass('active').siblings().removeClass('active');
+	})
+	
+</script> -->
+
+</body>
+</html>

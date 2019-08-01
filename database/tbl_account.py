@@ -10,10 +10,11 @@ class TblAccount(ModelBase, table_base.TableBase):
     __tablename__ = 'tbl_account'
 
     id = Column(Integer, unique=True, primary_key=True, autoincrement=True)
-    username = Column(String(100),unique=True, nullable=False)
+    username = Column(String(100), unique=True, nullable=False)
+    nicknmae = Column(String(20), default=u"龙卷风", nullable=False)
     password = Column(String(100), nullable=False)
-    email = Column(String(100),nullable=False)
-    userstate = Column(Integer , comment=u"0=正常，1=不可用")
+    email = Column(String(100), nullable=False)
+    userstate = Column(Integer, comment=u"0=正常，1=不可用")
     userrole = Column(Integer, comment=u"0=管理员，1=普通用户")
     register_time = Column(DateTime, default=datetime.now())
     avatar_path = Column(String(100), comment=u"用户头像地址")
