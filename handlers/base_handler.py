@@ -53,7 +53,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
 
         if self.request.uri.startswith(self.get_login_url()) or self.request.uri.startswith('/admin/verifyCode'):
-            return "ok"
+            return "system"
         session_id = self.get_secure_cookie(SESSION_ID)
         if session_id is None:
             return None

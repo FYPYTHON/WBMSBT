@@ -13,3 +13,6 @@ class TblDiscuss(ModelBase, table_base.TableBase):
     topic_id = Column(Integer, comment=u"话题")
     discuss = Column(Text, comment=u"评论")
     create = Column(DateTime, default=datetime.now())
+    original = Column(Integer, nullable=False, default=0, comment=u"来源discuss")
+    author = Column(Integer, comment=u"作者")
+    status = Column(Integer, comment=u"0=正常")

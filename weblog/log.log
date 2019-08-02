@@ -291,3 +291,213 @@ tornado.template.ParseError: unknown operator: 'web' at extrabase.html:5
 2019-08-01 19:57:47,721 tornado.access INFO     - GET /extra (::1). get extrabase.html
 2019-08-01 19:57:47,724 tornado.access INFO     - 200 GET /extra (::1) 1037.26ms
 2019-08-01 19:57:47,933 tornado.access INFO     - 200 GET /favicon.ico (::1) 171.54ms
+2019-08-02 10:29:07,706 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 10:29:07,713 tornado.access INFO     - 200 GET /discuss (::1) 1034.23ms
+2019-08-02 10:29:07,955 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 228.39ms
+2019-08-02 10:29:07,956 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=eb6b73384014eefbda9a7d897c100c71 (::1) 1.00ms
+2019-08-02 11:05:35,684 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 11:05:35,685 tornado.application ERROR    - Uncaught exception GET /discuss (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/discuss', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1697, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py", line 22, in get
+    discuss, totalpage = self.get_discuss()
+TypeError: get_discuss() missing 1 required positional argument: 'current_page'
+2019-08-02 11:05:35,694 tornado.access ERROR    - 500 GET /discuss (::1) 1042.21ms
+2019-08-02 11:07:34,206 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 11:07:34,212 tornado.application ERROR    - Uncaught exception GET /discuss (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/discuss', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1697, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py", line 24, in get
+    return self.render("extra/discuss.html", discuss=discuss)
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 856, in render
+    html = self.render_string(template_name, **kwargs)
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1002, in render_string
+    t = loader.load(template_name)
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 445, in load
+    self.templates[name] = self._create_template(name)
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 477, in _create_template
+    template = Template(f.read(), name=name, loader=self)
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 317, in __init__
+    self.file = _File(self, _parse(reader, self))
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 1019, in _parse
+    block_body = _parse(reader, template, operator, in_loop)
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 859, in _parse
+    "Missing {%% end %%} block for %s" % in_block
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 834, in raise_parse_error
+    raise ParseError(msg, self.name, self.line)
+tornado.template.ParseError: Missing {% end %} block for block at extra/discuss.html:32
+2019-08-02 11:07:34,226 tornado.access ERROR    - 500 GET /discuss (::1) 1045.16ms
+2019-08-02 11:08:14,440 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 11:08:14,450 tornado.access INFO     - 200 GET /discuss (::1) 1044.21ms
+2019-08-02 11:08:14,694 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 225.43ms
+2019-08-02 11:08:14,695 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 226.39ms
+2019-08-02 11:08:14,696 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 226.35ms
+2019-08-02 11:08:14,698 tornado.access INFO     - 304 GET /static/libs/css/extra.css?v=eb6b73384014eefbda9a7d897c100c71 (::1) 1.00ms
+2019-08-02 11:08:14,699 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 2.00ms
+2019-08-02 11:15:03,249 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 11:15:03,262 tornado.access INFO     - 200 GET /discuss (::1) 1049.20ms
+2019-08-02 11:15:03,483 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=ef81794c03773a9caabc2dc2d7cc4f9c (::1) 217.45ms
+2019-08-02 11:15:03,485 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 0.96ms
+2019-08-02 11:15:03,485 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 0.96ms
+2019-08-02 11:15:03,487 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 1.00ms
+2019-08-02 11:15:03,488 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 0.97ms
+2019-08-02 11:17:09,504 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 11:17:09,515 tornado.access INFO     - 200 GET /discuss (::1) 1047.20ms
+2019-08-02 11:17:09,744 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 223.40ms
+2019-08-02 11:17:09,746 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 1.03ms
+2019-08-02 11:17:09,747 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 2.02ms
+2019-08-02 11:17:09,748 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 1.00ms
+2019-08-02 11:17:09,749 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=ab97cbd156405d9fb0bca55e5939e58d (::1) 0.99ms
+2019-08-02 13:07:06,679 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 13:07:06,689 tornado.access INFO     - 200 GET /discuss (::1) 1045.20ms
+2019-08-02 13:07:06,919 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 225.43ms
+2019-08-02 13:07:06,921 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 2.00ms
+2019-08-02 13:07:06,921 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 1.00ms
+2019-08-02 13:07:06,923 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 0.98ms
+2019-08-02 13:07:06,924 tornado.access INFO     - 304 GET /static/libs/css/extra.css?v=ab97cbd156405d9fb0bca55e5939e58d (::1) 1.00ms
+2019-08-02 13:20:20,370 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 13:20:20,381 tornado.access INFO     - 200 GET /discuss (::1) 1047.20ms
+2019-08-02 13:20:20,610 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=bfa64ebc06861f89a88df9388888e958 (::1) 224.40ms
+2019-08-02 13:20:20,613 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 1.99ms
+2019-08-02 13:20:20,614 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 2.99ms
+2019-08-02 13:20:20,614 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 2.99ms
+2019-08-02 13:20:20,615 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 1.00ms
+2019-08-02 13:23:12,306 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 13:23:12,317 tornado.access INFO     - 200 GET /discuss (::1) 1048.23ms
+2019-08-02 13:23:12,541 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=99cef043ddda5b1e98a66664e886d416 (::1) 218.45ms
+2019-08-02 13:23:12,543 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 1.99ms
+2019-08-02 13:23:12,545 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 2.99ms
+2019-08-02 13:23:12,546 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 4.03ms
+2019-08-02 13:23:12,548 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 1.03ms
+2019-08-02 13:27:27,973 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 13:27:27,984 tornado.access INFO     - 200 GET /discuss (::1) 1045.21ms
+2019-08-02 13:27:28,211 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 223.40ms
+2019-08-02 13:27:28,212 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 1.00ms
+2019-08-02 13:27:28,213 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 2.00ms
+2019-08-02 13:27:28,215 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 1.99ms
+2019-08-02 13:27:28,216 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=e36a2ebf83b9a6edda680902a1d32411 (::1) 1.99ms
+2019-08-02 13:48:00,134 tornado.access INFO     - GET /discuss (::1). get discuss.html
+2019-08-02 13:48:00,144 tornado.access INFO     - 200 GET /discuss (::1) 1050.19ms
+2019-08-02 13:48:00,377 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=830a43077d70ad039ee63d11daf53c19 (::1) 228.39ms
+2019-08-02 13:48:00,379 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 1.00ms
+2019-08-02 13:48:00,380 tornado.access INFO     - 304 GET /static/libs/js/common.js?v=9c03a3617682f21f7e6ad97f89b032cf (::1) 2.02ms
+2019-08-02 13:48:00,381 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 2.00ms
+2019-08-02 13:48:00,382 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 1.00ms
+2019-08-02 15:17:39,252 tornado.access WARNING  - 404 GET /discuss (::1) 0.99ms
+2019-08-02 15:17:46,138 tornado.access WARNING  - 404 GET /discuss (::1) 0.00ms
+2019-08-02 15:19:12,745 tornado.access WARNING  - 404 GET /discuss (::1) 1.03ms
+2019-08-02 15:21:05,724 tornado.access WARNING  - 404 GET /discuss (::1) 1.00ms
+2019-08-02 15:21:10,452 tornado.access INFO     - 200 GET /discuss/1 (::1) 1130.98ms
+2019-08-02 15:21:10,687 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=a044e56434adf293dfc087c029848287 (::1) 232.41ms
+2019-08-02 15:30:42,899 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:30:42,931 tornado.access INFO     - 200 GET /discuss/1 (::1) 1068.12ms
+2019-08-02 15:30:43,169 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 229.42ms
+2019-08-02 15:30:43,170 tornado.access INFO     - 304 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 229.41ms
+2019-08-02 15:30:43,172 tornado.access INFO     - 304 GET /static/libs/css/extra.css?v=830a43077d70ad039ee63d11daf53c19 (::1) 1.00ms
+2019-08-02 15:30:43,173 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=9e5914d7578500f410de06be62f97247 (::1) 1.99ms
+2019-08-02 15:30:43,174 tornado.access INFO     - 304 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 1.99ms
+2019-08-02 15:34:19,883 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:34:19,892 tornado.access INFO     - 200 GET /discuss/1 (::1) 1053.21ms
+2019-08-02 15:34:20,254 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=608c7850aa11137392e0e71e29647948 (::1) 235.34ms
+2019-08-02 15:34:20,256 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=830a43077d70ad039ee63d11daf53c19 (::1) 1.00ms
+2019-08-02 15:37:25,109 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:37:25,116 tornado.access INFO     - 200 GET /discuss/1 (::1) 1051.22ms
+2019-08-02 15:37:25,355 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=5dc90a7abc38003c238617986bf7271e (::1) 230.41ms
+2019-08-02 15:37:25,415 tornado.access INFO     - 200 GET /favicon.ico (::1) 9.93ms
+2019-08-02 15:37:55,264 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:37:55,272 tornado.access INFO     - 304 GET /discuss/1 (::1) 1047.23ms
+2019-08-02 15:37:55,536 tornado.access INFO     - 200 GET /favicon.ico (::1) 232.41ms
+2019-08-02 15:38:48,203 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:38:48,211 tornado.access INFO     - 200 GET /discuss/1 (::1) 1042.22ms
+2019-08-02 15:38:48,454 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=36b4e4e0305d0821b915f6b969c79f6c (::1) 234.40ms
+2019-08-02 15:38:48,475 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.99ms
+2019-08-02 15:39:55,610 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:39:55,622 tornado.access INFO     - 200 GET /discuss/1 (::1) 1049.23ms
+2019-08-02 15:39:55,875 tornado.access INFO     - 200 GET /favicon.ico (::1) 222.43ms
+2019-08-02 15:39:58,573 tornado.access WARNING  - 404 POST /discuss (::1) 0.94ms
+2019-08-02 15:44:03,822 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:44:03,838 tornado.access INFO     - 200 GET /discuss/1 (::1) 1049.23ms
+2019-08-02 15:44:04,109 tornado.access INFO     - 200 GET /favicon.ico (::1) 227.42ms
+2019-08-02 15:44:06,033 tornado.access WARNING  - 404 POST /discuss/+dis+ (::1) 1.00ms
+2019-08-02 15:46:08,027 tornado.access WARNING  - 404 POST /discuss/+dis+ (::1) 1.00ms
+2019-08-02 15:48:11,240 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:48:11,247 tornado.access INFO     - 200 GET /discuss/1 (::1) 1040.25ms
+2019-08-02 15:48:11,520 tornado.access INFO     - 200 GET /favicon.ico (::1) 226.42ms
+2019-08-02 15:48:14,762 tornado.access WARNING  - 404 POST /discuss/'+dis+' (::1) 1.00ms
+2019-08-02 15:49:00,882 tornado.access WARNING  - 404 POST /discuss/'+dis+' (::1) 1.00ms
+2019-08-02 15:49:54,864 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:49:54,874 tornado.access INFO     - 200 GET /discuss/1 (::1) 1048.20ms
+2019-08-02 15:49:55,143 tornado.access INFO     - 200 GET /favicon.ico (::1) 222.42ms
+2019-08-02 15:49:57,506 tornado.access WARNING  - 404 POST /discuss/[object%20HTMLTextAreaElement] (::1) 0.00ms
+2019-08-02 15:52:41,299 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:52:41,308 tornado.access INFO     - 200 GET /discuss/1 (::1) 1045.21ms
+2019-08-02 15:52:41,573 tornado.access INFO     - 200 GET /favicon.ico (::1) 222.42ms
+2019-08-02 15:52:44,753 tornado.access WARNING  - 404 POST /discuss/[object%20HTMLTextAreaElement] (::1) 0.00ms
+2019-08-02 15:54:59,403 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:54:59,425 tornado.access INFO     - 200 GET /discuss/1 (::1) 1057.20ms
+2019-08-02 15:54:59,691 tornado.access INFO     - 200 GET /favicon.ico (::1) 221.44ms
+2019-08-02 15:56:20,980 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 15:56:20,997 tornado.access INFO     - 200 GET /discuss/1 (::1) 1053.18ms
+2019-08-02 15:56:21,270 tornado.access INFO     - 200 GET /favicon.ico (::1) 230.38ms
+2019-08-02 15:56:24,449 tornado.general WARNING  - 400 POST /discuss/1 (::1): Missing argument dicuss
+2019-08-02 15:56:24,451 tornado.access WARNING  - 400 POST /discuss/1 (::1) 1009.30ms
+2019-08-02 16:03:20,954 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:03:20,970 tornado.access INFO     - 200 GET /discuss/1 (::1) 1049.20ms
+2019-08-02 16:03:21,240 tornado.access INFO     - 200 GET /favicon.ico (::1) 227.42ms
+2019-08-02 16:06:34,882 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:06:34,889 tornado.access INFO     - 200 GET /discuss/1 (::1) 1044.24ms
+2019-08-02 16:06:35,164 tornado.access INFO     - 200 GET /favicon.ico (::1) 228.39ms
+2019-08-02 16:06:39,056 tornado.general WARNING  - 400 POST /discuss/1 (::1): Missing argument dicuss
+2019-08-02 16:06:39,057 tornado.access WARNING  - 400 POST /discuss/1 (::1) 1006.28ms
+2019-08-02 16:08:20,110 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:08:20,117 tornado.access INFO     - 304 GET /discuss/1 (::1) 1044.24ms
+2019-08-02 16:08:20,379 tornado.access INFO     - 200 GET /favicon.ico (::1) 221.43ms
+2019-08-02 16:08:24,045 tornado.access INFO     - 200 POST /discuss/1 (::1) 1045.20ms
+2019-08-02 16:11:47,489 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:11:47,499 tornado.access INFO     - 200 GET /discuss/1 (::1) 1053.21ms
+2019-08-02 16:11:47,762 tornado.access INFO     - 200 GET /favicon.ico (::1) 220.44ms
+2019-08-02 16:11:52,646 tornado.access INFO     - 200 POST /discuss/1 (::1) 2252.98ms
+2019-08-02 16:15:56,417 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:15:56,427 tornado.access INFO     - 200 GET /discuss/1 (::1) 1058.20ms
+2019-08-02 16:15:56,693 tornado.access INFO     - 200 GET /favicon.ico (::1) 222.43ms
+2019-08-02 16:16:02,579 tornado.access INFO     - 200 POST /discuss/1 (::1) 1010.27ms
+2019-08-02 16:16:03,593 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:16:03,603 tornado.access INFO     - 200 GET /discuss/1 (::1) 1018.28ms
+2019-08-02 16:18:02,965 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:18:02,973 tornado.access INFO     - 200 GET /discuss/1 (::1) 1050.22ms
+2019-08-02 16:18:03,234 tornado.access INFO     - 200 GET /favicon.ico (::1) 225.43ms
+2019-08-02 16:18:06,970 tornado.access INFO     - 200 POST /discuss/1 (::1) 1025.26ms
+2019-08-02 16:19:13,123 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:19:13,131 tornado.access INFO     - 200 GET /discuss/1 (::1) 1049.22ms
+2019-08-02 16:19:13,395 tornado.access INFO     - 200 GET /favicon.ico (::1) 225.43ms
+2019-08-02 16:19:17,052 tornado.access INFO     - 200 POST /discuss/1 (::1) 1027.30ms
+2019-08-02 16:22:10,699 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:22:10,722 tornado.access INFO     - 200 GET /discuss/1 (::1) 1062.19ms
+2019-08-02 16:22:10,981 tornado.access INFO     - 200 GET /favicon.ico (::1) 223.40ms
+2019-08-02 16:22:13,970 tornado.access INFO     - 200 POST /discuss/1 (::1) 1009.33ms
+2019-08-02 16:27:37,770 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:27:37,796 tornado.access INFO     - 200 GET /discuss/1 (::1) 1063.19ms
+2019-08-02 16:27:38,071 tornado.access INFO     - 200 GET /favicon.ico (::1) 226.42ms
+2019-08-02 16:27:43,175 tornado.access INFO     - 200 POST /discuss/1 (::1) 1102.06ms
+2019-08-02 16:27:44,195 tornado.access INFO     - GET /discuss/1 (::1). get discuss.html.topic:1
+2019-08-02 16:27:44,197 tornado.access INFO     - 200 GET /discuss/1 (::1) 1008.33ms
+2019-08-02 17:01:51,651 tornado.access WARNING  - 404 GET /topic (::1) 1.03ms
+2019-08-02 17:01:57,279 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-02 17:01:57,300 tornado.access INFO     - 200 GET /extra (::1) 1062.19ms
+2019-08-02 17:06:47,578 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-02 17:06:47,623 tornado.access INFO     - 200 GET /extra (::1) 1095.10ms
+2019-08-02 17:06:47,899 tornado.access INFO     - 200 GET /favicon.ico (::1) 224.40ms
+2019-08-02 17:12:32,296 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-02 17:12:32,345 tornado.access INFO     - 200 GET /extra (::1) 1091.11ms
+2019-08-02 17:12:32,613 tornado.access INFO     - 200 GET /favicon.ico (::1) 225.43ms
+2019-08-02 17:16:03,189 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-02 17:16:03,218 tornado.access INFO     - 200 GET /extra (::1) 1063.19ms
+2019-08-02 17:16:03,502 tornado.access INFO     - 200 GET /favicon.ico (::1) 225.43ms
+2019-08-02 17:23:38,840 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-02 17:23:38,884 tornado.access INFO     - 200 GET /extra (::1) 1091.12ms
+2019-08-02 17:23:39,122 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=0b13238d4db61dd3c174bcef84733818 (::1) 228.42ms
+2019-08-02 17:23:39,141 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.00ms

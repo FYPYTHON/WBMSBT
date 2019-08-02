@@ -11,7 +11,7 @@ class TblAccount(ModelBase, table_base.TableBase):
 
     id = Column(Integer, unique=True, primary_key=True, autoincrement=True)
     username = Column(String(100), unique=True, nullable=False)
-    nicknmae = Column(String(20), default=u"龙卷风", nullable=False)
+    nickname = Column(String(20), default=u"龙卷风", nullable=False)
     password = Column(String(100), nullable=False)
     email = Column(String(100), nullable=False)
     userstate = Column(Integer, comment=u"0=正常，1=不可用")

@@ -43,7 +43,7 @@ logconfig = {
     },
     'formatters': {
       'simple': {
-        'format': '[%(levelname)s %(name)s]-[%(funcName)s]-[%(asctime)s %(pathname)s %(lineno)s]:(%(message)s)'
+        'format': '%(levelname)s %(name)s-%(funcName)s-%(asctime)s %(pathname)s %(lineno)s:%(message)s'
       },
       'timedRotating': {
         'format': '%(asctime)s %(name)-12s %(levelname)-8s - %(message)s'

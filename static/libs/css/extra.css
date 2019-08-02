@@ -1,6 +1,10 @@
 .debug{
 	border: solid 1px black;
 }
+.rightsytle{
+	float: right;
+	text-align: right;
+}
 .divheader{
 	height: 50px;
 	margin-top: -20px;
@@ -16,9 +20,23 @@
 .e-nav .isselected a{
 	background-color: red;
 }
+.topic label{
+	font-size: 12px;
+}
+.topic a{
+	font-size: 16px;
+	color: #3d3d3d;
+}
 .createtime label{
 	font-size: 8px;
 	color: #8E8E8E; 
 	font-family: Arial;
-	text-align: right;
+}
+textarea{
+	maxlength:1000;
+	height: 38px;
+	width: 100%;
+	margin-top: 10px;
+	border: 1px solid;
+	border-radius: 3px;  
 }

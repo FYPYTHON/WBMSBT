@@ -50,23 +50,13 @@ if __name__ == "__main__":
     # init_admin()
     # init_user()
     # init_setting()
-    from database.tbl_bug_list import TblBugList
-    from database.tbl_project import TblProject
-    from database.tbl_account import TblAccount
-    # done_user = db_session.query(TblAccount).subquery()
-    bugs = db_session.query(TblBugList.bug_name
-                                , TblBugList.bug_describe
-                                , TblBugList.bug_solution
-                                , TblBugList.bug_id
-                                , TblBugList.bug_date_plan
-                                , TblBugList.bug_date_done
-                                , TblBugList.bug_status
-                                , TblProject.project_name.label('bug_project_id')
-                                , TblAccount.username.label('bug_find_by')
-                                )
-    bugs = bugs.filter(TblBugList.bug_find_by == TblAccount.id
-                       , TblBugList.bug_project_id == TblProject.project_id)
-    bugs = bugs.order_by(TblBugList.bug_date_plan).all()
-
-    for bug in bugs:
-        print(bug)
+    from database.tbl_discuss import TblDiscuss
+    from datetime import datetime
+    dis = TblDiscuss()
+    dis.discuss = u"sub discuss"
+    dis.author = 3
+    dis.status = 0
+    dis.original = 1
+    dis.topic_id = 1
+    db_session.add(dis)
+    db_session.commit()

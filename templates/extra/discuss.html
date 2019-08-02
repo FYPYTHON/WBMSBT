@@ -1,0 +1,71 @@
+{% extends "../extrabase.html" %}
+
+{% block title %}
+<title>Discuss</title>
+{% end %}
+
+{% block js-css %}
+<script type="text/javascript">
+	function publish_discuss(topic_id, dis){
+
+		console.log(topic_id, dis);
+		var discuss = $("#discuss").val();
+		path_url = "/discuss/"+topic_id+"";
+		$.ajax({
+	        type: "POST",
+	        url: path_url,
+	        dataType : "json",
+	        async: true,
+	        data: {"discuss": discuss,"did":dis,"topic_id":topic_id},
+	        success: function (data){
+	            console.log(data.msg);
+	            if(data.msg==null){
+	 				
+	                // $("#d_msg").attr("value","发布成功！");
+	                $("#d_msg").html("成功").css("color","blue");
+	                window.location.href = path_url;
+	            }
+	            else{
+	                // $("#msgSignin").html(data.msg).css("color","red");
+	                $("#d_msg").html("失败").css("color","red");
+	            }
+	        }
+    	})
+	}
+</script>
+{% end %}
+
+
+{% block main %}
+<div class="col-md-12">
+	<textarea class="discuss" id="discuss" name="discuss" placeholder="想说点什么">
+    </textarea>
+    <label id="d_msg" style="margin-left: 50px;"></label>
+    <button type="button" class="btn btn-primary" style="float: right;margin-top: 4px;margin-bottom: 10px;" onclick="publish_discuss({{discuss[0].topic_id}},{{discuss[0].original}})">发布评论</button>
+</div>
+{% for dis in discuss %}
+<div class="col-md-12">
+	<div class="col-md-8">
+		<a href="#">{{dis.discuss}}</a>
+	</div>
+<!-- 	<div class="col-md-4 rightsytle">
+		<a>{{dis.author}}</a>
+	</div> -->
+</div>
+<div class="col-md-12">
+	<div class="col-md-3">
+		<a href="#">回复</a>
+	</div>
+	<div class="col-md-3">
+		<a>{{dis.author}}</a>
+	</div>
+	<div class="col-md-6 createtime rightsytle">
+		<label>{{dis.create}}</label>
+	</div>
+</div>
+<div class="col-md-12">
+	<hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color="#6f5499" size="10"/>
+</div>
+{% end %}  <!-- for end -->
+{% end %}
+
