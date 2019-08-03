@@ -1,0 +1,86 @@
+{% extends "../extrabase.html" %}
+
+{% block title %}
+<title>Topic</title>
+{% end %}
+{% block js-css %}
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+{% end %}
+{% block func %}
+<script type="text/javascript">
+	function publish_topic(){
+
+		var category = $("#category").val();
+		var title = $("#title").val();
+		var content = $("#content").val();
+		path_url = "/topic";
+		$.ajax({
+	        type: "POST",
+	        url: path_url,
+	        dataType : "json",
+	        async: true,
+	        data: {"category": category,"content":content,"title": title},
+	        success: function (data){
+	            console.log(data.msg);
+	            if(data.msg==null){
+	 				
+	                // $("#d_msg").attr("value","发布成功！");
+	                // $("#d_msg").html("成功").css("color","blue");
+	                alert("发布成功");
+	                window.location.href = "/extra";
+	            }
+	            else{
+	                // $("#msgSignin").html(data.msg).css("color","red");
+	                alert("发布失败" + data.msg + "");
+	                $("#d_msg").html("失败").css("color","red");
+	            }
+	        }
+    	})
+	}
+</script>
+{% end %}
+
+
+{% block main %}
+<div class="col-md-12">
+	{% if topic == null %}
+	<div class="col-md-4">
+		<label>选择分类：</label>
+	</div>
+	<div>
+		<select class="selectpicker" name="category">
+			<option value="0">Python</option>
+			<option value="1">C/C++</option>
+			<option value="2">Java</option>
+			<option value="3">Go</option>
+			<option value="10">其他</option>
+		</select>
+	</div>
+	<textarea class="topic" id="title" name="title" placeholder="取个标题吧">
+    </textarea>
+    <textarea class="topic-text" id="content" name="content" placeholder="写点什么呢">
+    </textarea>
+    {% else %}
+    <div class="col-md-4">
+		<label>选择分类：</label>
+	</div>
+	<div>
+		<select class="selectpicker" name="category">
+			<option value="0">Python</option>
+			<option value="1">C/C++</option>
+			<option value="2">Java</option>
+			<option value="3">Go</option>
+			<option value="10">其他</option>
+		</select>
+	</div>
+	<textarea class="topic" id="title" name="title" placeholder="取个标题吧">{{topic.title}}
+    </textarea>
+    <textarea class="topic-text" id="content" name="content" placeholder="写点什么呢">{{topic.content}}
+    </textarea>
+    {% end %}
+    <label id="d_msg" style="margin-left: 50px;"></label>
+    <button type="button" class="btn btn-primary" style="float: right;margin-top: 4px;margin-bottom: 10px;" onclick="publish_topic()">发布话题</button>
+</div>
+{% end %}
+

@@ -501,3 +501,75 @@ tornado.template.ParseError: Missing {% end %} block for block at extra/discuss.
 2019-08-02 17:23:38,884 tornado.access INFO     - 200 GET /extra (::1) 1091.12ms
 2019-08-02 17:23:39,122 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=0b13238d4db61dd3c174bcef84733818 (::1) 228.42ms
 2019-08-02 17:23:39,141 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.00ms
+2019-08-03 09:49:45,169 tornado.access WARNING  - 404 GET /topic (::1) 1.00ms
+2019-08-03 09:51:57,851 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 09:51:57,857 tornado.application ERROR    - Uncaught exception GET /topic (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1697, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_topic_handler.py", line 21, in get
+    self.render("extra/topic.html")  # templates/
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 856, in render
+    html = self.render_string(template_name, **kwargs)
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1005, in render_string
+    return t.generate(**namespace)
+  File "C:\softDev\python35\lib\site-packages\tornado\template.py", line 361, in generate
+    return execute()
+  File "extra/topic_html.generated.py", line 40, in _tt_execute
+    _tt_tmp = discuss[0].topic_id  # extra/topic.html:45 (via extrabase.html:41)
+NameError: name 'discuss' is not defined
+2019-08-03 09:51:57,911 tornado.access ERROR    - 500 GET /topic (::1) 1201.81ms
+2019-08-03 09:51:58,169 tornado.access INFO     - 200 GET /favicon.ico (::1) 232.38ms
+2019-08-03 09:53:00,459 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 09:53:00,467 tornado.access INFO     - 200 GET /topic (::1) 1040.24ms
+2019-08-03 09:53:00,865 tornado.access INFO     - 200 GET /favicon.ico (::1) 223.40ms
+2019-08-03 09:57:02,170 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 09:57:02,177 tornado.access INFO     - 200 GET /topic (::1) 1049.22ms
+2019-08-03 09:57:02,417 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=a2e4db4c23482b7cea00efffe08bfaa5 (::1) 233.38ms
+2019-08-03 09:57:02,428 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.99ms
+2019-08-03 09:57:51,551 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 09:57:51,569 tornado.access INFO     - 200 GET /topic (::1) 1058.17ms
+2019-08-03 09:57:51,855 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=4c1dee73d5206e308b98e67af1c76abf (::1) 232.40ms
+2019-08-03 09:57:51,864 tornado.access INFO     - 200 GET /favicon.ico (::1) 0.99ms
+2019-08-03 10:38:50,807 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:38:50,819 tornado.access INFO     - 200 GET /topic (::1) 1049.22ms
+2019-08-03 10:38:51,087 tornado.access INFO     - 200 GET /favicon.ico (::1) 232.41ms
+2019-08-03 10:40:15,669 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:40:15,754 tornado.access INFO     - 200 GET /topic (::1) 1117.02ms
+2019-08-03 10:40:16,117 tornado.access INFO     - 200 GET /favicon.ico (::1) 233.40ms
+2019-08-03 10:40:45,770 tornado.access INFO     - GET /topic (127.0.0.1). get extrabase.html
+2019-08-03 10:40:45,778 tornado.access INFO     - 200 GET /topic (127.0.0.1) 1041.25ms
+2019-08-03 10:40:46,022 tornado.access INFO     - 200 GET /favicon.ico (127.0.0.1) 220.40ms
+2019-08-03 10:41:05,720 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:41:05,725 tornado.access INFO     - 200 GET /topic (::1) 1047.23ms
+2019-08-03 10:41:05,969 tornado.access INFO     - 200 GET /favicon.ico (::1) 220.44ms
+2019-08-03 10:41:09,452 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:41:09,456 tornado.access INFO     - 304 GET /topic (::1) 1010.32ms
+2019-08-03 10:41:09,476 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.00ms
+2019-08-03 10:42:55,024 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:42:55,025 tornado.access INFO     - 304 GET /topic (::1) 1006.31ms
+2019-08-03 10:42:55,058 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.00ms
+2019-08-03 10:48:16,029 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:48:16,030 tornado.access INFO     - 304 GET /topic (::1) 1006.31ms
+2019-08-03 10:48:16,078 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.00ms
+2019-08-03 10:51:12,590 tornado.access WARNING  - 403 POST /topic (::1) 1009.34ms
+2019-08-03 10:53:04,790 tornado.access INFO     - GET / (::1) ,sign in.
+2019-08-03 10:53:04,811 tornado.access INFO     - 304 GET / (::1) 1084.06ms
+2019-08-03 10:53:05,266 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:09LW
+2019-08-03 10:53:05,266 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 410.89ms
+2019-08-03 10:53:10,709 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-03 10:53:11,754 tornado.access INFO     - 200 POST /signin (::1) 1143.95ms
+2019-08-03 10:53:13,001 tornado.access INFO     - GET /home (::1).
+2019-08-03 10:53:13,001 tornado.access INFO     - get home
+2019-08-03 10:53:13,071 tornado.access INFO     - 304 GET /home (::1) 1263.66ms
+2019-08-03 10:53:20,667 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:53:20,673 tornado.access INFO     - 200 GET /topic (::1) 1163.92ms
+2019-08-03 10:53:20,980 tornado.access INFO     - 200 GET /favicon.ico (::1) 230.38ms
+2019-08-03 10:55:14,549 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:55:14,558 tornado.access INFO     - 200 GET /topic (::1) 1123.03ms
+2019-08-03 10:55:14,849 tornado.access INFO     - 200 GET /favicon.ico (::1) 230.41ms
+2019-08-03 10:55:29,464 tornado.access INFO     - POST /topic (::1). post add a topic
+2019-08-03 10:55:29,541 tornado.access INFO     - 200 POST /topic (::1) 1152.96ms
+2019-08-03 10:55:32,997 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 10:55:33,000 tornado.access INFO     - 200 GET /topic (::1) 1130.03ms

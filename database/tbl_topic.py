@@ -13,7 +13,7 @@ class TblTopic(ModelBase, table_base.TableBase):
     author = Column(Integer, nullable=False)
     title = Column(String(128), nullable=False, comment=u"标题")
     content = Column(Text, comment=u"内容")
-    discuss = Column(Integer, comment=u"回复")
+    discuss = Column(Integer, default=0, comment=u"回复")
     likes = Column(Integer, default=0, comment=u"点赞")
     status = Column(Integer, default=0, comment=u"0=正常，1=删除")
     category = Column(Integer, default=0, comment=u"类别")

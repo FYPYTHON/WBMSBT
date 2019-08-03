@@ -38,6 +38,7 @@ class ExtraBaseHandler(BaseHandler):
         topics, total_page = yield self.get_data(current_page)
         self.render("extrabase.html", topics=topics)    # templates/
 
+
     def get_topic(self, current_page, topic_id):
         discount = self.mysqldb().query(func.count('*').label("count"),
                                     TblDiscuss.original.label("id")).group_by(TblDiscuss.original).subquery()

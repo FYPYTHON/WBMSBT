@@ -29,7 +29,7 @@ class Application(tornado.web.Application):
             static_path=(os.path.join(os.path.dirname(__file__), "static")),
             cookie_secret="bZJc2sWMakYos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
             session_secret="bZJc2sWMakYos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
-            session_timeout=300,
+            session_timeout=600,
             upload_path=os.path.join(os.path.dirname(__file__), "files"),
             login_url="/signin",
             store_options={

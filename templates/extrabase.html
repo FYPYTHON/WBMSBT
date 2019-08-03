@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="{{static_url('libs/css/extra.css')}}">
     {% block js-css %}
     {% end %}
+    {% block func %}
+    {% end %}
 
 </head>
 <body>
@@ -46,6 +48,9 @@
 			<div class="col-md-12">
 				<div class="col-md-8 topic">
 					<a href="#">{{topic.title}}</a>
+				</div>
+				<div class="col-md-2 rightsytle">
+					<a>作者：{{topic.author}}</a>
 				</div>
 				<div class="col-md-4 rightsytle">
 					<a>作者：{{topic.author}}</a>

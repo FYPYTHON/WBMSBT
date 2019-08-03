@@ -20,6 +20,10 @@
 .e-nav .isselected a{
 	background-color: red;
 }
+.topic-text{
+	width: 100%;
+	height: 400px;
+}
 .topic label{
 	font-size: 12px;
 }
