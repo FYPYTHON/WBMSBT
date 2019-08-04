@@ -2078,3 +2078,35 @@ TypeError: 'NoneType' object is not iterable
 2019-08-04 19:46:28,785 tornado.access INFO     - 200 GET /extra (::1) 146.57ms
 2019-08-04 19:46:29,240 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=ee6fca443ccb333ff1236f62c7ec19ae (::1) 436.31ms
 2019-08-04 19:46:29,280 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 22:00:59,252 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 22:00:59,257 tornado.access INFO     - 302 GET /extra (::1) 22.52ms
+2019-08-04 22:00:59,260 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1147, in run
+    yielded = self.gen.send(value)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 41, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-04 22:00:59,360 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-04 22:00:59,368 tornado.access INFO     - 304 GET /signin?next=%2Fextra (::1) 80.56ms
+2019-08-04 22:00:59,723 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:eBD6
+2019-08-04 22:00:59,734 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 251.19ms
+2019-08-04 22:00:59,751 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css.map (::1) 12.01ms
+2019-08-04 22:01:05,496 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 22:01:05,501 tornado.access INFO     - 200 POST /signin (::1) 83.43ms
+2019-08-04 22:01:05,731 tornado.access INFO     - GET /home (::1).
+2019-08-04 22:01:05,732 tornado.access INFO     - get home
+2019-08-04 22:01:05,760 tornado.access INFO     - 304 GET /home (::1) 227.22ms
+2019-08-04 22:01:05,904 tornado.access INFO     - 304 GET /static/libs/css/icomoon/fonts/icomoon.woff (::1) 2.51ms
+2019-08-04 22:01:06,003 tornado.access INFO     - 304 GET /static/libs/img/glyphicons-halflings.png (::1) 6.01ms
+2019-08-04 22:01:09,612 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 22:01:09,624 tornado.access INFO     - 200 GET /extra (::1) 76.28ms
+2019-08-04 22:01:49,821 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 22:01:49,836 tornado.access INFO     - 200 GET /extra (::1) 159.74ms
+2019-08-04 22:01:50,571 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=5ab0087e32bba50ff0c593988ec7d8ea (::1) 709.50ms
+2019-08-04 22:01:50,623 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms

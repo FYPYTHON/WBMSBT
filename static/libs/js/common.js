@@ -18,7 +18,8 @@ function checkTime(i)
 function ticktime(){
 	var curdate = new Date();
 	var curtime = curdate.getFullYear() + "-" + checkTime(curdate.getMonth() + 1) + "-" +
-				  checkTime(curdate.getDate()) + " " + checkTime(curdate.getHours()) + ":" + curdate.getMinutes() +
+				  checkTime(curdate.getDate()) + " " + checkTime(curdate.getHours()) + ":" + 
+				  checkTime(curdate.getMinutes()) +
 				  ":" + checkTime(curdate.getSeconds());
 	console.log(curdate, curtime);
 	document.getElementById("currentdate").innerHTML = curtime;
