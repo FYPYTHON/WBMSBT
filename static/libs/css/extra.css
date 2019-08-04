@@ -7,7 +7,13 @@
 }
 .divheader{
 	height: 50px;
-	margin-top: -20px;
+	margin-top: 2px;
+}
+.divheader ul{
+	/*margin-top: -20px;*/
+	width: 100px;
+	min-width: 100px;
+	margin-left: 10px;
 }
 .e-nav{
 	height: 50px;

@@ -19,7 +19,7 @@ class TopicAdminHandler(BaseHandler):
 
     @run_on_executor
     def get_data(self, current_page):
-        uid = get_user_id()
+        uid = get_user_id(self)
         data = self.mysqldb().query(TblTopic.id,
                                     TblTopic.discuss,
                                     TblTopic.likes,
@@ -35,12 +35,13 @@ class TopicAdminHandler(BaseHandler):
         total_page = get_pages(total_count)
         return data, total_page
 
+    @authenticated
     @gen.coroutine
     def get(self, *args, **kwargs):
-        weblog.info("%s. get extrabase.html", self._request_summary())
+        weblog.info("%s. get topicadmin.html", self._request_summary())
         current_page = int(self.get_argument("current_page", "1"))
         topics, total_page = yield self.get_data(current_page)
-        self.render("extra/topic.html", topics=topics)  # templates/
+        self.render("extra/topicadmin.html", topics=topics)  # templates/
 
     @run_on_executor
     def edit_topic(self, title, content, category, topic_id):
@@ -61,6 +62,7 @@ class TopicAdminHandler(BaseHandler):
             self.mysqldb().rollback()
             return self.write(json_dumps({"msg": u"修改失败"}))
 
+    @authenticated
     @gen.coroutine
     def put(self):
         weblog.info("%s. put edit a topic", self._request_summary())
@@ -78,10 +80,11 @@ class TopicAdminHandler(BaseHandler):
 class TopicHandler(BaseHandler):
     executor = ThreadPoolExecutor(4)
 
+    @authenticated
     def get(self, *args, **kwargs):
         weblog.info("%s. get extrabase.html", self._request_summary())
         topic_id = self.get_argument("topic_id", "0")
-        topic = get_topic(topic_id)
+        topic = get_topic(self, topic_id)
         self.render("extra/topic.html", topic=topic)  # templates/
 
     @run_on_executor
@@ -104,7 +107,7 @@ class TopicHandler(BaseHandler):
             self.mysqldb().rollback()
             return self.write(json_dumps({"msg": u"写入数据库失败"}))
 
-    # @authenticated
+    @authenticated
     @gen.coroutine
     def post(self, *args, **kwargs):
         weblog.info("%s. post add a topic", self._request_summary())

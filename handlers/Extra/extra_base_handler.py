@@ -1,4 +1,5 @@
 # coding=utf-8
+from tornado.web import authenticated
 from sqlalchemy import func
 from json import dumps as json_dumps
 from handlers.base_handler import BaseHandler
@@ -15,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 class ExtraBaseHandler(BaseHandler):
     executor = ThreadPoolExecutor(4)
 
+    @authenticated
     @run_on_executor
     def get_data(self, current_page):
         data = self.mysqldb().query(TblTopic.id,
@@ -28,6 +30,7 @@ class ExtraBaseHandler(BaseHandler):
         data = data.filter(TblTopic.status == 0, TblAccount.id == TblTopic.author)
         data = data.limit(PAGESIZE).offset((current_page - 1) * PAGESIZE).all()
         total_count = len(data)
+        print(total_count)
         total_page = get_pages(total_count)
         return data, total_page
 

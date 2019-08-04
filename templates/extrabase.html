@@ -18,14 +18,28 @@
 </head>
 <body>
 <header>
-	<dir class="divheader debug">
-		
-	</dir>
+	<div class="divheader debug">
+		<div class="col-md-8 debug"></div>
+		<div class="col-md-4 debug">
+			<button class="btn">Action</button>
+			<button class="btn dropdown-toggle" data-toggle="dropdown" style="margin-left: -7px;">
+			    <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a>个人信息</a></li>
+			    <li><a href="/topic/admin">我的博客</a></li>
+			    <li class="divider"></li>
+			    <li><a>设置</a></li>
+			    <li><a href="/logout">退出</a></li>
+			</ul>
+			<label style="width: 140px;float: right;margin-top: 10px;margin-right: 20px;"><span id="currentdate" ></span></label>
+		</div>
+	</div>
 </header>
 <div class="container-fluid debug">
 	<div class="row-fluid">
 		<!-- nav -->
-		<div class="col-md-12 e-nav">
+		<div class="col-md-11 e-nav">
 			<ul class="nav nav-pills" id="extranav">
 				<li class="active">
 					<a class="ajax-link" href="#">首页</a>
@@ -33,8 +47,11 @@
 				<li>
 					<a class="ajax-link" href="#">设置</a>
 				</li>
+				<!-- <li><a href="/topic" style="float: right;">写消息</a></li> -->
 			</ul>
-			
+		</div>
+		<div class="col-md-1">
+			<a href="/topic" style="float: right;margin-top: 20px;">写消息</a>
 		</div>
 		<!-- left -->
 		<div class="col-md-2"></div>
@@ -49,10 +66,10 @@
 				<div class="col-md-8 topic">
 					<a href="#">{{topic.title}}</a>
 				</div>
-				<div class="col-md-2 rightsytle">
-					<a>作者：{{topic.author}}</a>
+				<div class="col-md-2">
+					<a>分类：{{topic.category}}</a>
 				</div>
-				<div class="col-md-4 rightsytle">
+				<div class="col-md-2 rightsytle">
 					<a>作者：{{topic.author}}</a>
 				</div>
 			</div>

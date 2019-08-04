@@ -1,0 +1,94 @@
+{% extends "../extrabase.html" %}
+
+{% block title %}
+<title>Topic Manager</title>
+{% end %}
+{% block js-css %}
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+{% end %}
+{% block func %}
+<script type="text/javascript">
+	function get_topic(tid){
+		path_url = "/topic";
+		$.ajax({
+	        type: "GET",
+	        url: path_url,
+	        dataType : "json",
+	        async: true,
+	        data: {"topic_id":tid},
+	        success: function (data){
+	            console.log(data.msg);
+	            window.location.href = "topic?topic_id=" + tid + "";
+	        }
+    	})
+	}
+	function edit_topic(tid){
+		get_topic(tid);
+		var category = $("#category").val();
+		var title = $("#title").val();
+		var content = $("#content").val();
+		path_url = "/topic/admin";
+		$.ajax({
+	        type: "PUT",
+	        url: path_url,
+	        dataType : "json",
+	        async: true,
+	        data: {"category": category,"content":content,"title": title, "topic_id":tid},
+	        success: function (data){
+	            console.log(data.msg);
+	            if(data.msg==null){
+	 				
+	                // $("#d_msg").attr("value","发布成功！");
+	                // $("#d_msg").html("成功").css("color","blue");
+	                alert("发布成功");
+	                window.location.href = "/extra";
+	            }
+	            else{
+	                // $("#msgSignin").html(data.msg).css("color","red");
+	                alert("发布失败" + data.msg + "");
+	                $("#d_msg").html("失败").css("color","red");
+	            }
+	        }
+    	})
+	}
+</script>
+{% end %}
+
+{% block main %}
+<div class="col-md-12">
+	<hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color="#6f5499" size="10"/>
+</div>
+{% for topic in topics %}
+<div class="col-md-12">
+	<div class="col-md-8 topic">
+		<a href="#">{{topic.title}}</a>
+	</div>
+	<div class="col-md-2">
+		<a>分类：{{topic.category}}</a>
+	</div>
+	<div class="col-md-2 rightsytle">
+		<a href="/topic?topic_id={{topic.id}}" onclick="get_topic({{topic.id}})">编辑</a>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="col-md-11 topic">
+		<label>{{topic.content}}</label>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="col-md-3">
+		<a href="#">回复：{{topic.discuss}}</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#">点赞：{{topic.likes}}</a>
+	</div>
+	<div class="col-md-6 createtime rightsytle">
+		<label>{{topic.create}}</label>
+	</div>
+</div>
+{% end %}
+<div class="col-md-12">
+	<hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color="#6f5499" size="10"/>
+</div>
+{% end %}
