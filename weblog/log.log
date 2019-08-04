@@ -573,3 +573,1508 @@ NameError: name 'discuss' is not defined
 2019-08-03 10:55:29,541 tornado.access INFO     - 200 POST /topic (::1) 1152.96ms
 2019-08-03 10:55:32,997 tornado.access INFO     - GET /topic (::1). get extrabase.html
 2019-08-03 10:55:33,000 tornado.access INFO     - 200 GET /topic (::1) 1130.03ms
+2019-08-03 21:40:59,455 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:01,760 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:03,812 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:06,124 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:13,198 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:15,223 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:17,239 tornado.application ERROR    - Uncaught exception
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 583, in connect
+    **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 722, in create_connection
+    raise err
+  File "D:\SoftDevelop\python3.6\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\http1connection.py", line 238, in _read_message
+    delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\routing.py", line 256, in finish
+    self.delegate.finish()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2195, in finish
+    self.execute()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 2215, in execute
+    **self.handler_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 20, in __init__
+    super(BaseHandler, self).__init__(*argc, **argkw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 194, in __init__
+    self.initialize(**kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 35, in initialize
+    self.initLocalVariable()
+  File "E:\Project\Python\WBMSBT\handlers\base_handler.py", line 83, in initLocalVariable
+    variables = self.mysqldb().query(TblAdmin).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3346, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3361, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3339, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1124, in connection
+    execution_options=execution_options,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 1130, in _connection_for_bind
+    engine, execution_options
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\session.py", line 431, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2226, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2266, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1536, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 2262, in _wrap_pool_connect
+    return fn()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 760, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 154, in reraise
+    raise value
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\pool\base.py", line 639, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 451, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 325, in __init__
+    self.connect()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 630, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 由于目标计算机积极拒绝，无法连接。)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-08-03 21:41:47,403 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:41:47,417 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'faye_dream.tbl_topic' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1141, in run
+    yielded = self.gen.throw(*exc_info)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 38, in get
+    topics, total_page = yield self.get_data(current_page)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\concurrent\futures\thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 29, in get_data
+    data = data.limit(PAGESIZE).offset((current_page - 1) * PAGESIZE).all()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3168, in all
+    return list(self)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3324, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3349, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\sql\elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\SoftDevelop\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'faye_dream.tbl_topic' doesn't exist")
+[SQL: SELECT tbl_topic.id AS tbl_topic_id, tbl_topic.discuss AS tbl_topic_discuss, tbl_topic.likes AS tbl_topic_likes, tbl_account.nickname AS author, tbl_topic.`create` AS tbl_topic_create, tbl_topic.title AS tbl_topic_title, tbl_topic.content AS tbl_topic_content, tbl_topic.category AS tbl_topic_category 
+FROM tbl_topic, tbl_account 
+WHERE tbl_topic.status = %(status_1)s AND tbl_account.id = tbl_topic.author 
+ LIMIT %(param_1)s, %(param_2)s]
+[parameters: {'status_1': 0, 'param_1': 0, 'param_2': 5}]
+(Background on this error at: http://sqlalche.me/e/f405)
+2019-08-03 21:41:47,544 tornado.access ERROR    - 500 GET /extra (::1) 276.70ms
+2019-08-03 21:41:48,184 tornado.access INFO     - 200 GET /favicon.ico (::1) 581.41ms
+2019-08-03 21:44:57,000 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:44:57,020 tornado.access INFO     - 200 GET /extra (::1) 61.04ms
+2019-08-03 21:44:57,564 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=36b4e4e0305d0821b915f6b969c79f6c (::1) 16.51ms
+2019-08-03 21:44:57,565 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=4c1dee73d5206e308b98e67af1c76abf (::1) 12.51ms
+2019-08-03 21:44:57,565 tornado.access INFO     - 200 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 532.38ms
+2019-08-03 21:44:57,566 tornado.access INFO     - 200 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 7.51ms
+2019-08-03 21:44:57,566 tornado.access INFO     - 200 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 16.51ms
+2019-08-03 21:44:57,654 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.50ms
+2019-08-03 21:46:02,666 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:46:02,682 tornado.access INFO     - 200 GET /extra (::1) 55.02ms
+2019-08-03 21:46:03,274 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=dce5e305af05aca976ac14c84123bf87 (::1) 577.42ms
+2019-08-03 21:46:03,295 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-03 21:47:30,450 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:47:30,496 tornado.access INFO     - 200 GET /extra (::1) 126.59ms
+2019-08-03 21:47:31,247 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=198d77ff122b8c2702f7f15b747e8938 (::1) 706.50ms
+2019-08-03 21:47:31,264 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.50ms
+2019-08-03 21:50:59,998 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:51:00,023 tornado.access INFO     - 200 GET /extra (::1) 60.02ms
+2019-08-03 21:51:00,613 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=d77c3561cd358adca07f5a1784f4d134 (::1) 562.90ms
+2019-08-03 21:51:00,632 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.00ms
+2019-08-03 21:52:00,407 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:52:00,423 tornado.access INFO     - 200 GET /extra (::1) 52.54ms
+2019-08-03 21:52:00,992 tornado.access INFO     - 200 GET /favicon.ico (::1) 479.34ms
+2019-08-03 21:52:46,571 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:52:46,591 tornado.access INFO     - 200 GET /extra (::1) 68.53ms
+2019-08-03 21:52:47,115 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=644fa11017ffa294ef6bc7df0a753b82 (::1) 512.37ms
+2019-08-03 21:52:47,134 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.50ms
+2019-08-03 21:53:41,959 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:53:41,973 tornado.access INFO     - 200 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 27.52ms
+2019-08-03 21:53:41,975 tornado.access INFO     - 200 GET /extra (::1) 26.02ms
+2019-08-03 21:53:42,078 tornado.access INFO     - 200 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 7.01ms
+2019-08-03 21:53:42,080 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=36b4e4e0305d0821b915f6b969c79f6c (::1) 6.50ms
+2019-08-03 21:53:42,080 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=644fa11017ffa294ef6bc7df0a753b82 (::1) 5.50ms
+2019-08-03 21:53:42,081 tornado.access INFO     - 200 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 11.51ms
+2019-08-03 21:53:42,389 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.48ms
+2019-08-03 21:55:00,708 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:55:00,720 tornado.access INFO     - 304 GET /extra (::1) 15.52ms
+2019-08-03 21:55:00,780 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.00ms
+2019-08-03 21:55:03,849 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:55:03,852 tornado.access INFO     - 304 GET /extra (::1) 5.00ms
+2019-08-03 21:55:03,903 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.50ms
+2019-08-03 21:55:19,854 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:55:19,872 tornado.access INFO     - 200 GET /extra (::1) 53.53ms
+2019-08-03 21:55:20,400 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=f40311f819257985a22705896164c19d (::1) 515.87ms
+2019-08-03 21:55:20,416 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.01ms
+2019-08-03 21:55:59,500 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 21:55:59,519 tornado.access INFO     - 200 GET /extra (::1) 54.53ms
+2019-08-03 21:56:00,079 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=fc70f75472c5d928b38dd2c086001608 (::1) 544.38ms
+2019-08-03 21:56:00,101 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.50ms
+2019-08-03 22:46:29,529 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:46:29,545 tornado.access INFO     - 200 GET /extra (::1) 51.52ms
+2019-08-03 22:46:30,160 tornado.access INFO     - 200 GET /favicon.ico (::1) 520.37ms
+2019-08-03 22:46:33,702 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:46:33,708 tornado.access INFO     - 304 GET /extra (::1) 11.02ms
+2019-08-03 22:46:33,760 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.00ms
+2019-08-03 22:49:40,653 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:49:40,673 tornado.access INFO     - 200 GET /extra (::1) 61.06ms
+2019-08-03 22:49:41,354 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=e0cd8e8719476565d1198d4d5a89bf42 (::1) 669.48ms
+2019-08-03 22:49:41,387 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.50ms
+2019-08-03 22:49:55,438 tornado.access INFO     - 200 GET /static/libs/css/bootstrap.min.css.map (::1) 13.01ms
+2019-08-03 22:51:31,154 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:51:31,171 tornado.access INFO     - 200 GET /extra (::1) 48.04ms
+2019-08-03 22:51:31,860 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=89a4615bbd87f1bcefd140dc997c6bd2 (::1) 617.94ms
+2019-08-03 22:51:31,878 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-03 22:54:05,826 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:54:05,844 tornado.access INFO     - 200 GET /extra (::1) 66.05ms
+2019-08-03 22:54:06,577 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=a78433857ae02e310ab14ef424199f9c (::1) 716.01ms
+2019-08-03 22:54:06,600 tornado.access INFO     - 200 GET /favicon.ico (::1) 6.00ms
+2019-08-03 22:55:30,519 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:55:30,536 tornado.access INFO     - 200 GET /extra (::1) 53.02ms
+2019-08-03 22:55:31,268 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=bb563be7f3b5a6b7b1097e3751ec47a6 (::1) 716.51ms
+2019-08-03 22:55:31,303 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-03 22:56:03,023 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 22:56:03,040 tornado.access INFO     - 200 GET /extra (::1) 57.73ms
+2019-08-03 22:56:03,731 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=eaa251e2c83eb8f89bd8138d376d3de8 (::1) 677.98ms
+2019-08-03 22:56:03,745 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-03 23:27:24,958 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 23:27:24,967 tornado.access INFO     - 304 GET /extra (::1) 11.99ms
+2019-08-03 23:27:25,112 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.00ms
+2019-08-03 23:27:25,140 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css.map (::1) 3.50ms
+2019-08-03 23:27:56,663 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 23:27:56,687 tornado.access INFO     - 200 GET /extra (::1) 59.82ms
+2019-08-03 23:27:57,379 tornado.access INFO     - 200 GET /favicon.ico (::1) 568.91ms
+2019-08-03 23:28:07,567 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:28:07,568 tornado.application ERROR    - Uncaught exception GET /topic/admin (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic/admin', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1141, in run
+    yielded = self.gen.throw(*exc_info)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 42, in get
+    topics, total_page = yield self.get_data(current_page)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\concurrent\futures\thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 22, in get_data
+    uid = get_user_id()
+TypeError: get_user_id() missing 1 required positional argument: 'self'
+2019-08-03 23:28:07,570 tornado.access ERROR    - 500 GET /topic/admin (::1) 5.51ms
+2019-08-03 23:28:29,800 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:28:29,819 tornado.access INFO     - 200 GET /topic/admin (::1) 53.54ms
+2019-08-03 23:28:30,478 tornado.access INFO     - 200 GET /static/libs/js/myjs/multiple-select.js?v=8a5eb4a6bd9685c3ada3a07956ba2d12 (::1) 635.95ms
+2019-08-03 23:28:30,480 tornado.access INFO     - 200 GET /static/libs/css/mycss/multiple-select.css?v=04fb067d18e7fb9232b2b8e1353d7c4f (::1) 4.00ms
+2019-08-03 23:28:30,510 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.50ms
+2019-08-03 23:28:39,461 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:28:39,472 tornado.access INFO     - 304 GET /topic/admin (::1) 13.51ms
+2019-08-03 23:29:44,426 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 23:29:44,431 tornado.access INFO     - 302 GET /extra (::1) 61.04ms
+2019-08-03 23:29:44,434 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1147, in run
+    yielded = self.gen.send(value)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 40, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-03 23:29:44,987 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-03 23:29:44,999 tornado.access INFO     - 200 GET /signin?next=%2Fextra (::1) 559.43ms
+2019-08-03 23:29:48,182 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:FynX
+2019-08-03 23:29:48,201 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 3078.95ms
+2019-08-03 23:29:52,436 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-03 23:29:52,669 tornado.access INFO     - 200 POST /signin (::1) 574.42ms
+2019-08-03 23:29:52,950 tornado.access INFO     - GET /home (::1).
+2019-08-03 23:29:52,950 tornado.access INFO     - get home
+2019-08-03 23:29:53,241 tornado.access INFO     - 200 GET /home (::1) 539.46ms
+2019-08-03 23:29:53,757 tornado.access INFO     - 200 GET /static/libs/css/icomoon/style.css?v=2e8b863185e34e0a031299a0c123387d (::1) 493.35ms
+2019-08-03 23:29:53,758 tornado.access INFO     - 200 GET /static/libs/css/mycss.css?v=47694ccd74e3d7dac04944951c1eb6bf (::1) 7.03ms
+2019-08-03 23:29:53,758 tornado.access INFO     - 200 GET /static/img/logo.png?v=0a1a4b811a3fea836eb782a7c8c009b7 (::1) 5.02ms
+2019-08-03 23:29:53,761 tornado.access INFO     - 200 GET /static/libs/css/main.css?v=b1e037ad6a832fda75e601af780f6d1d (::1) 4.99ms
+2019-08-03 23:29:53,836 tornado.access INFO     - 200 GET /static/libs/img/glyphicons-halflings.png (::1) 2.00ms
+2019-08-03 23:29:53,935 tornado.access INFO     - 200 GET /static/libs/css/icomoon/fonts/icomoon.woff (::1) 6.50ms
+2019-08-03 23:30:00,958 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 23:30:00,969 tornado.access INFO     - 200 GET /extra (::1) 651.20ms
+2019-08-03 23:30:05,217 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:30:05,227 tornado.access INFO     - 200 GET /topic/admin (::1) 71.87ms
+2019-08-03 23:30:25,552 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:30:25,563 tornado.application ERROR    - Uncaught exception GET /topic?topic_id=1 (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic?topic_id=1', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1590, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 85, in get
+    self.render("extra/topic.html", topic=topic)  # templates/
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 766, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 907, in render_string
+    return t.generate(**namespace)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\template.py", line 346, in generate
+    return execute()
+  File "extra/topic_html.generated.py", line 54, in _tt_execute
+    if topic == null:  # extra/topic.html:47 (via extrabase.html:56)
+NameError: name 'null' is not defined
+2019-08-03 23:30:25,595 tornado.access ERROR    - 500 GET /topic?topic_id=1 (::1) 122.40ms
+2019-08-03 23:30:25,704 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:30:25,705 tornado.access INFO     - 200 PUT /topic/admin (::1) 107.44ms
+2019-08-03 23:30:25,824 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:30:25,831 tornado.access INFO     - 304 GET /topic/admin (::1) 122.80ms
+2019-08-03 23:31:12,613 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:31:12,617 tornado.application ERROR    - Uncaught exception GET /topic?topic_id=1 (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic?topic_id=1', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1590, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 85, in get
+    self.render("extra/topic.html", topic=topic)  # templates/
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 766, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 907, in render_string
+    return t.generate(**namespace)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\template.py", line 346, in generate
+    return execute()
+  File "extra/topic_html.generated.py", line 54, in _tt_execute
+    if topic == null:  # extra/topic.html:47 (via extrabase.html:56)
+NameError: name 'null' is not defined
+2019-08-03 23:31:12,620 tornado.access ERROR    - 500 GET /topic?topic_id=1 (::1) 90.48ms
+2019-08-03 23:31:12,685 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:31:12,686 tornado.access INFO     - 200 PUT /topic/admin (::1) 63.54ms
+2019-08-03 23:31:12,807 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:31:12,822 tornado.access INFO     - 200 GET /topic/admin (::1) 134.42ms
+2019-08-03 23:31:23,586 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:31:23,589 tornado.application ERROR    - Uncaught exception GET /topic?topic_id=1 (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic?topic_id=1', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1590, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 85, in get
+    self.render("extra/topic.html", topic=topic)  # templates/
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 766, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 907, in render_string
+    return t.generate(**namespace)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\template.py", line 346, in generate
+    return execute()
+  File "extra/topic_html.generated.py", line 54, in _tt_execute
+    if topic == null:  # extra/topic.html:47 (via extrabase.html:56)
+NameError: name 'null' is not defined
+2019-08-03 23:31:23,591 tornado.access ERROR    - 500 GET /topic?topic_id=1 (::1) 152.99ms
+2019-08-03 23:31:23,826 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:31:23,826 tornado.access INFO     - 200 PUT /topic/admin (::1) 232.61ms
+2019-08-03 23:31:24,007 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:31:24,014 tornado.access INFO     - 304 GET /topic/admin (::1) 185.31ms
+2019-08-03 23:34:25,520 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:34:25,550 tornado.application ERROR    - Uncaught exception GET /topic?topic_id=1 (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/topic?topic_id=1', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1590, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_topic_handler.py", line 85, in get
+    self.render("extra/topic.html", topic=topic)  # templates/
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 766, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 907, in render_string
+    return t.generate(**namespace)
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\template.py", line 346, in generate
+    return execute()
+  File "extra/topic_html.generated.py", line 54, in _tt_execute
+    if topic == null:  # extra/topic.html:47 (via extrabase.html:56)
+NameError: name 'null' is not defined
+2019-08-03 23:34:25,553 tornado.access ERROR    - 500 GET /topic?topic_id=1 (::1) 154.85ms
+2019-08-03 23:34:25,601 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:34:25,602 tornado.access INFO     - 200 PUT /topic/admin (::1) 45.16ms
+2019-08-03 23:34:25,735 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:34:25,760 tornado.access INFO     - 200 GET /topic/admin (::1) 157.04ms
+2019-08-03 23:35:10,417 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:35:10,433 tornado.access INFO     - 200 GET /topic?topic_id=1 (::1) 131.15ms
+2019-08-03 23:35:10,478 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:35:10,479 tornado.access INFO     - 200 PUT /topic/admin (::1) 41.63ms
+2019-08-03 23:35:10,541 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:35:10,553 tornado.access INFO     - 304 GET /topic/admin (::1) 72.60ms
+2019-08-03 23:36:39,631 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:36:39,644 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 174.09ms
+2019-08-03 23:36:39,709 tornado.access INFO     - PUT /topic/admin (::1). put edit a topic
+2019-08-03 23:36:39,710 tornado.access INFO     - 200 PUT /topic/admin (::1) 62.74ms
+2019-08-03 23:36:40,104 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:36:40,133 tornado.access INFO     - 200 GET /topic/admin (::1) 422.00ms
+2019-08-03 23:37:16,536 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:37:16,562 tornado.access INFO     - 200 GET /topic/admin (::1) 141.63ms
+2019-08-03 23:37:17,089 tornado.access INFO     - 200 GET /favicon.ico (::1) 435.81ms
+2019-08-03 23:37:19,466 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:37:19,475 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 255.03ms
+2019-08-03 23:37:19,558 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:37:19,564 tornado.access INFO     - 304 GET /topic/admin (::1) 86.83ms
+2019-08-03 23:38:24,592 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:38:24,595 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 103.64ms
+2019-08-03 23:38:24,655 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:38:24,661 tornado.access INFO     - 304 GET /topic/admin (::1) 63.55ms
+2019-08-03 23:39:21,137 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:39:21,147 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 139.45ms
+2019-08-03 23:39:21,196 tornado.access INFO     - GET /topic/admin (::1). get extrabase.html
+2019-08-03 23:39:21,209 tornado.access INFO     - 200 GET /topic/admin (::1) 58.45ms
+2019-08-03 23:41:21,643 tornado.access INFO     - GET /topic/admin (::1). get topicadmin.html
+2019-08-03 23:41:21,670 tornado.access INFO     - 200 GET /topic/admin (::1) 65.03ms
+2019-08-03 23:41:22,213 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css.map (::1) 457.32ms
+2019-08-03 23:41:22,217 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.00ms
+2019-08-03 23:41:28,972 tornado.access INFO     - GET /home (::1).
+2019-08-03 23:41:28,973 tornado.access INFO     - get home
+2019-08-03 23:41:29,000 tornado.access INFO     - 304 GET /home (::1) 34.54ms
+2019-08-03 23:41:32,557 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-03 23:41:32,560 tornado.access INFO     - 200 GET /logout (::1) 8.50ms
+2019-08-03 23:41:32,773 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:y2P3
+2019-08-03 23:41:32,774 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 173.63ms
+2019-08-03 23:41:39,932 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-03 23:41:39,943 tornado.access INFO     - 200 POST /signin (::1) 206.09ms
+2019-08-03 23:41:40,080 tornado.access INFO     - GET /home (::1).
+2019-08-03 23:41:40,082 tornado.access INFO     - get home
+2019-08-03 23:41:40,090 tornado.access INFO     - 304 GET /home (::1) 118.97ms
+2019-08-03 23:41:47,591 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-03 23:41:47,595 tornado.access INFO     - 304 GET /extra (::1) 161.46ms
+2019-08-03 23:41:52,139 tornado.access INFO     - GET /topic/admin (::1). get topicadmin.html
+2019-08-03 23:41:52,145 tornado.access INFO     - 200 GET /topic/admin (::1) 74.35ms
+2019-08-03 23:41:57,353 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:41:57,359 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 84.16ms
+2019-08-03 23:43:06,281 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:43:06,284 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 90.22ms
+2019-08-03 23:43:48,220 tornado.access INFO     - GET /topic/admin (::1). get topicadmin.html
+2019-08-03 23:43:48,239 tornado.access INFO     - 200 GET /topic/admin (::1) 313.91ms
+2019-08-03 23:43:50,003 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:43:50,009 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 93.12ms
+2019-08-03 23:44:51,869 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-03 23:44:51,882 tornado.access INFO     - 200 GET /topic (::1) 129.54ms
+2019-08-03 23:44:55,004 tornado.access INFO     - GET /topic/admin (::1). get topicadmin.html
+2019-08-03 23:44:55,021 tornado.access INFO     - 200 GET /topic/admin (::1) 86.55ms
+2019-08-03 23:44:56,558 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:44:56,562 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 53.72ms
+2019-08-03 23:44:56,668 tornado.access INFO     - GET /topic?topic_id=1 (::1). get extrabase.html
+2019-08-03 23:44:56,673 tornado.access INFO     - 304 GET /topic?topic_id=1 (::1) 108.53ms
+2019-08-04 13:28:51,994 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:28:52,124 tornado.access INFO     - 302 GET /extra (::1) 281.73ms
+2019-08-04 13:28:52,356 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-04 13:28:52,472 tornado.access INFO     - 200 GET /signin?next=%2Fextra (::1) 345.69ms
+2019-08-04 13:28:52,474 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1147, in run
+    yielded = self.gen.send(value)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 40, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-04 13:28:53,472 tornado.access INFO     - 200 GET /static/libs/css/bootstrap.min.css?v=358aa6f9496167baf5bf7056149af02b (::1) 630.94ms
+2019-08-04 13:28:53,502 tornado.access INFO     - 200 GET /static/libs/js/jquery.min.js?v=9a094379d98c6458d480ad5a51c4aa27 (::1) 45.53ms
+2019-08-04 13:28:54,133 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:b7C6
+2019-08-04 13:28:54,134 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 615.95ms
+2019-08-04 13:28:59,656 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 13:28:59,665 tornado.access INFO     - 200 POST /signin (::1) 80.64ms
+2019-08-04 13:28:59,900 tornado.access INFO     - GET /home (::1).
+2019-08-04 13:28:59,900 tornado.access INFO     - get home
+2019-08-04 13:29:00,420 tornado.access INFO     - 200 GET /home (::1) 742.29ms
+2019-08-04 13:29:00,447 tornado.access INFO     - 200 GET /static/libs/js/bootstrap.min.js?v=04c84852e9937b142ac73c285b895b85 (::1) 3.51ms
+2019-08-04 13:29:00,466 tornado.access INFO     - 200 GET /static/libs/css/icomoon/style.css?v=2e8b863185e34e0a031299a0c123387d (::1) 16.51ms
+2019-08-04 13:29:00,467 tornado.access INFO     - 200 GET /static/libs/css/mycss.css?v=47694ccd74e3d7dac04944951c1eb6bf (::1) 9.01ms
+2019-08-04 13:29:00,468 tornado.access INFO     - 200 GET /static/img/logo.png?v=0a1a4b811a3fea836eb782a7c8c009b7 (::1) 7.00ms
+2019-08-04 13:29:00,478 tornado.access INFO     - 200 GET /static/libs/css/main.css?v=b1e037ad6a832fda75e601af780f6d1d (::1) 24.02ms
+2019-08-04 13:29:00,646 tornado.access INFO     - 200 GET /static/libs/img/glyphicons-halflings.png (::1) 62.04ms
+2019-08-04 13:29:00,725 tornado.access INFO     - 200 GET /static/libs/css/icomoon/fonts/icomoon.woff (::1) 27.02ms
+2019-08-04 13:29:06,671 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:29:06,680 tornado.access INFO     - 200 GET /extra (::1) 172.10ms
+2019-08-04 13:29:06,705 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=36b4e4e0305d0821b915f6b969c79f6c (::1) 9.01ms
+2019-08-04 13:29:06,706 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=eaa251e2c83eb8f89bd8138d376d3de8 (::1) 7.50ms
+2019-08-04 13:31:54,810 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:31:54,829 tornado.access INFO     - 200 GET /extra (::1) 117.21ms
+2019-08-04 13:31:55,445 tornado.access INFO     - 200 GET /favicon.ico (::1) 562.90ms
+2019-08-04 13:32:07,130 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-04 13:32:07,134 tornado.access INFO     - 200 GET /logout (::1) 145.73ms
+2019-08-04 13:32:07,255 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:4A6m
+2019-08-04 13:32:07,256 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 86.93ms
+2019-08-04 13:32:17,575 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 13:32:17,579 tornado.access INFO     - 200 POST /signin (::1) 88.49ms
+2019-08-04 13:32:17,742 tornado.access INFO     - GET /home (::1).
+2019-08-04 13:32:17,743 tornado.access INFO     - get home
+2019-08-04 13:32:17,756 tornado.access INFO     - 304 GET /home (::1) 163.60ms
+2019-08-04 13:32:23,286 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:32:23,290 tornado.access INFO     - 304 GET /extra (::1) 203.47ms
+2019-08-04 13:32:45,912 tornado.access INFO     - GET /topic/admin (::1). get topicadmin.html
+2019-08-04 13:32:45,921 tornado.access INFO     - 200 GET /topic/admin (::1) 86.75ms
+2019-08-04 13:32:45,946 tornado.access INFO     - 200 GET /static/libs/js/myjs/multiple-select.js?v=8a5eb4a6bd9685c3ada3a07956ba2d12 (::1) 7.00ms
+2019-08-04 13:32:45,948 tornado.access INFO     - 200 GET /static/libs/css/mycss/multiple-select.css?v=04fb067d18e7fb9232b2b8e1353d7c4f (::1) 4.51ms
+2019-08-04 13:33:13,058 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:33:13,063 tornado.access INFO     - 200 GET /topic (::1) 264.43ms
+2019-08-04 13:36:54,098 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:36:54,112 tornado.access INFO     - 200 GET /topic (::1) 514.89ms
+2019-08-04 13:36:54,722 tornado.access INFO     - 200 GET /favicon.ico (::1) 553.39ms
+2019-08-04 13:37:57,890 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:37:57,905 tornado.access INFO     - 200 GET /topic (::1) 251.49ms
+2019-08-04 13:37:58,472 tornado.access INFO     - 200 GET /favicon.ico (::1) 510.86ms
+2019-08-04 13:39:28,912 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:39:28,932 tornado.access INFO     - 200 GET /topic (::1) 137.35ms
+2019-08-04 13:39:29,564 tornado.access INFO     - 200 GET /favicon.ico (::1) 548.39ms
+2019-08-04 13:40:13,194 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:40:13,210 tornado.access INFO     - 200 GET /topic (::1) 114.32ms
+2019-08-04 13:40:13,787 tornado.access INFO     - 200 GET /favicon.ico (::1) 522.37ms
+2019-08-04 13:40:27,141 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:40:27,144 tornado.access INFO     - 304 GET /topic (::1) 79.70ms
+2019-08-04 13:46:26,817 tornado.access WARNING  - 403 POST /topic (::1) 7.00ms
+2019-08-04 13:46:37,513 tornado.access WARNING  - 403 POST /topic (::1) 7.01ms
+2019-08-04 13:46:37,870 tornado.access WARNING  - 403 POST /topic (::1) 5.00ms
+2019-08-04 13:46:38,085 tornado.access WARNING  - 403 POST /topic (::1) 12.01ms
+2019-08-04 13:46:38,253 tornado.access WARNING  - 403 POST /topic (::1) 10.02ms
+2019-08-04 13:46:40,664 tornado.access INFO     - 200 GET /static/libs/css/bootstrap.min.css.map (::1) 76.06ms
+2019-08-04 13:46:55,193 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-04 13:46:55,197 tornado.access INFO     - 304 GET /logout (::1) 8.50ms
+2019-08-04 13:46:55,420 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:dsDG
+2019-08-04 13:46:55,421 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 145.10ms
+2019-08-04 13:47:01,764 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 13:47:01,769 tornado.access INFO     - 200 POST /signin (::1) 67.83ms
+2019-08-04 13:47:01,910 tornado.access INFO     - GET /home (::1).
+2019-08-04 13:47:01,911 tornado.access INFO     - get home
+2019-08-04 13:47:01,921 tornado.access INFO     - 304 GET /home (::1) 132.61ms
+2019-08-04 13:47:04,844 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:47:04,849 tornado.access INFO     - 200 GET /extra (::1) 66.69ms
+2019-08-04 13:47:08,694 tornado.access INFO     - GET /topic (::1). get extrabase.html
+2019-08-04 13:47:08,697 tornado.access INFO     - 304 GET /topic (::1) 66.93ms
+2019-08-04 13:47:13,919 tornado.access INFO     - POST /topic (::1). post add a topic
+2019-08-04 13:47:14,086 tornado.access INFO     - 200 POST /topic (::1) 263.55ms
+2019-08-04 13:47:16,328 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:47:16,363 tornado.access INFO     - 304 GET /extra (::1) 93.33ms
+2019-08-04 13:48:03,608 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:03,613 tornado.access INFO     - 200 GET /extra (::1) 68.54ms
+2019-08-04 13:48:03,671 tornado.access INFO     - 200 GET /favicon.ico (::1) 5.51ms
+2019-08-04 13:48:10,266 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:10,270 tornado.access INFO     - 200 GET /extra (::1) 115.06ms
+2019-08-04 13:48:10,325 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 13:48:11,681 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:11,687 tornado.access INFO     - 200 GET /extra (::1) 218.60ms
+2019-08-04 13:48:11,760 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.00ms
+2019-08-04 13:48:14,770 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:14,775 tornado.access INFO     - 304 GET /extra (::1) 67.94ms
+2019-08-04 13:48:14,855 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.00ms
+2019-08-04 13:48:15,818 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:15,823 tornado.access INFO     - 304 GET /extra (::1) 69.14ms
+2019-08-04 13:48:15,872 tornado.access INFO     - 200 GET /favicon.ico (::1) 1.99ms
+2019-08-04 13:48:16,580 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:16,584 tornado.access INFO     - 200 GET /extra (::1) 73.65ms
+2019-08-04 13:48:16,637 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 13:48:18,902 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:18,911 tornado.access INFO     - 200 GET /extra (::1) 74.87ms
+2019-08-04 13:48:18,971 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.00ms
+2019-08-04 13:48:27,578 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:27,590 tornado.access INFO     - 304 GET /extra (::1) 92.78ms
+2019-08-04 13:48:27,697 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 13:48:29,870 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:29,873 tornado.access INFO     - 304 GET /extra (::1) 119.66ms
+2019-08-04 13:48:30,011 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-04 13:48:31,035 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 13:48:31,039 tornado.access INFO     - 200 GET /extra (::1) 83.82ms
+2019-08-04 13:48:31,144 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 15:04:41,250 tornado.access INFO     - GET / (::1) ,sign in.
+2019-08-04 15:04:41,262 tornado.access INFO     - 200 GET / (::1) 63.54ms
+2019-08-04 15:04:42,130 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:FR2x
+2019-08-04 15:04:42,130 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 799.30ms
+2019-08-04 15:04:47,913 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 15:04:47,922 tornado.access INFO     - 200 POST /signin (::1) 98.26ms
+2019-08-04 15:04:48,251 tornado.access INFO     - GET /home (::1).
+2019-08-04 15:04:48,252 tornado.access INFO     - get home
+2019-08-04 15:04:48,266 tornado.access INFO     - 304 GET /home (::1) 328.08ms
+2019-08-04 15:04:51,473 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:04:51,490 tornado.access INFO     - 200 GET /extra (::1) 89.96ms
+2019-08-04 15:05:04,987 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:04,993 tornado.access INFO     - 304 GET /extra (::1) 117.89ms
+2019-08-04 15:05:05,785 tornado.access INFO     - 200 GET /favicon.ico (::1) 662.47ms
+2019-08-04 15:05:11,387 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:11,397 tornado.access INFO     - 304 GET /extra (::1) 116.37ms
+2019-08-04 15:05:11,541 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-04 15:05:16,402 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:16,411 tornado.access INFO     - 304 GET /extra (::1) 497.75ms
+2019-08-04 15:05:16,467 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 15:05:20,122 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:20,126 tornado.access INFO     - 304 GET /extra (::1) 68.01ms
+2019-08-04 15:05:20,181 tornado.access INFO     - 200 GET /favicon.ico (::1) 3.50ms
+2019-08-04 15:05:23,669 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:23,673 tornado.access INFO     - 304 GET /extra (::1) 81.51ms
+2019-08-04 15:05:23,731 tornado.access INFO     - 200 GET /favicon.ico (::1) 4.00ms
+2019-08-04 15:05:26,833 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:26,838 tornado.access INFO     - 304 GET /extra (::1) 104.13ms
+2019-08-04 15:05:26,894 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-04 15:05:31,268 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 15:05:31,273 tornado.access INFO     - 304 GET /extra (::1) 105.51ms
+2019-08-04 15:05:31,337 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
+2019-08-04 19:34:16,070 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:34:16,072 tornado.access INFO     - 302 GET /extra (::1) 52.54ms
+2019-08-04 19:34:16,074 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1147, in run
+    yielded = self.gen.send(value)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 41, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-04 19:34:16,172 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-04 19:34:16,180 tornado.access INFO     - 304 GET /signin?next=%2Fextra (::1) 101.47ms
+2019-08-04 19:34:16,353 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:x0QB
+2019-08-04 19:34:16,356 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 115.63ms
+2019-08-04 19:34:16,922 tornado.access INFO     - 304 GET /favicon.ico (::1) 549.91ms
+2019-08-04 19:34:23,948 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 19:34:23,953 tornado.access INFO     - 200 POST /signin (::1) 57.31ms
+2019-08-04 19:34:24,104 tornado.access INFO     - GET /home (::1).
+2019-08-04 19:34:24,105 tornado.access INFO     - get home
+2019-08-04 19:34:24,133 tornado.access INFO     - 304 GET /home (::1) 157.46ms
+2019-08-04 19:34:24,296 tornado.access INFO     - 304 GET /static/libs/img/glyphicons-halflings.png (::1) 2.00ms
+2019-08-04 19:34:24,318 tornado.access INFO     - 304 GET /static/libs/css/icomoon/fonts/icomoon.woff (::1) 1.00ms
+2019-08-04 19:34:27,122 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:34:27,132 tornado.access INFO     - 200 GET /extra (::1) 77.36ms
+2019-08-04 19:34:27,147 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=bd929cfae083144037633ffb9f59851b (::1) 2.50ms
+2019-08-04 19:35:33,098 tornado.access INFO     - GET /extra (127.0.0.1). get extrabase.html
+2019-08-04 19:35:33,109 tornado.access INFO     - 200 GET /extra (127.0.0.1) 101.99ms
+2019-08-04 19:35:33,606 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=c13610a74aabb7d9d8cfb87797e46d15 (127.0.0.1) 482.35ms
+2019-08-04 19:35:33,628 tornado.access INFO     - 200 GET /favicon.ico (127.0.0.1) 4.00ms
+2019-08-04 19:36:17,002 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:36:17,018 tornado.access INFO     - 200 GET /extra (::1) 121.94ms
+2019-08-04 19:36:17,662 tornado.access INFO     - 200 GET /favicon.ico (::1) 579.91ms
+2019-08-04 19:36:24,720 tornado.access INFO     - 304 GET /static/libs/css/bootstrap.min.css.map (::1) 5.00ms
+2019-08-04 19:37:28,871 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:37:28,897 tornado.access INFO     - 200 GET /extra (::1) 311.29ms
+2019-08-04 19:37:29,597 tornado.access INFO     - 200 GET /favicon.ico (::1) 606.43ms
+2019-08-04 19:42:23,521 tornado.access INFO     - GET /extra (127.0.0.1). get extrabase.html
+2019-08-04 19:42:23,532 tornado.access INFO     - 200 GET /extra (127.0.0.1) 202.84ms
+2019-08-04 19:42:24,258 tornado.access INFO     - 200 GET /favicon.ico (127.0.0.1) 607.93ms
+2019-08-04 19:42:55,268 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:42:55,283 tornado.access INFO     - 200 GET /extra (::1) 108.40ms
+2019-08-04 19:42:55,848 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=39bd98f6a6eb29bf8e0133bc3649b2a0 (::1) 548.39ms
+2019-08-04 19:42:55,894 tornado.access INFO     - 200 GET /favicon.ico (::1) 5.01ms
+2019-08-04 19:43:30,542 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:43:30,557 tornado.access INFO     - 200 GET /extra (::1) 153.65ms
+2019-08-04 19:43:31,270 tornado.access INFO     - 200 GET /favicon.ico (::1) 582.93ms
+2019-08-04 19:44:01,612 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:44:01,636 tornado.access INFO     - 200 GET /extra (::1) 151.17ms
+2019-08-04 19:44:02,410 tornado.access INFO     - 200 GET /favicon.ico (::1) 651.96ms
+2019-08-04 19:44:28,107 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:44:28,110 tornado.access INFO     - 302 GET /extra (::1) 38.03ms
+2019-08-04 19:44:28,113 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py", line 1592, in _execute
+    result = yield result
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1133, in run
+    value = future.result()
+  File "D:\SoftDevelop\python3.6\lib\site-packages\tornado\gen.py", line 1147, in run
+    yielded = self.gen.send(value)
+  File "E:\Project\Python\WBMSBT\handlers\Extra\extra_base_handler.py", line 41, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-04 19:44:28,295 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-04 19:44:28,306 tornado.access INFO     - 304 GET /signin?next=%2Fextra (::1) 190.55ms
+2019-08-04 19:44:28,452 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:KaCk
+2019-08-04 19:44:28,454 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 100.07ms
+2019-08-04 19:44:36,193 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-04 19:44:36,203 tornado.access INFO     - 200 POST /signin (::1) 94.79ms
+2019-08-04 19:44:36,360 tornado.access INFO     - GET /home (::1).
+2019-08-04 19:44:36,361 tornado.access INFO     - get home
+2019-08-04 19:44:36,390 tornado.access INFO     - 304 GET /home (::1) 168.14ms
+2019-08-04 19:44:38,937 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:44:38,946 tornado.access INFO     - 200 GET /extra (::1) 66.04ms
+2019-08-04 19:46:28,743 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-04 19:46:28,785 tornado.access INFO     - 200 GET /extra (::1) 146.57ms
+2019-08-04 19:46:29,240 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=ee6fca443ccb333ff1236f62c7ec19ae (::1) 436.31ms
+2019-08-04 19:46:29,280 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.00ms
