@@ -4,5 +4,5 @@ __pycache__
 database/create_db.py
 message/class_serializable.py
 db_note.py
-*.log
-*.log.*
+weblog/*.log
+weblog/*.log.*
