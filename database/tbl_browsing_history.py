@@ -17,12 +17,9 @@ class TblBrowsingHistory(ModelBase, table_base.TableBase):
 
     request_method = Column(String(100))  # post/get
     status = Column(String(100))          # 访问状态码
-    browsing_date  = Column(String(20))   # 访问日期
+    browsing_date = Column(String(20))   # 访问日期
     browsing_time = Column(String(20))    # 访问时间
     user_agent = Column(String(200))        # 用户代理
-
-
-
 
     def __repr__(self):
         return "%s<id=%s, ip=%s>" % (self.__class__.__name__, self.id, self.ip)

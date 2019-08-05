@@ -17,3 +17,6 @@ class TblProject(ModelBase, table_base.TableBase):
     progress = Column(Integer, )        # progress of the project
     status = Column(Integer,comment='0=enable,1=disable')          # 0=enable,1=disable
 
+    def __repr__(self):
+        return "%s<id=%s, name=%s,value=%s>" % (self.__class__.__name__, self.project_id, self.project_name, self.status)
+

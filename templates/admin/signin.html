@@ -32,7 +32,7 @@
 
         // key Enter event , body onkeydown propery
         function keysignin(e){
-            console.log("signin ", e);
+            // console.log("signin ", e);
             if (!e) e = window.event;//考虑浏览器兼容性
                 if ((e.keyCode || e.which) == 13) {
                    sign();
@@ -72,7 +72,8 @@
                             // window.location.href = "/tableTest"
                             // alert(data.msg);
                             $("#msgSignin").html("");
-                            window.location.href = "/home"
+                            window.location.href = "/home";
+                            localStorage.currentUser = userAccount;
                         }
                         else{
                             <!--alert(data.msg);-->

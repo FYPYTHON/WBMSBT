@@ -18,3 +18,6 @@ class TblTopic(ModelBase, table_base.TableBase):
     status = Column(Integer, default=0, comment=u"0=正常，1=删除")
     category = Column(Integer, default=0, comment=u"类别")
     create = Column(DateTime, default=datetime.now())
+
+    def __repr__(self):
+        return "%s<id=%s, name=%s>" % (self.__class__.__name__, self.id, self.title)

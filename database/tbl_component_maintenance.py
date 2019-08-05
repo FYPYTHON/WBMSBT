@@ -21,3 +21,6 @@ class TblComponentMaintenance(ModelBase, TableBase):
     modify_time = Column(DATETIME, default=datetime.now())
     comment = Column(String(256), comment=u"备注,不超过200字") #完成情况说明
 
+    def __repr__(self):
+        return "%s<id=%s, type=%s,status=%s>" % (self.__class__.__name__, self.comp_id, self.comp_type, self.comp_status)
+

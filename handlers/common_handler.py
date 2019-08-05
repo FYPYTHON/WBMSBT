@@ -20,6 +20,14 @@ def get_user_id(self):
     return uid
 
 
+def get_user_nickname(self):
+    user = self.mysqldb().query(TblAccount.id, TblAccount.nickname).filter(
+        TblAccount.username == self.current_user).first()
+    if user is None:
+        return None
+    return user
+
+
 def get_topic(self, topic_id):
     topic = self.mysqldb().query(TblTopic.id, TblTopic.category,
                                    TblTopic.title, TblTopic.content).filter(

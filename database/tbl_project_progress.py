@@ -13,3 +13,6 @@ class TblProjectProgress(ModelBase, table_base.TableBase):
     user_id = Column(Integer)
     modify_time = Column(DateTime, default=datetime.now())
     cur_progress = Column(Integer)       # modify current progress
+
+    def __repr__(self):
+        return "%s<id=%s, value=%s>" % (self.__class__.__name__, self.id, self.cur_progress,)

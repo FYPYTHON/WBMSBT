@@ -1,0 +1,59 @@
+{% extends "../extrabase.html" %}
+
+{% block title %}
+<title>Setting</title>
+{% end %}
+{% block js-css %}
+<script src="{{static_url('libs/js/myjs/multiple-select.js')}}"></script>
+<link rel="stylesheet" href="{{static_url('libs/css/mycss/multiple-select.css')}}">
+{% end %}
+{% block func %}
+{% end %}
+
+
+{% block main %}
+<div class="col-md-12" style="margin-top: 20px;">
+	<div class="col-md-3">
+		<label>本地设置：</label>
+	</div>
+	<div class="col-md-9">
+		<ul style="list-style:none;">
+			{% for k,v in data["localv"].items() %}
+			<li>
+				<div class="col-md-7">
+					<label style="max-width: 200px;">{{k}}</label>
+				</div>
+				<div class="col-md-1">
+					<label>:</label>
+				</div>
+				<div class="col-md-4">
+					<label>{{v}}</label>
+				</div>
+				
+			</li>
+			{% end %}
+		</ul>
+	</div>
+	<div class="col-md-3">
+		<label>redis设置：</label>
+	</div>
+	<div class="col-md-9">
+		<ul style="list-style:none;">
+			{% for k,v in data["localr"].items() %}
+			<li>
+				<div class="col-md-7">
+					<label>{{k}}</label>
+				</div>
+				<div class="col-md-1">
+					<label>:</label>
+				</div>
+				<div class="col-md-4">
+					<label>{{v}}</label>
+				</div>
+			</li>
+			{% end %}
+		</ul>
+	</div>
+</div>
+{% end %}
+

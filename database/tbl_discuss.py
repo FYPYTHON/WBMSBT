@@ -16,3 +16,6 @@ class TblDiscuss(ModelBase, table_base.TableBase):
     original = Column(Integer, nullable=False, default=0, comment=u"来源discuss")
     author = Column(Integer, comment=u"作者")
     status = Column(Integer, comment=u"0=正常")
+
+    def __repr__(self):
+        return "%s<id=%s, topic_id=%s,status=%s>" % (self.__class__.__name__, self.id, self.topic_id,self.status)

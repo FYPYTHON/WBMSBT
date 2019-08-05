@@ -7,7 +7,7 @@ from tornado.log import access_log as weblog
 from database.tbl_discuss import TblDiscuss
 from database.tbl_account import TblAccount
 from database.tbl_topic import TblTopic
-from handlers.common_handler import PAGESIZE, get_pages
+from handlers.common_handler import PAGESIZE, get_pages, get_user_nickname
 from tornado import gen
 from tornado.concurrent import run_on_executor
 from concurrent.futures import ThreadPoolExecutor
@@ -29,7 +29,7 @@ class ExtraBaseHandler(BaseHandler):
         data = data.filter(TblTopic.status == 1, TblAccount.id == TblTopic.author)
         data = data.limit(PAGESIZE).offset((current_page - 1) * PAGESIZE).all()
         total_count = len(data)
-        print(total_count, data)
+        # print(total_count, data)
         total_page = get_pages(total_count)
         return data, total_page
 
@@ -39,7 +39,7 @@ class ExtraBaseHandler(BaseHandler):
         weblog.info("%s. get extrabase.html", self._request_summary())
         current_page = int(self.get_argument("current_page", "1"))
         topics, total_page = yield self.get_data(current_page)
-        self.render("extrabase.html", topics=topics)    # templates/
+        self.render("extrabase.html", topics=topics, user=get_user_nickname(self))    # templates/
 
     def get_topic(self, current_page, topic_id):
         discount = self.mysqldb().query(func.count('*').label("count"),

@@ -1,6 +1,5 @@
 # coding=utf-8
-# coding=utf-8
-from sqlalchemy import func
+# from sqlalchemy import func
 from json import dumps as json_dumps
 from tornado.web import authenticated
 from handlers.base_handler import BaseHandler
@@ -8,7 +7,7 @@ from tornado.log import access_log as weblog
 from database.tbl_discuss import TblDiscuss
 from database.tbl_account import TblAccount
 from database.tbl_topic import TblTopic
-from handlers.common_handler import PAGESIZE, get_pages, get_user_id, get_topic
+from handlers.common_handler import PAGESIZE, get_pages, get_user_id, get_topic, get_user_nickname
 from tornado import gen
 from tornado.concurrent import run_on_executor
 from concurrent.futures import ThreadPoolExecutor
@@ -38,10 +37,16 @@ class TopicAdminHandler(BaseHandler):
     @authenticated
     @gen.coroutine
     def get(self, *args, **kwargs):
+        """
+        get_user_nickname  and self.current_user
+        :param args:
+        :param kwargs:
+        :return:
+        """
         weblog.info("%s. get topicadmin.html", self._request_summary())
         current_page = int(self.get_argument("current_page", "1"))
         topics, total_page = yield self.get_data(current_page)
-        self.render("extra/topicadmin.html", topics=topics)  # templates/
+        self.render("extra/topicadmin.html", topics=topics, user=get_user_nickname(self))  # templates/
 
     @run_on_executor
     def edit_topic(self, title, content, category, topic_id):
@@ -85,7 +90,7 @@ class TopicHandler(BaseHandler):
         weblog.info("%s. get extrabase.html", self._request_summary())
         topic_id = self.get_argument("topic_id", "0")
         topic = get_topic(self, topic_id)
-        self.render("extra/topic.html", topic=topic)  # templates/
+        self.render("extra/topic.html", topic=topic, user=get_user_nickname(self))  # templates/
 
     @run_on_executor
     def add_topic(self, title, content, category):

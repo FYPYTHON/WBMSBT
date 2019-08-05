@@ -1,3 +1,4 @@
+user = localStorage.getItem("currentUser");
 $(document).ready(function(){
 	$('#extranav li').click(function() {
 		console.log("nav clicked...");
@@ -21,7 +22,7 @@ function ticktime(){
 				  checkTime(curdate.getDate()) + " " + checkTime(curdate.getHours()) + ":" + 
 				  checkTime(curdate.getMinutes()) +
 				  ":" + checkTime(curdate.getSeconds());
-	console.log(curdate, curtime);
+	// console.log(curdate, curtime);
 	document.getElementById("currentdate").innerHTML = curtime;
 
 }
