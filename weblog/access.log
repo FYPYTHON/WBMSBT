@@ -219,3 +219,75 @@ INFO tornado.access-get-2019-08-04 22:01:49,821 E:\Project\Python\WBMSBT\handler
 INFO tornado.access-log_request-2019-08-04 22:01:49,836 D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py 2162:200 GET /extra (::1) 159.74ms
 INFO tornado.access-log_request-2019-08-04 22:01:50,571 D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py 2162:200 GET /static/libs/js/common.js?v=5ab0087e32bba50ff0c593988ec7d8ea (::1) 709.50ms
 INFO tornado.access-log_request-2019-08-04 22:01:50,623 D:\SoftDevelop\python3.6\lib\site-packages\tornado\web.py 2162:200 GET /favicon.ico (::1) 2.50ms
+INFO tornado.access-get-2019-08-05 09:52:21,079 C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py 39:GET /extra (::1). get extrabase.html
+INFO tornado.access-log_request-2019-08-05 09:52:21,083 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:302 GET /extra (::1) 1103.13ms
+INFO tornado.access-get-2019-08-05 09:52:21,300 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /signin?next=%2Fextra (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 09:52:21,326 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /signin?next=%2Fextra (::1) 130.65ms
+INFO tornado.access-post-2019-08-05 09:52:21,823 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:AX35
+INFO tornado.access-log_request-2019-08-05 09:52:21,824 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 453.79ms
+INFO tornado.access-post-2019-08-05 09:52:26,484 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 28:POST /signin (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 09:52:27,531 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /signin (::1) 1157.96ms
+INFO tornado.access-get-2019-08-05 09:52:32,890 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 28:GET /home (::1).
+INFO tornado.access-get-2019-08-05 09:52:32,890 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 29:get home
+INFO tornado.access-log_request-2019-08-05 09:52:32,969 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /home (::1) 5396.57ms
+INFO tornado.access-get-2019-08-05 09:52:36,590 C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py 39:GET /extra (::1). get extrabase.html
+INFO tornado.access-log_request-2019-08-05 09:52:36,652 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /extra (::1) 1188.85ms
+INFO tornado.access-log_request-2019-08-05 09:52:36,905 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /static/libs/js/common.js?v=c6d15699e85ac9739a18dfda438f04b7 (::1) 238.26ms
+INFO tornado.access-log_request-2019-08-05 09:52:36,907 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /static/libs/css/extra.css?v=eaa251e2c83eb8f89bd8138d376d3de8 (::1) 1.00ms
+INFO tornado.access-get-2019-08-05 10:02:28,105 C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py 39:GET /extra (::1). get extrabase.html
+INFO tornado.access-log_request-2019-08-05 10:02:28,111 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:302 GET /extra (::1) 1047.18ms
+INFO tornado.access-get-2019-08-05 10:02:28,239 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /signin?next=%2Fextra (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 10:02:28,246 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:304 GET /signin?next=%2Fextra (::1) 127.62ms
+INFO tornado.access-post-2019-08-05 10:02:28,351 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:md7H
+INFO tornado.access-log_request-2019-08-05 10:02:28,351 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 82.79ms
+INFO tornado.access-post-2019-08-05 11:20:03,851 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 28:POST /signin (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 11:20:04,867 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /signin (::1) 1121.97ms
+INFO tornado.access-get-2019-08-05 11:20:05,951 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 28:GET /home (::1).
+INFO tornado.access-get-2019-08-05 11:20:05,952 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 29:get home
+INFO tornado.access-log_request-2019-08-05 11:20:05,971 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:304 GET /home (::1) 1096.08ms
+INFO tornado.access-get-2019-08-05 11:20:17,069 C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py 39:GET /extra (::1). get extrabase.html
+INFO tornado.access-log_request-2019-08-05 11:20:17,089 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /extra (::1) 1198.80ms
+INFO tornado.access-get-2019-08-05 11:20:46,000 C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py 39:GET /extra (::1). get extrabase.html
+INFO tornado.access-log_request-2019-08-05 11:20:46,021 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /extra (::1) 1130.97ms
+INFO tornado.access-log_request-2019-08-05 11:20:46,296 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /favicon.ico (::1) 239.36ms
+INFO tornado.access-log_request-2019-08-05 13:09:30,720 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:302 GET /extra (::1) 1040.26ms
+INFO tornado.access-get-2019-08-05 13:09:30,835 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /signin?next=%2Fextra (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:09:30,849 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:304 GET /signin?next=%2Fextra (::1) 123.68ms
+INFO tornado.access-post-2019-08-05 13:09:30,964 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:sNq8
+INFO tornado.access-log_request-2019-08-05 13:09:30,964 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 82.77ms
+INFO tornado.access-get-2019-08-05 13:21:51,600 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET / (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:21:51,604 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET / (::1) 1036.23ms
+INFO tornado.access-post-2019-08-05 13:21:51,909 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:aJge
+INFO tornado.access-log_request-2019-08-05 13:21:51,910 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 277.26ms
+INFO tornado.access-post-2019-08-05 13:22:13,378 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 28:POST /signin (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:22:14,388 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /signin (::1) 1070.14ms
+INFO tornado.access-get-2019-08-05 13:22:15,480 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 28:GET /home (::1).
+INFO tornado.access-get-2019-08-05 13:22:15,481 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 29:get home
+INFO tornado.access-log_request-2019-08-05 13:22:15,493 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:304 GET /home (::1) 1092.08ms
+INFO tornado.access-get-2019-08-05 13:23:15,683 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /logout (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:23:15,685 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /logout (::1) 1085.12ms
+INFO tornado.access-post-2019-08-05 13:23:15,792 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:c4hb
+INFO tornado.access-log_request-2019-08-05 13:23:15,793 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 74.83ms
+INFO tornado.access-get-2019-08-05 13:36:45,722 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /logout (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:36:45,728 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /logout (::1) 1042.21ms
+INFO tornado.access-post-2019-08-05 13:36:45,894 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:HkLE
+INFO tornado.access-log_request-2019-08-05 13:36:45,895 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 143.61ms
+INFO tornado.access-log_request-2019-08-05 13:36:46,127 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /favicon.ico (::1) 231.41ms
+INFO tornado.access-get-2019-08-05 13:38:05,618 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /logout (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:38:05,622 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /logout (::1) 1044.24ms
+INFO tornado.access-post-2019-08-05 13:38:05,749 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:8vqT
+INFO tornado.access-log_request-2019-08-05 13:38:05,750 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 101.73ms
+INFO tornado.access-log_request-2019-08-05 13:38:05,981 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /favicon.ico (::1) 231.35ms
+INFO tornado.access-get-2019-08-05 13:39:12,903 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 23:GET /logout (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:39:12,912 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /logout (::1) 1044.24ms
+INFO tornado.access-post-2019-08-05 13:39:13,030 C:\workSpace\python\project\WBMSBT\handlers\admin_handler.py 21:POST /admin/verifyCode (::1) , imgage code:rSp9
+INFO tornado.access-log_request-2019-08-05 13:39:13,030 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /admin/verifyCode (::1) 83.80ms
+INFO tornado.access-log_request-2019-08-05 13:39:13,262 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 GET /favicon.ico (::1) 230.38ms
+INFO tornado.access-post-2019-08-05 13:39:21,302 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 28:POST /signin (::1) ,sign in.
+ERROR tornado.access-post-2019-08-05 13:39:21,313 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 42:code you inut:TSP9, ori code:RSP9
+INFO tornado.access-log_request-2019-08-05 13:39:21,314 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /signin (::1) 82.78ms
+INFO tornado.access-post-2019-08-05 13:39:29,909 C:\workSpace\python\project\WBMSBT\handlers\signin_handler.py 28:POST /signin (::1) ,sign in.
+INFO tornado.access-log_request-2019-08-05 13:39:30,917 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:200 POST /signin (::1) 1070.15ms
+INFO tornado.access-get-2019-08-05 13:39:32,052 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 28:GET /home (::1).
+INFO tornado.access-get-2019-08-05 13:39:32,052 C:\workSpace\python\project\WBMSBT\handlers\main_handler.py 29:get home
+INFO tornado.access-log_request-2019-08-05 13:39:32,059 C:\softDev\python35\lib\site-packages\tornado\web.py 2246:304 GET /home (::1) 1132.97ms

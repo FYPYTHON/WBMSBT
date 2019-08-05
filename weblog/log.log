@@ -2110,3 +2110,107 @@ TypeError: 'NoneType' object is not iterable
 2019-08-04 22:01:49,836 tornado.access INFO     - 200 GET /extra (::1) 159.74ms
 2019-08-04 22:01:50,571 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=5ab0087e32bba50ff0c593988ec7d8ea (::1) 709.50ms
 2019-08-04 22:01:50,623 tornado.access INFO     - 200 GET /favicon.ico (::1) 2.50ms
+2019-08-05 09:52:21,079 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-05 09:52:21,083 tornado.access INFO     - 302 GET /extra (::1) 1103.13ms
+2019-08-05 09:52:21,084 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1699, in _execute
+    result = await result
+  File "C:\softDev\python35\lib\asyncio\futures.py", line 381, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\softDev\python35\lib\asyncio\tasks.py", line 310, in _wakeup
+    future.result()
+  File "C:\softDev\python35\lib\asyncio\futures.py", line 294, in result
+    raise self._exception
+  File "C:\softDev\python35\lib\site-packages\tornado\gen.py", line 748, in run
+    yielded = self.gen.send(value)
+  File "C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py", line 41, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-05 09:52:21,300 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-05 09:52:21,326 tornado.access INFO     - 200 GET /signin?next=%2Fextra (::1) 130.65ms
+2019-08-05 09:52:21,823 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:AX35
+2019-08-05 09:52:21,824 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 453.79ms
+2019-08-05 09:52:26,484 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-05 09:52:27,531 tornado.access INFO     - 200 POST /signin (::1) 1157.96ms
+2019-08-05 09:52:32,890 tornado.access INFO     - GET /home (::1).
+2019-08-05 09:52:32,890 tornado.access INFO     - get home
+2019-08-05 09:52:32,969 tornado.access INFO     - 200 GET /home (::1) 5396.57ms
+2019-08-05 09:52:36,590 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-05 09:52:36,652 tornado.access INFO     - 200 GET /extra (::1) 1188.85ms
+2019-08-05 09:52:36,905 tornado.access INFO     - 200 GET /static/libs/js/common.js?v=c6d15699e85ac9739a18dfda438f04b7 (::1) 238.26ms
+2019-08-05 09:52:36,907 tornado.access INFO     - 200 GET /static/libs/css/extra.css?v=eaa251e2c83eb8f89bd8138d376d3de8 (::1) 1.00ms
+2019-08-05 10:02:28,105 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-05 10:02:28,111 tornado.access INFO     - 302 GET /extra (::1) 1047.18ms
+2019-08-05 10:02:28,233 tornado.application ERROR    - Uncaught exception GET /extra (::1)
+HTTPServerRequest(protocol='http', host='localhost:8081', method='GET', uri='/extra', version='HTTP/1.1', remote_ip='::1')
+Traceback (most recent call last):
+  File "C:\softDev\python35\lib\site-packages\tornado\web.py", line 1699, in _execute
+    result = await result
+  File "C:\softDev\python35\lib\asyncio\futures.py", line 381, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\softDev\python35\lib\asyncio\tasks.py", line 310, in _wakeup
+    future.result()
+  File "C:\softDev\python35\lib\asyncio\futures.py", line 294, in result
+    raise self._exception
+  File "C:\softDev\python35\lib\site-packages\tornado\gen.py", line 748, in run
+    yielded = self.gen.send(value)
+  File "C:\workSpace\python\project\WBMSBT\handlers\Extra\extra_base_handler.py", line 41, in get
+    topics, total_page = yield self.get_data(current_page)
+TypeError: 'NoneType' object is not iterable
+2019-08-05 10:02:28,239 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-05 10:02:28,246 tornado.access INFO     - 304 GET /signin?next=%2Fextra (::1) 127.62ms
+2019-08-05 10:02:28,351 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:md7H
+2019-08-05 10:02:28,351 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 82.79ms
+2019-08-05 11:20:03,851 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-05 11:20:04,867 tornado.access INFO     - 200 POST /signin (::1) 1121.97ms
+2019-08-05 11:20:05,951 tornado.access INFO     - GET /home (::1).
+2019-08-05 11:20:05,952 tornado.access INFO     - get home
+2019-08-05 11:20:05,971 tornado.access INFO     - 304 GET /home (::1) 1096.08ms
+2019-08-05 11:20:17,069 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-05 11:20:17,089 tornado.access INFO     - 200 GET /extra (::1) 1198.80ms
+2019-08-05 11:20:46,000 tornado.access INFO     - GET /extra (::1). get extrabase.html
+2019-08-05 11:20:46,021 tornado.access INFO     - 200 GET /extra (::1) 1130.97ms
+2019-08-05 11:20:46,296 tornado.access INFO     - 200 GET /favicon.ico (::1) 239.36ms
+2019-08-05 13:09:30,720 tornado.access INFO     - 302 GET /extra (::1) 1040.26ms
+2019-08-05 13:09:30,835 tornado.access INFO     - GET /signin?next=%2Fextra (::1) ,sign in.
+2019-08-05 13:09:30,849 tornado.access INFO     - 304 GET /signin?next=%2Fextra (::1) 123.68ms
+2019-08-05 13:09:30,964 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:sNq8
+2019-08-05 13:09:30,964 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 82.77ms
+2019-08-05 13:21:51,600 tornado.access INFO     - GET / (::1) ,sign in.
+2019-08-05 13:21:51,604 tornado.access INFO     - 200 GET / (::1) 1036.23ms
+2019-08-05 13:21:51,909 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:aJge
+2019-08-05 13:21:51,910 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 277.26ms
+2019-08-05 13:22:13,378 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-05 13:22:14,388 tornado.access INFO     - 200 POST /signin (::1) 1070.14ms
+2019-08-05 13:22:15,480 tornado.access INFO     - GET /home (::1).
+2019-08-05 13:22:15,481 tornado.access INFO     - get home
+2019-08-05 13:22:15,493 tornado.access INFO     - 304 GET /home (::1) 1092.08ms
+2019-08-05 13:23:15,683 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-05 13:23:15,685 tornado.access INFO     - 200 GET /logout (::1) 1085.12ms
+2019-08-05 13:23:15,792 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:c4hb
+2019-08-05 13:23:15,793 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 74.83ms
+2019-08-05 13:36:45,722 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-05 13:36:45,728 tornado.access INFO     - 200 GET /logout (::1) 1042.21ms
+2019-08-05 13:36:45,894 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:HkLE
+2019-08-05 13:36:45,895 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 143.61ms
+2019-08-05 13:36:46,127 tornado.access INFO     - 200 GET /favicon.ico (::1) 231.41ms
+2019-08-05 13:38:05,618 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-05 13:38:05,622 tornado.access INFO     - 200 GET /logout (::1) 1044.24ms
+2019-08-05 13:38:05,749 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:8vqT
+2019-08-05 13:38:05,750 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 101.73ms
+2019-08-05 13:38:05,981 tornado.access INFO     - 200 GET /favicon.ico (::1) 231.35ms
+2019-08-05 13:39:12,903 tornado.access INFO     - GET /logout (::1) ,sign in.
+2019-08-05 13:39:12,912 tornado.access INFO     - 200 GET /logout (::1) 1044.24ms
+2019-08-05 13:39:13,030 tornado.access INFO     - POST /admin/verifyCode (::1) , imgage code:rSp9
+2019-08-05 13:39:13,030 tornado.access INFO     - 200 POST /admin/verifyCode (::1) 83.80ms
+2019-08-05 13:39:13,262 tornado.access INFO     - 200 GET /favicon.ico (::1) 230.38ms
+2019-08-05 13:39:21,302 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-05 13:39:21,313 tornado.access ERROR    - code you inut:TSP9, ori code:RSP9
+2019-08-05 13:39:21,314 tornado.access INFO     - 200 POST /signin (::1) 82.78ms
+2019-08-05 13:39:29,909 tornado.access INFO     - POST /signin (::1) ,sign in.
+2019-08-05 13:39:30,917 tornado.access INFO     - 200 POST /signin (::1) 1070.15ms
+2019-08-05 13:39:32,052 tornado.access INFO     - GET /home (::1).
+2019-08-05 13:39:32,052 tornado.access INFO     - get home
+2019-08-05 13:39:32,059 tornado.access INFO     - 304 GET /home (::1) 1132.97ms

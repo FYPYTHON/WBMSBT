@@ -16,7 +16,6 @@ from concurrent.futures import ThreadPoolExecutor
 class ExtraBaseHandler(BaseHandler):
     executor = ThreadPoolExecutor(4)
 
-    @authenticated
     @run_on_executor
     def get_data(self, current_page):
         data = self.mysqldb().query(TblTopic.id,
@@ -27,20 +26,20 @@ class ExtraBaseHandler(BaseHandler):
                                     TblTopic.title,
                                     TblTopic.content,
                                     TblTopic.category)
-        data = data.filter(TblTopic.status == 0, TblAccount.id == TblTopic.author)
+        data = data.filter(TblTopic.status == 1, TblAccount.id == TblTopic.author)
         data = data.limit(PAGESIZE).offset((current_page - 1) * PAGESIZE).all()
         total_count = len(data)
-        print(total_count)
+        print(total_count, data)
         total_page = get_pages(total_count)
         return data, total_page
 
+    @authenticated
     @gen.coroutine
     def get(self, *args, **kwargs):
         weblog.info("%s. get extrabase.html", self._request_summary())
         current_page = int(self.get_argument("current_page", "1"))
         topics, total_page = yield self.get_data(current_page)
         self.render("extrabase.html", topics=topics)    # templates/
-
 
     def get_topic(self, current_page, topic_id):
         discount = self.mysqldb().query(func.count('*').label("count"),
@@ -66,6 +65,7 @@ class ExtraBaseHandler(BaseHandler):
 
 
 class DiscussHandler(BaseHandler):
+    @authenticated
     def get(self, topic_id, *args, **kwargs):
         weblog.info("%s. get discuss.html.topic:%s", self._request_summary(), topic_id)
         current_page = int(self.get_argument("current_page", "1"))
@@ -87,6 +87,7 @@ class DiscussHandler(BaseHandler):
         total_page = get_pages(total_count)
         return discuss, total_page
 
+    @authenticated
     def post(self, topic_id, *args, **kwargs):
         dicuess = self.get_argument("discuss")
         did = self.get_argument("did", '0')
