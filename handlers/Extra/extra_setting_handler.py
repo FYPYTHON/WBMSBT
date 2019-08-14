@@ -26,8 +26,6 @@ class ExtraSettingHandler(BaseHandler):
             if len(key) < 20:
                 data_dict["localr"][key] = self.redis.get(key)
         data_dict["localr"]["current_user"] = self.redis.get(self.get_secure_cookie("session_id"))
-        # sorted(data_dict["localv"], key=lambda x: x[0])
-        # sorted(data_dict["localr"], key=lambda x: x[0])
         import time
         time.sleep(10 * 60)
         return data_dict

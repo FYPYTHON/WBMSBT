@@ -1,0 +1,44 @@
+﻿<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!DOCTYPE html>
+<html lang="en">
+<!--<html xmlns="http://www.w3.org/1999/xhtml" lang="en">-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
+</head>
+<script type="text/javascript">
+     $("#confirm").click(function(){
+		 	alert("click");
+			<!--login();-->
+		 });
+	 function getIn1(){
+	    alert("this is test code");
+	    to();
+	 }
+	 function to(){
+			$.ajax({
+				type: "Post",
+				url: "/main",
+				dataType : "json",
+				data:{"code":"1234"},
+				success: function (data){
+					alert("成功！");
+					console.log(data);
+					window.location.href = "/tableTest"
+				}
+			})
+		}
+
+ </script>
+<body>
+
+This text contains<br />a line break.
+<a href="/tableTest"> 点击</a>
+
+<button onclick="getIn1()" type="button" id="confirm" class="btnConfirm" >确定</button>
+<form method="get" action="/tableTest">
+    <button  type="submit" id="submit" class="btnConfirm" >提交</button>
+</form>
+
+</body>
+</html>

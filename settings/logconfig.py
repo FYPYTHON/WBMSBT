@@ -62,7 +62,7 @@ logconfig = {
         'filename': './weblog/access.log',
         'when': 'midnight',
         'interval': 1,
-        'backupCount': 2,    # u"备份数"
+        'backupCount': 5,    # u"备份数"
         'encoding': 'utf8'
         },
       'log': {
@@ -72,7 +72,7 @@ logconfig = {
         'filename': './weblog/log.log',
         # 'when': 'midnight',
         # 'interval': 1,
-        'backupCount': 2,
+        'backupCount': 5,    # 日志文件的保留个数
         'maxBytes': 1 * 1024 * 1024,  # 文件最大50M
         'encoding': 'gbk'
         }

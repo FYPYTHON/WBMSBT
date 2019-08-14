@@ -29,7 +29,8 @@ class MainHandler(BaseHandler):
         weblog.info("get home")
         result = yield self.doing()
         print(result)
-        self.render("admin/homepage.html")
+        # self.render("admin/homepage.html")
+        self.write(self.render_template('admin/homepage.html'))
         # return self.write("ok," + result)
 
     @authenticated

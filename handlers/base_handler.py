@@ -1,7 +1,10 @@
 # coding=utf-8
+import os
 import datetime
 import tornado.web
+from tornado import gen
 import tornado.options
+from jinja2 import Environment,FileSystemLoader, TemplateNotFound
 from tornado.web import authenticated
 from tornado.log import access_log as weblog
 from database.db_config import db_session
@@ -21,6 +24,7 @@ class BaseHandler(tornado.web.RequestHandler):
         # self.session = redis_session.Session(self.application.session_manager, self)
         pass
 
+    @gen.coroutine
     def initialize(self):
         pass
 
@@ -33,8 +37,45 @@ class BaseHandler(tornado.web.RequestHandler):
         # print("initalize...", self.session)
         self.localVariable = {}
         self.initLocalVariable()
-        self.browsing_history()
+        yield self.browsing_history()
         # super(BaseHandler, self).__init__(*argc, **argkw)
+
+    def get_template(self, name):
+        """Return the jinja template object for a given name
+           jinja must not have - in template ,block end use endblock
+        """
+        template_dirs = []
+        if self.settings.get('template_path', ''):
+            if '/' in name:
+                tdir, tname = name.split('/', 1)
+            else:
+                tdir, tname = None, name
+            template_path = self.settings['template_path']
+            # print(tdir, tname)
+            if tdir is not None:
+                template_path = os.path.join(template_path, tdir)
+            template_dirs.append(template_path)
+
+            template_path = template_path.replace('\\', '/')
+            # print(template_path)
+            # template_path = ['C:\\workSpace\\python\\project\\WBMSBT\\templates']
+            # jenv_opt = {"autoescape": True}
+            # env = Environment(loader=FileSystemLoader(template_path), extensions=['jinja2.ext.i18n'], **jenv_opt)
+            env = Environment(loader=FileSystemLoader(template_path))
+            try:
+                # tname = 'testclick.html'
+                tp = env.get_template(tname)
+                # print(tp)
+            except:
+                raise tornado.web.HTTPError(404, "template not found : %s " % tname)
+            return tp
+        else:
+            raise tornado.web.HTTPError(404, "template path not found")
+
+    def render_template(self, name, **ns):
+        ns.update(self.get_template_namespace())
+        template = self.get_template(name)
+        return template.render(**ns)
 
     # @authenticated
     def get(self, *args, **kwargs):
@@ -84,6 +125,7 @@ class BaseHandler(tornado.web.RequestHandler):
         for var in variables:
             if var.name not in self.localVariable.keys():
                 self.localVariable[var.name] = var.value
+
 
     def browsing_history(self):
         login_name = self.get_current_user()
