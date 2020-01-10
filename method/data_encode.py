@@ -28,6 +28,7 @@ def generate_uuid():
     new_id = hashlib.sha256(bytes(secret + str(uuid.uuid4()), encoding='utf-8'))
     return new_id.hexdigest()
 
+
 if __name__ == "__main__":
     print(hashlib.md5(bytes("111111", encoding='utf-8')).hexdigest())
     print(MD5("111111"))

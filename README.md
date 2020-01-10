@@ -3,7 +3,7 @@ python -m pip install pymysqldb
     环境：python3.5
     参考requirements.txt
 # python 连接SQLalchemy
-1）连接参考database/db_config.py.
+1) 连接参考database/db_config.py.
    需要安装pymysql.
    下载mysql-5.7 ,下载地址：https://dev.mysql.com/downloads/mysql/
    将mysql bin目录加入系统path
@@ -43,10 +43,16 @@ python -m pip install pymysqldb
    将redis加到Windows服务中。首先还是要启动redis服务器端，然后在运行redis客户端，
    然后通过Windows的service-install命令，输入：
     redis-server --service-install redis.windows.conf --loglevel verbose  
-#测试更新
+# 测试更新
 1、 添加multiple-select.js/css。
 2、 增加message序列化和反序列。
 3、 增加session，登录验证。
+
+# supervisor进程管理和nginx配置
+    supervisor配置多个tornado，
+	nginx把请求方向代理传给tornado服务器，负载均衡
+    详见：superviso_install.txt ngnix_install.txt
+
 
 
 
