@@ -8,10 +8,13 @@
     <title>Home Base</title>
     {% end %}
     <!-- 使用static_url防止二级路径访问出错 -->
-    <script src="{{static_url('libs/js/jquery.min.js')}}"></script>
-    <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--    <script type="text/javascript" src="{{static_url('libs/js/jquery.min.js')}}"></script>-->
+<!--    <script src="{{static_url('libs/js/bootstrap.min.js')}}"></script>-->
     
-    <link rel="stylesheet" href="{{static_url('libs/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- <link href="static/libs/css/icomoon/style.css" rel="stylesheet"> -->
     <link href="{{static_url('libs/css/icomoon/style.css')}}" rel="stylesheet">
